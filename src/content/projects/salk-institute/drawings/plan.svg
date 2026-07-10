@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none" stroke="currentColor" stroke-width="1.1">
+  <g stroke-opacity="0.6">
+    <rect x="70" y="70" width="260" height="52"/>
+    <rect x="70" y="178" width="260" height="52"/>
+  </g>
+  <g stroke-opacity="0.4">
+    <path d="M96 70v-14M128 70v-14M160 70v-14M192 70v-14M224 70v-14M256 70v-14M288 70v-14"/>
+    <path d="M96 230v14M128 230v14M160 230v14M192 230v14M224 230v14M256 230v14M288 230v14"/>
+  </g>
+  <g stroke-opacity="0.5">
+    <line x1="198" y1="122" x2="198" y2="178"/>
+    <line x1="202" y1="122" x2="202" y2="178"/>
+  </g>
+  <g stroke-opacity="0.3">
+    <line x1="70" y1="150" x2="184" y2="150"/>
+    <line x1="216" y1="150" x2="330" y2="150"/>
+    <line x1="40" y1="150" x2="52" y2="150"/>
+    <path d="M52 146l-8 4 8 4"/>
+  </g>
+</svg>

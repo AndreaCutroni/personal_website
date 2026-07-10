@@ -1,0 +1,14 @@
+{
+  "order": 4,
+  "title": "Sagrada Família",
+  "architect": "Antoni Gaudí",
+  "year": "1882 —",
+  "location": "Barcelona, Spain",
+  "status": "Under construction",
+  "span": "tall",
+  "description": "Catenary geometry and ruled surfaces, form-found a century before the solver.",
+  "body": [
+    "Gaudí form-found the nave through hanging-chain models — inverted catenaries giving compression-only geometry — and detailed the surfaces as hyperboloids, helicoids and other ruled geometries that masons could set out with straight lines.",
+    "Construction continues under a fully digital workflow: the surviving plaster models are scanned, rationalized parametrically and cut from stone by CNC — a century-old design being completed by the methods it anticipated."
+  ]
+}

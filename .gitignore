@@ -1,0 +1,9 @@
+node_modules
+dist
+*.local
+.DS_Store
+
+# Local research material (CV with personal contact info, reference
+# screenshots of other sites) — not used by the built site, not for
+# publishing to a public repo.
+references/

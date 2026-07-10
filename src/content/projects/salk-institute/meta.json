@@ -1,0 +1,14 @@
+{
+  "order": 5,
+  "title": "Salk Institute",
+  "architect": "Louis Kahn",
+  "year": "1965",
+  "location": "La Jolla, California",
+  "status": "Completed 1965",
+  "span": "wide",
+  "description": "Twin laboratory wings framing a courtyard axis open to the Pacific.",
+  "body": [
+    "Kahn's twin laboratory wings are spanned by storey-deep Vierendeel trusses, giving each laboratory a column-free floor plate and a full interstitial service floor above it — infrastructure treated as architecture.",
+    "Between the wings, a travertine courtyard is cut by a single water channel aimed at the Pacific horizon; the studies' teak and board-marked concrete have weathered into the material palette of the site."
+  ]
+}
