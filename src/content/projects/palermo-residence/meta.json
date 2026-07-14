@@ -1,9 +1,15 @@
 {
   "order": 4,
   "span": "tall",
-  "year": "",
-  "location": "",
+  "team": "Andrea Cutroni, Eleni Maglari",
+  "program": "IAAC MaCAD 25/26 — Environmental Analysis",
+  "year": "2025–2026",
+  "location": "Palermo, Italy",
   "status": "",
-  "description": "",
-  "body": []
+  "link": "https://blog.iaac.net/data-driven-environmental-analysis-in-palermo-italy/",
+  "description": "Data-driven environmental analysis for a residential development — climate, comfort and daylight steering the massing from the first move.",
+  "body": [
+    "A comprehensive environmental assessment for a ~6,500 m² site in a dense residential district of Palermo: two housing blocks and a public park shaped by climate analysis, evolutionary massing optimization (Galapagos), outdoor thermal comfort (UTCI), daylight factor, wind and sea-visibility studies — built on Ladybug, Honeybee and Infrared.city, with voxelization used for design-space exploration.",
+    "The optimized scheme reduces solar radiation on the façades by roughly 30%, reaches a 4% daylight factor against an initial 2.5% target, preserves sea visibility, and brings peak outdoor UTCI down from 37.3 °C to 35.5 °C through tree integration in the park."
+  ]
 }

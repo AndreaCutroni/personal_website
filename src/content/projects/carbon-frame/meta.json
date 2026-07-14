@@ -1,9 +1,15 @@
 {
   "order": 5,
   "span": "wide",
-  "year": "",
-  "location": "",
+  "team": "Andrea Cutroni",
+  "program": "IAAC MaCAD 25/26 — Cloud-Based Data Management",
+  "year": "2025–2026",
+  "location": "Web application",
   "status": "",
-  "description": "",
-  "body": []
+  "link": "https://blog.iaac.net/carbonframe/",
+  "description": "A web-based parametric calculator that brings embodied-carbon feedback into early-stage structural design.",
+  "body": [
+    "CarbonFrame lets designers quickly define the key parameters of a structural framework — floor count, bay dimensions, slab thickness — and assign concrete, steel or timber sections to each element. The tool returns a clear breakdown of embodied carbon emissions, material mass and quantity takeoff, with a side-by-side comparison mode for weighing design iterations against each other.",
+    "Models export as .3dm files carrying both the geometric and the analytical model, ready for FEM analysis. Version 2.0 aims at additional building typologies — such as industrial structures — and built-in FEM analysis."
+  ]
 }

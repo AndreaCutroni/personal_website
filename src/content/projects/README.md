@@ -26,10 +26,13 @@ All fields optional:
   "order": 1,               // position in the index grid (default: last)
   "span": "large",          // bento size: large | wide | tall | standard
   "title": "…",             // overrides the folder-name title
+  "team": "…",              // shown in the project data table
   "architect": "…",
+  "program": "…",           // e.g. course / studio / client context
   "year": "…",
   "location": "…",
   "status": "…",
+  "link": "https://…",      // "Published on…" link under the data table
   "description": "…",       // one-line lead shown on the project page
   "body": ["…", "…"]        // paragraphs for the project page
 }

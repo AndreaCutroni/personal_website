@@ -57,10 +57,7 @@ export default function ProjectCluster() {
         className="group absolute left-1/2 top-1/2 flex aspect-square w-[27%] -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center rounded-full border border-line bg-surface transition-[transform,border-color] duration-200 ease-out hover:border-accent motion-safe:hover:scale-[1.05]"
       >
         <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted transition-colors duration-200 group-hover:text-ink sm:text-[11px]">
-          Index
-        </span>
-        <span className="mt-1 font-mono text-[10px] tracking-[0.2em] text-accent">
-          {String(projects.length).padStart(2, '0')} →
+          Index <span className="text-accent">→</span>
         </span>
       </Link>
     </div>

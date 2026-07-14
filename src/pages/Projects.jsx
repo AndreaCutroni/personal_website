@@ -35,10 +35,6 @@ export default function Projects() {
             01 — Selected work
           </p>
           <h1 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">Projects</h1>
-          <p className="mt-4 max-w-xl text-muted">
-            Placeholder index — canonical buildings standing in while real projects are
-            documented. Each entry lives in its own content folder.
-          </p>
         </Reveal>
 
         <motion.div

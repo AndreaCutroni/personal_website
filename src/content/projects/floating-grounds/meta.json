@@ -1,9 +1,15 @@
 {
   "order": 3,
   "span": "standard",
-  "year": "",
-  "location": "",
+  "team": "Andrea Cutroni, Rania Chihaoui, Symon Kipekemi",
+  "program": "IAAC MaCAD 25/26 — ACESD Studio",
+  "year": "2025–2026",
+  "location": "Penjaringan, North Jakarta, Indonesia",
   "status": "",
-  "description": "",
-  "body": []
+  "link": "https://blog.iaac.net/floating-grounds-rethinking-resilience-in-jakarta/",
+  "description": "A flood-resilient floating urban model for Jakarta — housing, public program and a stadium organized by water rather than against it.",
+  "body": [
+    "Rather than resisting flooding, the project accepts water as a permanent condition and uses it as an organizing element. A ~30,000 m² floating complex in Penjaringan merges residential housing, a stadium and a commercial buffer zone into a single resilience hub, all built on a standardized 5 × 5 m modular grid for construction efficiency, adaptability and scalability. Pontoons sized through load analysis and Archimedes' principle sit roughly 1.5 m deep in the water.",
+    "A Grasshopper-based parametric workflow drove solar orientation, wind and energy modeling, and stadium sightlines were verified with the C-value method. The optimized massing cuts solar radiation by over 30% compared to a simple box, while ~780,000 kWh of annual on-site photovoltaic production offsets nearly 40% of the total cooling load."
+  ]
 }

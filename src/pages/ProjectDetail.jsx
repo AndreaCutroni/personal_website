@@ -32,7 +32,9 @@ export default function ProjectDetail() {
   const next = projects[index + 1]
 
   const meta = [
+    ['Team', project.team],
     ['Architect', project.architect],
+    ['Program', project.program],
     ['Year', project.year],
     ['Location', project.location],
     ['Status', project.status],
@@ -64,16 +66,28 @@ export default function ProjectDetail() {
               </div>
             </div>
 
-            <dl className="h-fit border-t border-line">
-              {meta.map(([key, value]) => (
-                <div key={key} className="flex justify-between gap-6 border-b border-line py-3">
-                  <dt className="shrink-0 font-mono text-[11px] uppercase tracking-[0.2em] text-muted">
-                    {key}
-                  </dt>
-                  <dd className="text-right text-sm">{value}</dd>
-                </div>
-              ))}
-            </dl>
+            <div className="h-fit">
+              <dl className="border-t border-line">
+                {meta.map(([key, value]) => (
+                  <div key={key} className="flex justify-between gap-6 border-b border-line py-3">
+                    <dt className="shrink-0 font-mono text-[11px] uppercase tracking-[0.2em] text-muted">
+                      {key}
+                    </dt>
+                    <dd className="text-right text-sm">{value}</dd>
+                  </div>
+                ))}
+              </dl>
+              {project.link && (
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-4 inline-block font-mono text-[11px] uppercase tracking-[0.2em] text-muted transition-colors duration-200 hover:text-accent"
+                >
+                  Published on IAAC Blog ↗
+                </a>
+              )}
+            </div>
           </div>
         </Reveal>
 

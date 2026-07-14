@@ -1,9 +1,15 @@
 {
   "order": 1,
   "span": "large",
-  "year": "",
-  "location": "",
+  "team": "Andrea Cutroni",
+  "program": "IAAC MaCAD 25/26 — Complex Forming",
+  "year": "2025–2026",
+  "location": "Bab al-Luq, Cairo, Egypt",
   "status": "",
-  "description": "",
-  "body": []
+  "link": "https://blog.iaac.net/never-ending-cairo-market/",
+  "description": "Revitalizing Cairo's 1912 Bab al-Luq market with optimized circulation and a parametric roof of computationally controlled openings.",
+  "body": [
+    "The market is reorganized as a multi-level shopping environment driven by circulation: differential-growth principles generate smooth, fluid pathways connecting the four primary entrances, with two paths displacing vertically into ramps that link the ground floor to the upper levels and storage tucked beneath. The traditional Cairo tessellation is reconstructed parametrically and settled through dynamic relaxation in Kangaroo.",
+    "Above, a parametric roof turns the initially flat surface into a highly expressive structure. A heat-map proximity analysis of the flows below controls the roof's deformation, frame sizing and openings, so the light and shadow patterns cast into the market are strategically aligned with the movement beneath."
+  ]
 }

@@ -1,9 +1,15 @@
 {
   "order": 2,
   "span": "standard",
-  "year": "",
-  "location": "",
+  "team": "Andrea Cutroni, Elena Corio",
+  "program": "IAAC MaCAD 25/26 — Generative AI",
+  "year": "2025–2026",
+  "location": "Rome · Milan · Dublin · Paris",
   "status": "",
-  "description": "",
-  "body": []
+  "link": "https://blog.iaac.net/vitru-views-see-cities-at-human-scale/",
+  "description": "A generative-AI web app that reimagines street views at human scale — more trees and pedestrian space, fewer cars.",
+  "body": [
+    "Vitru.views transforms ordinary street views into greener, more human-centered scenarios through a three-stage image-to-image workflow: cars and signage are removed, vegetation, bike lanes and pedestrian space are added, then architectural styling and lighting are applied. The pipeline runs on LoRAs trained across SDXL and FLUX, wired to OSM mapping and the Google Street View API.",
+    "Trained on a dataset of 38 renders from Henning Larsen's urban design projects, the tool produced consistently strong results across the four tested cities. Next steps focus on improving human-figure generation and developing Vitru.views into a participatory design tool for community collaboration."
+  ]
 }
