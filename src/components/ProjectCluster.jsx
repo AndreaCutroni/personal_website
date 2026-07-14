@@ -20,7 +20,7 @@ function Porthole({ project, x, y, s }) {
       className="group absolute flex -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-3"
       style={{ left: `${x}%`, top: `${y}%`, width: `${s}%` }}
     >
-      <div className="aspect-square w-full overflow-hidden rounded-full border border-line bg-ground transition-[transform,border-color] duration-200 ease-out group-hover:border-accent motion-safe:group-hover:scale-[1.05]">
+      <div className="aspect-square w-full overflow-hidden rounded-full border border-line bg-surface transition-[transform,border-color] duration-200 ease-out group-hover:border-accent motion-safe:group-hover:scale-[1.05]">
         {project.cover?.svg ? (
           <div
             aria-hidden="true"
@@ -54,7 +54,7 @@ export default function ProjectCluster() {
 
       <Link
         to="/projects"
-        className="group absolute left-1/2 top-1/2 flex aspect-square w-[27%] -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center rounded-full border border-line bg-ground transition-[transform,border-color] duration-200 ease-out hover:border-accent motion-safe:hover:scale-[1.05]"
+        className="group absolute left-1/2 top-1/2 flex aspect-square w-[27%] -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center rounded-full border border-line bg-surface transition-[transform,border-color] duration-200 ease-out hover:border-accent motion-safe:hover:scale-[1.05]"
       >
         <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted transition-colors duration-200 group-hover:text-ink sm:text-[11px]">
           Index

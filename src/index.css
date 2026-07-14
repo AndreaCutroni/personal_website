@@ -2,19 +2,21 @@
 
 /* Semantic tokens, swapped per theme. All text tokens hold WCAG AA on their
    ground: dark — ink 13.9:1, muted 7.0:1, accent 9.3:1;
-   light — ink 15.1:1, muted 4.9:1, accent 4.5:1. */
+   light — ink 16:1, muted 5.2:1, accent 5.0:1. */
 :root {
-  --ground: #f2f0ea;
+  --ground: #fcfcfe;
+  --surface: #f8f8fc; /* cards and framed media */
   --ink: #1b1b19;
-  --muted: #6b6860;
-  --line: #d9d6cc;
+  --muted: #6a6a74;
+  --line: #e2e2ea;
   --accent: #96630a;
   --accent-mark: #fdaf0d; /* non-text marks only (logo dot) */
-  --veil: rgba(242, 240, 234, 0.9);
+  --veil: rgba(252, 252, 254, 0.9);
 }
 
 [data-theme="dark"] {
   --ground: #1b1b19;
+  --surface: #1b1b19;
   --ink: #edebe6;
   --muted: #a9a69c;
   --line: #35342f;
@@ -25,6 +27,7 @@
 
 @theme inline {
   --color-ground: var(--ground);
+  --color-surface: var(--surface);
   --color-ink: var(--ink);
   --color-muted: var(--muted);
   --color-line: var(--line);

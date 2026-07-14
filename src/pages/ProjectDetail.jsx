@@ -5,7 +5,7 @@ import { projects, getProject } from '../content/projects'
 
 function Drawing({ label, svg, url }) {
   return (
-    <figure className="border border-line">
+    <figure className="border border-line bg-surface">
       {svg ? (
         <div
           className="p-6 text-ink [&_svg]:mx-auto [&_svg]:h-auto [&_svg]:max-h-[440px] [&_svg]:w-full [&_svg]:max-w-full sm:p-8"
@@ -42,17 +42,12 @@ export default function ProjectDetail() {
     <PageTransition>
       <main className="mx-auto max-w-5xl px-6 pb-24 pt-32">
         <Reveal>
-          <div className="flex items-baseline justify-between">
-            <Link
-              to="/projects"
-              className="font-mono text-xs uppercase tracking-[0.2em] text-muted transition-colors duration-200 hover:text-accent"
-            >
-              ← Index
-            </Link>
-            <span className="font-mono text-xs tracking-[0.2em] text-muted">
-              {String(index + 1).padStart(2, '0')} / {String(projects.length).padStart(2, '0')}
-            </span>
-          </div>
+          <Link
+            to="/projects"
+            className="font-mono text-xs uppercase tracking-[0.2em] text-muted transition-colors duration-200 hover:text-accent"
+          >
+            ← Index
+          </Link>
 
           <div className="mt-10 grid gap-x-16 gap-y-10 lg:grid-cols-[1fr_280px]">
             <div>
@@ -102,7 +97,7 @@ export default function ProjectDetail() {
           <div className="mt-6 grid gap-6 sm:grid-cols-2">
             {project.photos.map((photo, i) => (
               <Reveal key={photo.url} delay={i * 0.05}>
-                <figure className="border border-line">
+                <figure className="border border-line bg-surface">
                   <img src={photo.url} alt={`${project.title} — ${photo.label}`} className="w-full" />
                   <figcaption className="border-t border-line px-4 py-2 font-mono text-[11px] uppercase tracking-[0.2em] text-muted">
                     {photo.label}

@@ -48,13 +48,13 @@ export default function Projects() {
           viewport={{ once: true, margin: '0px 0px -40px 0px' }}
           className="mt-14 grid auto-rows-[16rem] grid-cols-1 gap-4 md:auto-rows-[10.5rem] md:grid-cols-6"
         >
-          {projects.map((project, i) => (
+          {projects.map((project) => (
             <motion.article
               key={project.slug}
               variants={card}
               whileHover={reduce ? undefined : { y: -4 }}
               transition={{ duration: 0.25, ease: 'easeOut' }}
-              className={`group relative overflow-hidden border border-line transition-colors duration-200 hover:border-accent/70 ${
+              className={`group relative overflow-hidden border border-line bg-surface transition-colors duration-200 hover:border-accent/70 ${
                 spans[project.span] ?? spans.standard
               }`}
             >
@@ -74,9 +74,6 @@ export default function Projects() {
                       className="absolute inset-0 h-full w-full object-cover opacity-85 transition-opacity duration-300 group-hover:opacity-100"
                     />
                   ) : null}
-                  <span className="absolute left-4 top-3 bg-ground/85 px-1.5 py-0.5 font-mono text-[11px] tracking-[0.2em] text-muted">
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
                 </div>
                 <footer className="border-t border-line px-4 py-3">
                   <div className="flex items-baseline justify-between gap-4">
