@@ -3,13 +3,17 @@ import PageTransition from '../components/PageTransition'
 import Reveal from '../components/Reveal'
 import { projects, getProject } from '../content/projects'
 
-function Drawing({ label, svg }) {
+function Drawing({ label, svg, url }) {
   return (
     <figure className="border border-line">
-      <div
-        className="p-6 text-ink [&_svg]:mx-auto [&_svg]:h-auto [&_svg]:max-h-[440px] [&_svg]:w-full [&_svg]:max-w-full sm:p-8"
-        dangerouslySetInnerHTML={{ __html: svg }}
-      />
+      {svg ? (
+        <div
+          className="p-6 text-ink [&_svg]:mx-auto [&_svg]:h-auto [&_svg]:max-h-[440px] [&_svg]:w-full [&_svg]:max-w-full sm:p-8"
+          dangerouslySetInnerHTML={{ __html: svg }}
+        />
+      ) : (
+        <img src={url} alt={label} loading="lazy" className="h-auto w-full" />
+      )}
       <figcaption className="border-t border-line px-4 py-2 font-mono text-[11px] uppercase tracking-[0.2em] text-muted">
         {label}
       </figcaption>
@@ -55,7 +59,9 @@ export default function ProjectDetail() {
               <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
                 {project.title}
               </h1>
-              <p className="mt-5 text-lg leading-relaxed text-ink/85">{project.description}</p>
+              {project.description && (
+                <p className="mt-5 text-lg leading-relaxed text-ink/85">{project.description}</p>
+              )}
               <div className="mt-6 space-y-5 leading-relaxed text-ink/85">
                 {(project.body ?? []).map((paragraph) => (
                   <p key={paragraph.slice(0, 32)}>{paragraph}</p>
@@ -76,15 +82,17 @@ export default function ProjectDetail() {
           </div>
         </Reveal>
 
-        <Reveal className="mt-16">
-          <Drawing label="Elevation" svg={project.cover} />
-        </Reveal>
+        {project.cover && (
+          <Reveal className="mt-16">
+            <Drawing label="Cover" svg={project.cover.svg} url={project.cover.url} />
+          </Reveal>
+        )}
 
         {project.drawings.length > 0 && (
           <div className="mt-6 grid gap-6 sm:grid-cols-2">
             {project.drawings.map((d, i) => (
-              <Reveal key={d.label} delay={i * 0.05}>
-                <Drawing label={d.label} svg={d.svg} />
+              <Reveal key={d.file} delay={i * 0.05}>
+                <Drawing label={d.label} svg={d.svg} url={d.url} />
               </Reveal>
             ))}
           </div>

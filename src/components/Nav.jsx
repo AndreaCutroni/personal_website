@@ -20,9 +20,7 @@ export default function Nav() {
 
   return (
     <header
-      className={`inset-x-0 top-0 z-20 ${
-        isHome ? 'absolute' : 'fixed border-b border-line bg-ground'
-      }`}
+      className={`fixed inset-x-0 top-0 z-20 ${isHome ? '' : 'border-b border-line bg-ground'}`}
     >
       <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
         <Link

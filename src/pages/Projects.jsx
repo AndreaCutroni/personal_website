@@ -60,12 +60,21 @@ export default function Projects() {
             >
               <Link to={`/projects/${project.slug}`} className="flex h-full flex-col">
                 <div className="relative flex-1 overflow-hidden">
-                  <div
-                    aria-hidden="true"
-                    className="absolute inset-0 p-4 text-ink opacity-60 transition-opacity duration-300 group-hover:opacity-100 [&_svg]:h-full [&_svg]:w-full"
-                    dangerouslySetInnerHTML={{ __html: project.cover }}
-                  />
-                  <span className="absolute left-4 top-3 font-mono text-[11px] tracking-[0.2em] text-muted">
+                  {project.cover?.svg ? (
+                    <div
+                      aria-hidden="true"
+                      className="absolute inset-0 p-4 text-ink opacity-60 transition-opacity duration-300 group-hover:opacity-100 [&_svg]:h-full [&_svg]:w-full"
+                      dangerouslySetInnerHTML={{ __html: project.cover.svg }}
+                    />
+                  ) : project.cover?.url ? (
+                    <img
+                      src={project.cover.url}
+                      alt=""
+                      loading="lazy"
+                      className="absolute inset-0 h-full w-full object-cover opacity-85 transition-opacity duration-300 group-hover:opacity-100"
+                    />
+                  ) : null}
+                  <span className="absolute left-4 top-3 bg-ground/85 px-1.5 py-0.5 font-mono text-[11px] tracking-[0.2em] text-muted">
                     {String(i + 1).padStart(2, '0')}
                   </span>
                 </div>
