@@ -26,6 +26,7 @@ All fields optional:
   "order": 1,               // position in the index grid (default: last)
   "span": "large",          // bento size: large | wide | tall | standard
   "title": "…",             // overrides the folder-name title
+  "tags": ["…"],            // shown on cards + detail page, drive the filter
   "team": "…",              // shown in the project data table
   "architect": "…",
   "program": "…",           // e.g. course / studio / client context

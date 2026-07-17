@@ -1,15 +1,12 @@
-export default function LogoMark({ className = 'h-8 w-8' }) {
-  // Placeholder mark: a registration-mark motif from technical drawing.
+export default function LogoMark({ className = 'h-8 w-auto' }) {
+  // AC monogram: hairline + thick stroke A over a calligraphic C whose
+  // bold top arc doubles as the crossbar. fill="currentColor" so the
+  // mark recolors with the theme.
   return (
-    <svg
-      viewBox="0 0 48 48"
-      className={className}
-      fill="none"
-      aria-hidden="true"
-    >
-      <rect x="7" y="7" width="34" height="34" stroke="currentColor" strokeWidth="2" />
-      <path d="M7 41 41 7" stroke="currentColor" strokeWidth="2" />
-      <circle cx="41" cy="41" r="4" fill="var(--color-accent)" />
+    <svg viewBox="315 0 525 940" className={className} fill="currentColor" aria-hidden="true">
+      <path d="M561 8 L816 530 L829 562 L829 578 L786 578 Z" />
+      <path d="M561 8 L356 496 L373 487 Z" />
+      <path d="M690 325 C640 316 600 314 564 320 C480 332 405 390 361 479 C337 540 330 600 335 665 C343 770 430 880 576 929 C662 942 745 922 795 903 C748 901 652 908 570 906 C460 900 385 790 368 655 C360 565 368 505 398 455 C430 405 490 375 568 368 C615 366 655 374 678 388 C700 402 716 378 708 350 C704 335 698 328 690 325 Z" />
     </svg>
   )
 }

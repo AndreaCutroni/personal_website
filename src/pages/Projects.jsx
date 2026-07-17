@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import PageTransition from '../components/PageTransition'
@@ -11,8 +12,13 @@ const spans = {
   standard: 'md:col-span-2 md:row-span-1',
 }
 
+const allTags = [...new Set(projects.flatMap((p) => p.tags ?? []))].sort()
+
 export default function Projects() {
   const reduce = useReducedMotion()
+  const [activeTag, setActiveTag] = useState(null)
+
+  const shown = activeTag ? projects.filter((p) => (p.tags ?? []).includes(activeTag)) : projects
 
   const grid = {
     hidden: {},
@@ -27,27 +33,46 @@ export default function Projects() {
     },
   }
 
+  const filterClass = (isActive) =>
+    `font-mono text-xs uppercase tracking-[0.18em] transition-colors duration-200 ${
+      isActive ? 'border-b border-accent pb-0.5 text-ink' : 'text-muted hover:text-accent'
+    }`
+
   return (
     <PageTransition>
       <main className="mx-auto max-w-6xl px-6 pb-24 pt-32">
         <Reveal>
-          <p className="font-mono text-xs uppercase tracking-[0.25em] text-muted">
-            01 — Selected work
-          </p>
-          <h1 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">Projects</h1>
+          <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">Projects</h1>
+
+          <div className="mt-8 flex flex-wrap items-baseline gap-x-6 gap-y-3">
+            <button type="button" onClick={() => setActiveTag(null)} className={filterClass(!activeTag)}>
+              All
+            </button>
+            {allTags.map((tag) => (
+              <button
+                key={tag}
+                type="button"
+                onClick={() => setActiveTag(tag === activeTag ? null : tag)}
+                className={filterClass(tag === activeTag)}
+              >
+                {tag}
+              </button>
+            ))}
+          </div>
         </Reveal>
 
         <motion.div
+          key={activeTag ?? 'all'}
           variants={grid}
           initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: '0px 0px -40px 0px' }}
-          className="mt-14 grid auto-rows-[16rem] grid-cols-1 gap-4 md:auto-rows-[10.5rem] md:grid-cols-6"
+          animate="show"
+          className="mt-12 grid auto-rows-[16rem] grid-cols-1 gap-4 md:auto-rows-[10.5rem] md:grid-cols-6"
         >
-          {projects.map((project) => (
+          {shown.map((project) => (
             <motion.article
               key={project.slug}
               variants={card}
+              layout
               whileHover={reduce ? undefined : { y: -4 }}
               transition={{ duration: 0.25, ease: 'easeOut' }}
               className={`group relative overflow-hidden border border-line bg-surface transition-colors duration-200 hover:border-accent/70 ${
@@ -78,9 +103,11 @@ export default function Projects() {
                       {project.year}
                     </span>
                   </div>
-                  <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.15em] text-muted">
-                    {project.architect}
-                  </p>
+                  {(project.tags ?? []).length > 0 && (
+                    <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.15em] text-muted">
+                      {(project.tags ?? []).join(' · ')}
+                    </p>
+                  )}
                 </footer>
               </Link>
             </motion.article>

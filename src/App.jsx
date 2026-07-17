@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
 import Nav from './components/Nav'
+import Footer from './components/Footer'
 import Home from './pages/Home'
 import Projects from './pages/Projects'
 import ProjectDetail from './pages/ProjectDetail'
@@ -11,7 +12,7 @@ export default function App() {
   const location = useLocation()
 
   useEffect(() => {
-    window.scrollTo(0, 0)
+    if (!window.location.hash) window.scrollTo(0, 0)
   }, [location.pathname])
 
   return (
@@ -25,6 +26,7 @@ export default function App() {
           <Route path="/about" element={<About />} />
         </Routes>
       </AnimatePresence>
+      <Footer />
     </>
   )
 }

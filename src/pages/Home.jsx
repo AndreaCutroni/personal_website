@@ -1,24 +1,56 @@
 import { useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import { motion, useMotionValue, useReducedMotion } from 'framer-motion'
 import FlowField from '../components/FlowField'
 import LogoMark from '../components/LogoMark'
 import PageTransition from '../components/PageTransition'
-import ProjectCluster from '../components/ProjectCluster'
+import CenterCarousel from '../components/CenterCarousel'
+import { projects } from '../content/projects'
+
+function CarouselCard({ project }) {
+  return (
+    <Link to={`/projects/${project.slug}`} className="group block" draggable={false}>
+      <div className="aspect-[4/3] overflow-hidden border border-line bg-surface transition-colors duration-200 group-hover:border-accent/70">
+        {project.cover?.svg ? (
+          <div
+            aria-hidden="true"
+            className="h-full w-full p-4 text-ink [&_svg]:h-full [&_svg]:w-full"
+            dangerouslySetInnerHTML={{ __html: project.cover.svg }}
+          />
+        ) : project.cover?.url ? (
+          <img
+            src={project.cover.url}
+            alt=""
+            draggable={false}
+            className="h-full w-full object-cover"
+          />
+        ) : null}
+      </div>
+      <div data-caption style={{ opacity: 0 }} className="mt-4 text-center">
+        <p className="font-medium">{project.title}</p>
+        {(project.tags ?? []).length > 0 && (
+          <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.18em] text-muted">
+            {project.tags.join(' · ')}
+          </p>
+        )}
+      </div>
+    </Link>
+  )
+}
 
 export default function Home() {
   const reduce = useReducedMotion()
   const heroRunwayRef = useRef(null)
-  const clusterRef = useRef(null)
+  const carouselRef = useRef(null)
 
   // Scroll-scrubbed values, driven by an explicit handler: the identity
-  // block fades and drifts up while the hero is pinned, and the cluster
-  // scales/settles as it rises into view. Reversible with the scroll.
+  // block fades and drifts up while the hero is pinned, and the carousel
+  // settles as it rises into view. Reversible with the scroll.
   const identityOpacity = useMotionValue(1)
   const identityY = useMotionValue(0)
   const hintOpacity = useMotionValue(1)
-  const clusterScale = useMotionValue(reduce ? 1 : 0.8)
-  const clusterOpacity = useMotionValue(reduce ? 1 : 0)
-  const clusterY = useMotionValue(reduce ? 0 : 56)
+  const carouselOpacity = useMotionValue(reduce ? 1 : 0)
+  const carouselY = useMotionValue(reduce ? 0 : 56)
 
   useEffect(() => {
     if (reduce) return undefined
@@ -26,8 +58,8 @@ export default function Home() {
 
     const onScroll = () => {
       const runway = heroRunwayRef.current
-      const cluster = clusterRef.current
-      if (!runway || !cluster) return
+      const section = carouselRef.current
+      if (!runway || !section) return
 
       const heroP = clamp01(window.scrollY / Math.max(1, runway.offsetHeight))
       const fade = clamp01(heroP / 0.45)
@@ -35,26 +67,26 @@ export default function Home() {
       identityY.set(-48 * fade)
       hintOpacity.set(1 - clamp01(heroP / 0.12))
 
-      const r = cluster.getBoundingClientRect()
-      const start = window.innerHeight // cluster top touches viewport bottom
-      const end = window.innerHeight * 0.6 - r.height / 2 // centre at 60% height
+      const r = section.getBoundingClientRect()
+      const start = window.innerHeight
+      const end = window.innerHeight * 0.6 - r.height / 2
       const p = clamp01((start - r.top) / Math.max(1, start - end))
-      clusterOpacity.set(clamp01(p / 0.55))
-      clusterScale.set(0.8 + 0.2 * p)
-      clusterY.set(56 * (1 - p))
+      carouselOpacity.set(clamp01(p / 0.55))
+      carouselY.set(56 * (1 - p))
     }
 
-    // Poll on rAF rather than listening for scroll events: MotionValue.set
-    // no-ops on unchanged values, and polling keeps the scrub working even
-    // in embedded browsers that swallow window scroll events.
-    let raf = 0
-    const loop = () => {
-      onScroll()
-      raf = requestAnimationFrame(loop)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onScroll)
+    // Deep link straight to the work strip (also used by automated checks).
+    if (window.location.hash === '#work') {
+      carouselRef.current?.scrollIntoView({ block: 'center' })
     }
-    raf = requestAnimationFrame(loop)
-    return () => cancelAnimationFrame(raf)
-  }, [reduce, identityOpacity, identityY, hintOpacity, clusterOpacity, clusterScale, clusterY])
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onScroll)
+    }
+  }, [reduce, identityOpacity, identityY, hintOpacity, carouselOpacity, carouselY])
 
   return (
     <PageTransition>
@@ -79,7 +111,7 @@ export default function Home() {
                 transition={{ duration: reduce ? 0.01 : 0.4, ease: [0.25, 0.1, 0.25, 1] }}
                 className="flex flex-col items-center"
               >
-                <LogoMark className="h-10 w-10 text-ink" />
+                <LogoMark className="h-16 w-auto text-ink" />
                 <h1 className="mt-8 text-4xl font-semibold tracking-tight sm:text-5xl md:text-6xl">
                   Andrea Cutroni
                 </h1>
@@ -102,19 +134,27 @@ export default function Home() {
         </div>
 
         <section
-          ref={clusterRef}
-          className="relative z-10 mx-auto -mt-[38svh] flex min-h-svh max-w-5xl flex-col items-center justify-center px-6 pb-32"
+          ref={carouselRef}
+          className="relative z-10 -mt-[38svh] flex min-h-svh w-full flex-col justify-center overflow-hidden pb-24"
         >
-          <motion.div
-            style={reduce ? undefined : { scale: clusterScale, opacity: clusterOpacity, y: clusterY }}
-            className="flex w-full flex-col items-center"
-          >
-            <p className="font-mono text-xs uppercase tracking-[0.25em] text-muted">
-              01 — Selected work
-            </p>
-            <div className="mt-12 w-full">
-              <ProjectCluster />
+          <motion.div style={reduce ? undefined : { opacity: carouselOpacity, y: carouselY }}>
+            <div className="flex justify-end px-6 sm:px-10">
+              <Link
+                to="/projects"
+                className="border-b border-accent pb-0.5 font-mono text-sm uppercase tracking-[0.2em] text-ink transition-colors duration-200 hover:text-accent"
+              >
+                View all projects →
+              </Link>
             </div>
+            <CenterCarousel
+              itemClassName="w-[44vw] sm:w-[280px] md:w-[320px]"
+              maxScale={1.7}
+              minScale={0.62}
+              items={projects.map((project) => ({
+                key: project.slug,
+                node: <CarouselCard project={project} />,
+              }))}
+            />
           </motion.div>
         </section>
       </main>

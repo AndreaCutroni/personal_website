@@ -27,7 +27,7 @@ export default function Nav() {
           to="/"
           className="group flex items-center gap-3 font-mono text-xs uppercase tracking-[0.18em] text-ink"
         >
-          <LogoMark className="h-6 w-6" />
+          <LogoMark className="h-7 w-auto" />
           <span className="hidden transition-colors duration-200 group-hover:text-accent sm:inline">
             Andrea_Cutroni
           </span>
@@ -43,9 +43,36 @@ export default function Nav() {
             type="button"
             onClick={toggleTheme}
             aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
-            className="font-mono text-xs uppercase tracking-[0.18em] text-muted transition-colors duration-200 hover:text-accent"
+            className="text-muted transition-colors duration-200 hover:text-accent"
           >
-            {theme === 'dark' ? 'Light' : 'Dark'}
+            {theme === 'dark' ? (
+              /* Sun: click to switch to light mode. */
+              <svg
+                viewBox="0 0 20 20"
+                className="h-[18px] w-[18px]"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.4"
+                strokeLinecap="round"
+                aria-hidden="true"
+              >
+                <circle cx="10" cy="10" r="3.8" />
+                <path d="M10 1.5v2.2M10 16.3v2.2M18.5 10h-2.2M3.7 10H1.5M16 4l-1.55 1.55M5.55 14.45 4 16M16 16l-1.55-1.55M5.55 5.55 4 4" />
+              </svg>
+            ) : (
+              /* Moon: click to switch to dark mode. */
+              <svg
+                viewBox="0 0 20 20"
+                className="h-[18px] w-[18px]"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.4"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M16.5 12.2A7 7 0 0 1 7.8 3.5a7 7 0 1 0 8.7 8.7Z" />
+              </svg>
+            )}
           </button>
         </div>
       </nav>

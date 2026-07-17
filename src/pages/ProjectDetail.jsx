@@ -1,6 +1,7 @@
 import { Link, Navigate, useParams } from 'react-router-dom'
 import PageTransition from '../components/PageTransition'
 import Reveal from '../components/Reveal'
+import CenterCarousel from '../components/CenterCarousel'
 import { projects, getProject } from '../content/projects'
 
 function Drawing({ label, svg, url }) {
@@ -30,6 +31,7 @@ export default function ProjectDetail() {
   const index = projects.indexOf(project)
   const prev = projects[index - 1]
   const next = projects[index + 1]
+  const media = [...project.drawings, ...project.photos]
 
   const meta = [
     ['Team', project.team],
@@ -56,6 +58,19 @@ export default function ProjectDetail() {
               <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
                 {project.title}
               </h1>
+              {(project.tags ?? []).length > 0 && (
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {project.tags.map((tag) => (
+                    <Link
+                      key={tag}
+                      to="/projects"
+                      className="border border-line px-2 py-0.5 font-mono text-[11px] uppercase tracking-[0.15em] text-muted transition-colors duration-200 hover:border-accent hover:text-ink"
+                    >
+                      {tag}
+                    </Link>
+                  ))}
+                </div>
+              )}
               {project.description && (
                 <p className="mt-5 text-lg leading-relaxed text-ink/85">{project.description}</p>
               )}
@@ -97,29 +112,41 @@ export default function ProjectDetail() {
           </Reveal>
         )}
 
-        {project.drawings.length > 0 && (
-          <div className="mt-6 grid gap-6 sm:grid-cols-2">
-            {project.drawings.map((d, i) => (
-              <Reveal key={d.file} delay={i * 0.05}>
-                <Drawing label={d.label} svg={d.svg} url={d.url} />
-              </Reveal>
-            ))}
-          </div>
-        )}
-
-        {project.photos.length > 0 && (
-          <div className="mt-6 grid gap-6 sm:grid-cols-2">
-            {project.photos.map((photo, i) => (
-              <Reveal key={photo.url} delay={i * 0.05}>
-                <figure className="border border-line bg-surface">
-                  <img src={photo.url} alt={`${project.title} — ${photo.label}`} className="w-full" />
-                  <figcaption className="border-t border-line px-4 py-2 font-mono text-[11px] uppercase tracking-[0.2em] text-muted">
-                    {photo.label}
-                  </figcaption>
-                </figure>
-              </Reveal>
-            ))}
-          </div>
+        {media.length > 0 && (
+          <Reveal className="mt-4">
+            <CenterCarousel
+              itemClassName="w-[80vw] sm:w-[520px]"
+              maxScale={1.18}
+              minScale={0.82}
+              falloff={0.3}
+              items={media.map((item) => ({
+                key: item.file,
+                node: (
+                  <figure className="border border-line bg-surface">
+                    <div className="flex aspect-[4/3] items-center justify-center overflow-hidden">
+                      {item.svg ? (
+                        <div
+                          className="h-full w-full p-6 text-ink [&_svg]:h-full [&_svg]:w-full"
+                          dangerouslySetInnerHTML={{ __html: item.svg }}
+                        />
+                      ) : (
+                        <img
+                          src={item.url}
+                          alt={`${project.title} — ${item.label}`}
+                          loading="lazy"
+                          draggable={false}
+                          className="h-full w-full object-contain"
+                        />
+                      )}
+                    </div>
+                    <figcaption className="border-t border-line px-4 py-2 font-mono text-[11px] uppercase tracking-[0.2em] text-muted">
+                      {item.label}
+                    </figcaption>
+                  </figure>
+                ),
+              }))}
+            />
+          </Reveal>
         )}
 
         <nav className="mt-20 flex items-baseline justify-between gap-6 border-t border-line pt-8">
