@@ -16,7 +16,7 @@ const hexToRgb = (hex) => {
   return `${(n >> 16) & 255}, ${(n >> 8) & 255}, ${n & 255}`
 }
 
-export default function NetworkField({ className = '' }) {
+export default function NetworkField({ className = '', interactive = true }) {
   const canvasRef = useRef(null)
 
   useEffect(() => {
@@ -67,6 +67,7 @@ export default function NetworkField({ className = '' }) {
     }
 
     const resize = () => {
+      if (canvas.clientWidth === w && canvas.clientHeight === h) return
       w = canvas.clientWidth
       h = canvas.clientHeight
       canvas.width = w * dpr
@@ -178,36 +179,54 @@ export default function NetworkField({ className = '' }) {
         draw(false)
       })
       observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] })
+      // The canvas box can change without a window resize (e.g. an ancestor
+      // transform from the page transition settling) — observe it directly.
+      const sizeObserver = new ResizeObserver(onResize)
+      sizeObserver.observe(canvas)
       window.addEventListener('resize', onResize)
       return () => {
         observer.disconnect()
+        sizeObserver.disconnect()
         window.removeEventListener('resize', onResize)
       }
     }
+
+    // Paint immediately so the field is present even before the first
+    // animation frame is delivered.
+    draw(interactive)
 
     const frame = (now) => {
       const dt = Math.min((now - last) / 1000, 0.05)
       last = now
       updateNodes(dt)
-      draw(true)
+      draw(interactive)
       raf = requestAnimationFrame(frame)
     }
     raf = requestAnimationFrame(frame)
 
     const observer = new MutationObserver(readColors)
     observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] })
+    // See the reduced branch: the canvas box can change without a window
+    // resize; observing it directly catches those cases too.
+    const sizeObserver = new ResizeObserver(resize)
+    sizeObserver.observe(canvas)
     window.addEventListener('resize', resize)
-    window.addEventListener('mousemove', onMove)
-    document.documentElement.addEventListener('mouseleave', onLeave)
+    if (interactive) {
+      window.addEventListener('mousemove', onMove)
+      document.documentElement.addEventListener('mouseleave', onLeave)
+    }
 
     return () => {
       cancelAnimationFrame(raf)
       observer.disconnect()
+      sizeObserver.disconnect()
       window.removeEventListener('resize', resize)
-      window.removeEventListener('mousemove', onMove)
-      document.documentElement.removeEventListener('mouseleave', onLeave)
+      if (interactive) {
+        window.removeEventListener('mousemove', onMove)
+        document.documentElement.removeEventListener('mouseleave', onLeave)
+      }
     }
-  }, [])
+  }, [interactive])
 
   return <canvas ref={canvasRef} className={`h-full w-full ${className}`} aria-hidden="true" />
 }

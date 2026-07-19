@@ -5,13 +5,6 @@ import PageTransition from '../components/PageTransition'
 import Reveal from '../components/Reveal'
 import { projects } from '../content/projects'
 
-const spans = {
-  large: 'md:col-span-4 md:row-span-2',
-  wide: 'md:col-span-4 md:row-span-2',
-  tall: 'md:col-span-2 md:row-span-2',
-  standard: 'md:col-span-2 md:row-span-1',
-}
-
 const allTags = [...new Set(projects.flatMap((p) => p.tags ?? []))].sort()
 
 export default function Projects() {
@@ -40,7 +33,7 @@ export default function Projects() {
 
   return (
     <PageTransition>
-      <main className="mx-auto max-w-6xl px-6 pb-24 pt-32">
+      <main className="mx-auto max-w-3xl px-6 pb-24 pt-32">
         <Reveal>
           <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">Projects</h1>
 
@@ -66,7 +59,7 @@ export default function Projects() {
           variants={grid}
           initial="hidden"
           animate="show"
-          className="mt-12 grid auto-rows-[16rem] grid-cols-1 gap-4 md:auto-rows-[10.5rem] md:grid-cols-6"
+          className="mt-12 grid grid-cols-1 gap-8"
         >
           {shown.map((project) => (
             <motion.article
@@ -75,16 +68,14 @@ export default function Projects() {
               layout
               whileHover={reduce ? undefined : { y: -4 }}
               transition={{ duration: 0.25, ease: 'easeOut' }}
-              className={`group relative overflow-hidden rounded-lg border border-line bg-surface transition-colors duration-200 hover:border-accent/70 ${
-                spans[project.span] ?? spans.standard
-              }`}
+              className="group relative overflow-hidden rounded-lg border border-line bg-surface transition-colors duration-200 hover:border-accent/70"
             >
-              <Link to={`/projects/${project.slug}`} className="flex h-full flex-col">
-                <div className="relative flex-1 overflow-hidden">
+              <Link to={`/projects/${project.slug}`} className="flex flex-col">
+                <div className="relative aspect-[16/9] overflow-hidden sm:aspect-[21/9]">
                   {project.cover?.svg ? (
                     <div
                       aria-hidden="true"
-                      className="absolute inset-0 p-4 text-ink opacity-60 transition-opacity duration-300 group-hover:opacity-100 [&_svg]:h-full [&_svg]:w-full"
+                      className="absolute inset-0 p-6 text-ink opacity-60 transition-opacity duration-300 group-hover:opacity-100 [&_svg]:h-full [&_svg]:w-full"
                       dangerouslySetInnerHTML={{ __html: project.cover.svg }}
                     />
                   ) : project.cover?.url ? (
@@ -96,9 +87,9 @@ export default function Projects() {
                     />
                   ) : null}
                 </div>
-                <footer className="border-t border-line px-4 py-3">
+                <footer className="border-t border-line px-5 py-4">
                   <div className="flex items-baseline justify-between gap-4">
-                    <h2 className="font-medium">{project.title}</h2>
+                    <h2 className="text-lg font-medium">{project.title}</h2>
                     <span className="font-mono text-[11px] tracking-[0.15em] text-muted">
                       {project.year}
                     </span>

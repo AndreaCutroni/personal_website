@@ -44,7 +44,52 @@ export default function ProjectDetail() {
 
   return (
     <PageTransition>
-      <main className="mx-auto max-w-5xl px-6 pb-24 pt-32">
+      <main className="mx-auto max-w-6xl px-6 pb-24 pt-32 lg:grid lg:grid-cols-[200px_1fr] lg:gap-12">
+        {/* All projects as a vertically scrolling rail of small cards. */}
+        <aside className="hidden lg:block">
+          <div className="sticky top-28 flex max-h-[calc(100svh-9rem)] flex-col gap-4 overflow-y-auto pr-1 [scrollbar-width:thin]">
+            {projects.map((p) => (
+              <Link
+                key={p.slug}
+                to={`/projects/${p.slug}`}
+                aria-current={p.slug === project.slug ? 'page' : undefined}
+                className={`group block shrink-0 overflow-hidden rounded-md border bg-surface transition-colors duration-200 ${
+                  p.slug === project.slug
+                    ? 'border-accent'
+                    : 'border-line hover:border-accent/60'
+                }`}
+              >
+                <div className="relative aspect-[16/10] overflow-hidden">
+                  {p.cover?.svg ? (
+                    <div
+                      aria-hidden="true"
+                      className="absolute inset-0 p-2 text-ink opacity-70 transition-opacity duration-200 group-hover:opacity-100 [&_svg]:h-full [&_svg]:w-full"
+                      dangerouslySetInnerHTML={{ __html: p.cover.svg }}
+                    />
+                  ) : p.cover?.url ? (
+                    <img
+                      src={p.cover.url}
+                      alt=""
+                      loading="lazy"
+                      className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-200 ${
+                        p.slug === project.slug ? 'opacity-100' : 'opacity-70 group-hover:opacity-100'
+                      }`}
+                    />
+                  ) : null}
+                </div>
+                <p
+                  className={`truncate px-2.5 py-2 font-mono text-[10px] uppercase tracking-[0.12em] transition-colors duration-200 ${
+                    p.slug === project.slug ? 'text-ink' : 'text-muted group-hover:text-ink'
+                  }`}
+                >
+                  {p.title}
+                </p>
+              </Link>
+            ))}
+          </div>
+        </aside>
+
+        <div className="min-w-0">
         <Reveal>
           <Link
             to="/projects"
@@ -169,6 +214,7 @@ export default function ProjectDetail() {
             </Link>
           )}
         </nav>
+        </div>
       </main>
     </PageTransition>
   )

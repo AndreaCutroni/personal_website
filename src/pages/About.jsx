@@ -1,5 +1,6 @@
 import PageTransition from '../components/PageTransition'
 import Reveal from '../components/Reveal'
+import NetworkField from '../components/NetworkField'
 import portrait from '../assets/AndreaCutroni_11.jpg'
 
 const experience = [
@@ -102,23 +103,30 @@ export default function About() {
   return (
     <PageTransition>
       <main className="mx-auto max-w-4xl px-6 pb-24 pt-32">
+        {/* Same field as the hero, dimmed and without cursor coupling. */}
+        <div className="pointer-events-none fixed inset-0 -z-10 opacity-35" aria-hidden="true">
+          <NetworkField interactive={false} />
+        </div>
+
         <Reveal>
-          <h1 className="max-w-2xl text-3xl font-semibold leading-tight tracking-tight sm:text-4xl">
-            Building Engineer &amp; Computational Designer
-          </h1>
-          <div className="mt-8 grid gap-10 lg:grid-cols-[1fr_280px] lg:gap-16">
-            <div className="max-w-2xl space-y-5 leading-relaxed text-ink/85">
-              <p>
-                I'm Andrea Cutroni, a building engineer and computational designer based in Rome.
-                My work bridges architecture, complex structures and sustainable design, built on
-                a foundation of computational workflows and data-driven methods.
-              </p>
-              <p>
-                With an international background across Italy, Spain and remote research
-                collaborations, my academic and professional path reflects a consistent commitment
-                to research and innovation — from topology optimization and environmental
-                simulation to parametric tooling for large-scale projects.
-              </p>
+          <div className="grid gap-10 lg:grid-cols-[1fr_280px] lg:gap-16">
+            <div>
+              <h1 className="max-w-2xl text-3xl font-semibold leading-tight tracking-tight sm:text-4xl">
+                Building Engineer &amp; Computational Designer
+              </h1>
+              <div className="mt-8 max-w-2xl space-y-5 leading-relaxed text-ink/85">
+                <p>
+                  I'm Andrea Cutroni, a building engineer and computational designer based in
+                  Rome. My work bridges architecture, complex structures and sustainable design,
+                  built on a foundation of computational workflows and data-driven methods.
+                </p>
+                <p>
+                  With an international background across Italy, Spain and remote research
+                  collaborations, my academic and professional path reflects a consistent
+                  commitment to research and innovation — from topology optimization and
+                  environmental simulation to parametric tooling for large-scale projects.
+                </p>
+              </div>
             </div>
             <figure className="h-fit overflow-hidden rounded-lg border border-line bg-surface">
               <img
