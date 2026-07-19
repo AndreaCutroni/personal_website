@@ -18,6 +18,10 @@ export default function CenterCarousel({
   maxScale = 1.7,
   minScale = 0.62,
   falloff = 0.2, // gaussian width as a fraction of the track width
+  // Vertical room for the grown centre item: overflow-x:auto forces
+  // overflow-y to auto as well, so anything scaling past this padding
+  // gets clipped by the track.
+  trackPadding = 'py-20',
 }) {
   const trackRef = useRef(null)
   const reduce = useReducedMotion()
@@ -117,8 +121,12 @@ export default function CenterCarousel({
       pausedUntil = performance.now() + RESUME_AFTER
     }
     const onWheel = (e) => {
+      // Respond only to horizontal wheel input (a dedicated horizontal
+      // wheel, or shift+wheel). Plain vertical scrolling is left alone
+      // so the page scrolls normally under the cursor.
+      if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return
       e.preventDefault()
-      track.scrollLeft += Math.abs(e.deltaY) > Math.abs(e.deltaX) ? e.deltaY : e.deltaX
+      track.scrollLeft += e.deltaX
       interacted()
       wrap()
     }
@@ -209,7 +217,7 @@ export default function CenterCarousel({
   return (
     <div
       ref={trackRef}
-      className="flex cursor-grab select-none items-center gap-6 overflow-x-auto py-20 [scrollbar-width:none] active:cursor-grabbing [&::-webkit-scrollbar]:hidden"
+      className={`flex cursor-grab select-none items-center gap-6 overflow-x-auto ${trackPadding} [scrollbar-width:none] active:cursor-grabbing [&::-webkit-scrollbar]:hidden`}
     >
       {[0, 1, 2].map((copy) =>
         items.map((item) => (

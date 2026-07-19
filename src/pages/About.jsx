@@ -120,7 +120,7 @@ export default function About() {
                 simulation to parametric tooling for large-scale projects.
               </p>
             </div>
-            <figure className="h-fit border border-line bg-surface">
+            <figure className="h-fit overflow-hidden rounded-lg border border-line bg-surface">
               <img
                 src={portrait}
                 alt="Portrait of Andrea Cutroni"

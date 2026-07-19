@@ -6,7 +6,7 @@ import { projects, getProject } from '../content/projects'
 
 function Drawing({ label, svg, url }) {
   return (
-    <figure className="border border-line bg-surface">
+    <figure className="overflow-hidden rounded-lg border border-line bg-surface">
       {svg ? (
         <div
           className="p-6 text-ink [&_svg]:mx-auto [&_svg]:h-auto [&_svg]:max-h-[440px] [&_svg]:w-full [&_svg]:max-w-full sm:p-8"
@@ -64,7 +64,7 @@ export default function ProjectDetail() {
                     <Link
                       key={tag}
                       to="/projects"
-                      className="border border-line px-2 py-0.5 font-mono text-[11px] uppercase tracking-[0.15em] text-muted transition-colors duration-200 hover:border-accent hover:text-ink"
+                      className="rounded-full bg-accent-mark/20 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.15em] text-accent transition-colors duration-200 hover:bg-accent-mark/35"
                     >
                       {tag}
                     </Link>
@@ -122,7 +122,7 @@ export default function ProjectDetail() {
               items={media.map((item) => ({
                 key: item.file,
                 node: (
-                  <figure className="border border-line bg-surface">
+                  <figure className="overflow-hidden rounded-lg border border-line bg-surface">
                     <div className="flex aspect-[4/3] items-center justify-center overflow-hidden">
                       {item.svg ? (
                         <div

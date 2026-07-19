@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, useMotionValue, useReducedMotion } from 'framer-motion'
-import FlowField from '../components/FlowField'
+import NetworkField from '../components/NetworkField'
 import LogoMark from '../components/LogoMark'
 import PageTransition from '../components/PageTransition'
 import CenterCarousel from '../components/CenterCarousel'
@@ -10,7 +10,7 @@ import { projects } from '../content/projects'
 function CarouselCard({ project }) {
   return (
     <Link to={`/projects/${project.slug}`} className="group block" draggable={false}>
-      <div className="aspect-[4/3] overflow-hidden border border-line bg-surface transition-colors duration-200 group-hover:border-accent/70">
+      <div className="aspect-[4/3] overflow-hidden rounded-lg border border-line bg-surface transition-colors duration-200 group-hover:border-accent/70">
         {project.cover?.svg ? (
           <div
             aria-hidden="true"
@@ -94,12 +94,16 @@ export default function Home() {
         <div ref={heroRunwayRef} className="relative h-[150svh]">
           <section className="sticky top-0 h-svh overflow-hidden">
             <div className="absolute inset-0">
-              <FlowField />
+              <NetworkField />
             </div>
 
             {/* Soft ground-colored falloff behind the identity block keeps it
                 legible over the moving field without blur effects. */}
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_46%_40%_at_center,var(--veil),transparent_74%)]" />
+
+            {/* Same treatment behind the fixed nav bar, so it stays legible
+                over the graph exactly like the identity block does. */}
+            <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[var(--veil)] to-transparent sm:h-40" />
 
             <motion.div
               style={reduce ? undefined : { opacity: identityOpacity, y: identityY }}
@@ -124,11 +128,9 @@ export default function Home() {
 
             <motion.div
               style={reduce ? undefined : { opacity: hintOpacity }}
-              className="absolute inset-x-0 bottom-0 z-10 flex items-end justify-between px-6 pb-5 font-mono text-[11px] tracking-[0.15em] text-muted"
+              className="absolute inset-x-0 bottom-0 z-10 flex justify-center px-6 pb-5 font-mono text-[11px] tracking-[0.15em] text-muted"
             >
-              <span className="hidden lg:inline">FIELD — VORTEX DRIFT / CYLINDER AT CURSOR</span>
-              <span className="absolute left-1/2 -translate-x-1/2">SCROLL ↓</span>
-              <span className="ml-auto hidden lg:inline">41.9028°N 12.4964°E</span>
+              <span>SCROLL ↓</span>
             </motion.div>
           </section>
         </div>
@@ -148,6 +150,7 @@ export default function Home() {
             </div>
             <CenterCarousel
               itemClassName="w-[44vw] sm:w-[280px] md:w-[320px]"
+              trackPadding="py-24 md:py-36"
               maxScale={1.7}
               minScale={0.62}
               items={projects.map((project) => ({

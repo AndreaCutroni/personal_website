@@ -75,7 +75,7 @@ export default function Projects() {
               layout
               whileHover={reduce ? undefined : { y: -4 }}
               transition={{ duration: 0.25, ease: 'easeOut' }}
-              className={`group relative overflow-hidden border border-line bg-surface transition-colors duration-200 hover:border-accent/70 ${
+              className={`group relative overflow-hidden rounded-lg border border-line bg-surface transition-colors duration-200 hover:border-accent/70 ${
                 spans[project.span] ?? spans.standard
               }`}
             >
