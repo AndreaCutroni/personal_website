@@ -28,7 +28,7 @@ export default function Projects() {
 
   const filterClass = (isActive) =>
     `font-mono text-xs uppercase tracking-[0.18em] transition-colors duration-200 ${
-      isActive ? 'border-b border-accent pb-0.5 text-ink' : 'text-muted hover:text-accent'
+      isActive ? 'border-b border-accent-mark pb-0.5 text-ink' : 'text-muted hover:text-accent'
     }`
 
   return (
@@ -68,7 +68,7 @@ export default function Projects() {
               layout
               whileHover={reduce ? undefined : { y: -4 }}
               transition={{ duration: 0.25, ease: 'easeOut' }}
-              className="group relative overflow-hidden rounded-lg border border-line bg-surface transition-colors duration-200 hover:border-accent/70"
+              className="group relative overflow-hidden rounded-lg border border-line bg-surface transition-colors duration-200 hover:border-accent-mark/70"
             >
               <Link to={`/projects/${project.slug}`} className="flex flex-col">
                 <div className="relative aspect-[16/9] overflow-hidden sm:aspect-[21/9]">

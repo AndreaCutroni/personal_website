@@ -2,7 +2,13 @@
 
 /* Semantic tokens, swapped per theme. All text tokens hold WCAG AA on their
    ground: dark — ink 13.9:1, muted 7.0:1, accent 9.3:1;
-   light — ink 14.6:1, muted 6.8:1, accent 5.4:1. */
+   light — ink 14.6:1, muted 6.8:1, accent 5.4:1.
+   Two accents, deliberately different in light mode: --accent is for glyphs
+   (link text, hover states, focus ring, selection) and must stay readable;
+   --accent-mark is the true brand amber (#FDAF0D fails text contrast on the
+   light ground at ~1.8:1) reserved for fills and decoration that don't carry
+   text on their own — chip backgrounds, the logo, graph nodes/edges, and
+   underlines/borders sitting under already-readable ink text. */
 :root {
   --ground: #fcfcfe;
   --surface: #f8f8fc; /* cards and framed media */
@@ -10,7 +16,7 @@
   --muted: #5a5a56;
   --line: #e2e2ea;
   --accent: #8f5e0a;
-  --accent-mark: #fdaf0d; /* vivid amber: fills, marks, graph edges — not text */
+  --accent-mark: #fdaf0d;
   --veil: rgba(252, 252, 254, 0.9);
 }
 

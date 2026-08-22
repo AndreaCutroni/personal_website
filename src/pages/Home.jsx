@@ -10,7 +10,7 @@ import { projects } from '../content/projects'
 function CarouselCard({ project }) {
   return (
     <Link to={`/projects/${project.slug}`} className="group block" draggable={false}>
-      <div className="aspect-[4/3] overflow-hidden rounded-lg border border-line bg-surface transition-colors duration-200 group-hover:border-accent/70">
+      <div className="aspect-[4/3] overflow-hidden rounded-lg border border-line bg-surface transition-colors duration-200 group-hover:border-accent-mark/70">
         {project.cover?.svg ? (
           <div
             aria-hidden="true"
@@ -115,7 +115,7 @@ export default function Home() {
                 transition={{ duration: reduce ? 0.01 : 0.4, ease: [0.25, 0.1, 0.25, 1] }}
                 className="flex flex-col items-center"
               >
-                <LogoMark className="h-16 w-auto text-ink" />
+                <LogoMark className="h-24 w-auto text-ink" />
                 <h1 className="mt-8 text-4xl font-semibold tracking-tight sm:text-5xl md:text-6xl">
                   Andrea Cutroni
                 </h1>
@@ -143,7 +143,7 @@ export default function Home() {
             <div className="flex justify-end px-6 sm:px-10">
               <Link
                 to="/projects"
-                className="border-b border-accent pb-0.5 font-mono text-sm uppercase tracking-[0.2em] text-ink transition-colors duration-200 hover:text-accent"
+                className="border-b border-accent-mark pb-0.5 font-mono text-sm uppercase tracking-[0.2em] text-ink transition-colors duration-200 hover:text-accent"
               >
                 View all projects →
               </Link>

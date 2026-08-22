@@ -55,8 +55,8 @@ export default function ProjectDetail() {
                 aria-current={p.slug === project.slug ? 'page' : undefined}
                 className={`group block shrink-0 overflow-hidden rounded-md border bg-surface transition-colors duration-200 ${
                   p.slug === project.slug
-                    ? 'border-accent'
-                    : 'border-line hover:border-accent/60'
+                    ? 'border-accent-mark'
+                    : 'border-line hover:border-accent-mark/60'
                 }`}
               >
                 <div className="relative aspect-[16/10] overflow-hidden">

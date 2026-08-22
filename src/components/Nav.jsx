@@ -4,7 +4,7 @@ import LogoMark from './LogoMark'
 
 const linkClass = ({ isActive }) =>
   `font-mono text-xs uppercase tracking-[0.18em] transition-colors duration-200 ${
-    isActive ? 'text-ink border-b border-accent pb-0.5' : 'text-muted hover:text-accent'
+    isActive ? 'text-ink border-b border-accent-mark pb-0.5' : 'text-muted hover:text-accent'
   }`
 
 export default function Nav() {
