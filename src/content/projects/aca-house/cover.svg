@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none" stroke="currentColor" stroke-width="1.1">
+  <g stroke-opacity="0.55">
+    <rect x="90" y="90" width="170" height="130"/>
+    <ellipse cx="255" cy="155" rx="75" ry="95"/>
+  </g>
+  <g stroke-opacity="0.25">
+    <line x1="90" y1="130" x2="200" y2="130"/>
+    <line x1="90" y1="170" x2="200" y2="170"/>
+  </g>
+  <line x1="60" y1="235" x2="360" y2="235" stroke-opacity="0.3"/>
+</svg>

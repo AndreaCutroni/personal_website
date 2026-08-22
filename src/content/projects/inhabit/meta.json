@@ -1,0 +1,15 @@
+{
+  "order": 10,
+  "title": "inHabit",
+  "tags": ["AI", "Web App"],
+  "team": "Andrea Cutroni, Elena Corio, Symon Kipkemei, Marina Osmolovska, Giovanni Carlo Volpe",
+  "program": "IAAC MaCAD 25/26",
+  "year": "2026",
+  "location": "",
+  "status": "",
+  "description": "An AI spatial-intelligence copilot that turns a description of daily routines into the housing layout that actually fits them.",
+  "body": [
+    "inHabit bridges architectural layouts and daily routines under the brief \"Describe your day. Find your layout.\" Natural-language text is converted into structured spatial criteria to help households, architects and real-estate agents evaluate housing options.",
+    "Built on LangGraph, Anthropic's API and a NetworkX spatial graph, the tool extracts user preferences, runs graph-based semantic search across 800+ synthetic floor plans, and overlays the user's daily routine onto candidate layouts alongside a daylight analysis — scoring fit, simulating daylight and visualizing the routine before a final layout is selected."
+  ]
+}

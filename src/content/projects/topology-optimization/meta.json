@@ -1,0 +1,14 @@
+{
+  "order": 7,
+  "tags": ["Structural", "Parametric", "Research"],
+  "team": "Andrea Cutroni",
+  "program": "University of Rome Tor Vergata — Research Scholarship",
+  "year": "2023–2024",
+  "location": "Rome, Italy",
+  "status": "",
+  "description": "A parametric graphic-interpolation method between topology-optimized limit cases, verified by FEM and realized as a 3D-printed, laser-cut pavilion.",
+  "body": [
+    "This research scholarship develops a Grasshopper workflow that performs graphic interpolation between the polylines of two topology-optimized limit-case geometries, generated with the SIMP method, exploring the full design space in between rather than a single optimized form.",
+    "A demonstrator pavilion, based on a catenary shape, combines the interpolation method with shading criteria: Karamba3D verifies the stress distribution while Ladybug determines the optimal panel placement. The resulting geometry was validated with further FEM analysis, realized as 3D-printed and laser-cut prototypes, and presented at Maker Faire Rome 2023."
+  ]
+}

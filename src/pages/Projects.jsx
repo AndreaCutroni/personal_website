@@ -27,8 +27,10 @@ export default function Projects() {
   }
 
   const filterClass = (isActive) =>
-    `font-mono text-xs uppercase tracking-[0.18em] transition-colors duration-200 ${
-      isActive ? 'border-b border-accent-mark pb-0.5 text-ink' : 'text-muted hover:text-accent'
+    `rounded-full border px-3.5 py-1.5 font-mono text-xs uppercase tracking-[0.15em] transition-colors duration-200 hover:bg-accent-mark hover:text-ink hover:border-accent-mark ${
+      isActive
+        ? 'border-accent-mark bg-accent-mark text-ink'
+        : 'border-line text-muted'
     }`
 
   return (
@@ -37,7 +39,7 @@ export default function Projects() {
         <Reveal>
           <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">Projects</h1>
 
-          <div className="mt-8 flex flex-wrap items-baseline gap-x-6 gap-y-3">
+          <div className="mt-8 flex flex-wrap gap-2">
             <button type="button" onClick={() => setActiveTag(null)} className={filterClass(!activeTag)}>
               All
             </button>
@@ -95,9 +97,16 @@ export default function Projects() {
                     </span>
                   </div>
                   {(project.tags ?? []).length > 0 && (
-                    <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.15em] text-muted">
-                      {(project.tags ?? []).join(' · ')}
-                    </p>
+                    <div className="mt-2 flex flex-wrap gap-1.5">
+                      {project.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="rounded-full bg-accent-mark/15 px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.15em] text-accent transition-colors duration-200 hover:bg-accent-mark hover:text-ink"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
                   )}
                 </footer>
               </Link>

@@ -1,0 +1,14 @@
+{
+  "order": 15,
+  "tags": ["Architecture", "Structural", "Academic"],
+  "team": "Andrea Cutroni, Alessandro Abagnale",
+  "program": "University of Rome Tor Vergata — Integrated Building Design",
+  "year": "2023",
+  "location": "",
+  "status": "",
+  "description": "Architectural and structural design of a two-level university library in reinforced concrete, formed by two overlapping rotated rectangular blocks.",
+  "body": [
+    "An integrated architectural and structural design for a new university library with two levels and a basement garage, formed by two overlapping, rotated rectangular blocks in reinforced concrete with circular pillars and bidirectional slabs.",
+    "A steel structure supports the central staircase while a system of CLT beams carries the skylight; the terrace features a green roof, the envelope uses a ventilated façade, and the main entrance opens behind a glass façade. The project was developed in AutoCAD 2D, Revit and Enscape."
+  ]
+}

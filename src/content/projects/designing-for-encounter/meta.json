@@ -1,0 +1,14 @@
+{
+  "order": 11,
+  "tags": ["Urban", "Research"],
+  "team": "Andrea Cutroni, Elena Corio, Symon Kipkemei, Giovanni Carlo Volpe",
+  "program": "IAAC MaCAD 25/26",
+  "year": "2026",
+  "location": "Vienna & Berlin",
+  "status": "",
+  "description": "Spatial-network analysis of three European cohousing projects, testing whether circulation design can be engineered for chance social encounters.",
+  "body": [
+    "Traditional housing corridors are often socially inert. This study applies spatial-network, space-syntax and visibility analyses — closeness, betweenness and degree centrality, isovists and shortest paths — to three built cohousing projects: Wohnprojekt Wien, Gleis21 and Spreefeld Berlin.",
+    "Comparing double-loaded, perimeter and point-block circulation typologies shows that high connectivity and visual openness systematically drive chance encounters between residents — evidence that circulation design can shift community-building from an intuitive judgment call to a data-driven design decision."
+  ]
+}

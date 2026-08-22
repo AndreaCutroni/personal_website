@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none" stroke="currentColor" stroke-width="1.1">
+  <g stroke-opacity="0.55">
+    <path d="M40 230 C40 130 120 80 200 80 C280 80 360 130 360 230"/>
+    <path d="M100 230 C100 150 150 110 200 110 C250 110 300 150 300 230"/>
+  </g>
+  <g stroke-opacity="0.28">
+    <path d="M60 230 L60 200 M110 230 L110 190 M160 230 L160 175 M200 230 L200 168 M240 230 L240 175 M290 230 L290 190 M340 230 L340 200"/>
+  </g>
+  <line x1="30" y1="230" x2="370" y2="230" stroke-opacity="0.4"/>
+</svg>

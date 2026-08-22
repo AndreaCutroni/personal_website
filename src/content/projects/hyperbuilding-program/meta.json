@@ -1,0 +1,15 @@
+{
+  "order": 13,
+  "title": "Hyperbuilding Program",
+  "tags": ["BIM", "Architecture"],
+  "team": "Andrea Cutroni, Eva Vasileska, Chloe Nguyen, Eleni Maglari, Rania Chihaoui, Eduardo Martinez, Elena Corio, Symon Kipkemei",
+  "program": "IAAC MaCAD 25/26",
+  "year": "2026",
+  "location": "Santiago, Chile",
+  "status": "",
+  "description": "Program strategy for a 1-million-sqm vertical district in Santiago, Chile — translating human needs into the massing and floor allocation of a hyperbuilding.",
+  "body": [
+    "Hyperbuilding — The Cells is part of \"The Vertical Machine,\" a complex of three towers at 1 million sqm each in Santiago, Chile, developed across specialized Data, Structure and Program teams. As part of the Program team, the goal was to coordinate across teams to define the massing strategy and translate human needs into spatial logic, organizing the vertical distribution of programs into a livable, interconnected environment.",
+    "An automated pipeline generates program distribution from both view-quality analysis and program-interconnection requirements, using a Python script that runs a local-optimum allocation against an adjacency matrix. Data flows to a shared metric dashboard and through Speckle, with a Rhino.inside.Revit workflow enabling real-time metrics and automated documentation."
+  ]
+}
