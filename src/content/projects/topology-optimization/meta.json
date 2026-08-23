@@ -1,10 +1,10 @@
 {
   "order": 7,
-  "tags": ["Structural", "Parametric", "Research"],
+  "tags": ["Structural", "Computational Design"],
   "team": "Andrea Cutroni",
   "program": "University of Rome Tor Vergata — Research Scholarship",
   "year": "2023–2024",
-  "location": "Rome, Italy",
+  "location": "",
   "status": "",
   "description": "A parametric graphic-interpolation method between topology-optimized limit cases, verified by FEM and realized as a 3D-printed, laser-cut pavilion.",
   "body": [

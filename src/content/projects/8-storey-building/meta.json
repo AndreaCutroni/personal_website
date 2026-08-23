@@ -1,12 +1,11 @@
 {
   "order": 9,
   "title": "8-Storey Building",
-  "tags": ["Structural", "Academic"],
+  "tags": ["Structural"],
   "team": "Andrea Cutroni, Alessandro Abagnale",
   "program": "University of Rome Tor Vergata — Special Structures",
   "year": "2023",
   "location": "",
-  "status": "",
   "description": "Full structural design of an 8-storey reinforced-concrete residential and commercial building, verified for static and seismic loads under Italian code.",
   "body": [
     "A complete structural design for an 8-storey mixed residential and commercial building with a reinforced-concrete framed structure, covering slabs, beams, columns, stairs and foundations.",

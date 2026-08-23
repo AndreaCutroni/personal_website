@@ -1,11 +1,10 @@
 {
   "order": 6,
-  "tags": ["Structural", "Parametric"],
+  "tags": ["Structural", "Computational Design"],
   "team": "Andrea Cutroni, Eleni Maglari",
   "program": "IAAC MaCAD 25/26",
   "year": "2025",
   "location": "",
-  "status": "",
   "description": "A lattice pavilion structure evaluated through shell analysis, catenary form-finding and beam optimization for 3D-printable fabrication.",
   "body": [
     "Tunnel Pavilion investigates the design and structural evaluation of a lattice shell using computational geometry. The surface originates from a parametric equation — adjusting scale, pinch strength and wave amplitude — then reshaped with catenary curves; a shell analysis in Karamba3D compares the original mesh against the catenary-reshaped one, trading a small increase in deflection for lower von Mises stress.",

@@ -1,12 +1,11 @@
 {
   "order": 3,
   "span": "standard",
-  "tags": ["Architecture", "Environmental", "Structural"],
+  "tags": ["Computational Design", "Environmental", "Structural"],
   "team": "Andrea Cutroni, Rania Chihaoui, Symon Kipekemi",
   "program": "IAAC MaCAD 25/26 — ACESD Studio",
-  "year": "2025–2026",
+  "year": "2025",
   "location": "Penjaringan, North Jakarta, Indonesia",
-  "status": "",
   "link": "https://blog.iaac.net/floating-grounds-rethinking-resilience-in-jakarta/",
   "description": "A flood-resilient floating urban model for Jakarta — housing, public program and a stadium organized by water rather than against it.",
   "body": [

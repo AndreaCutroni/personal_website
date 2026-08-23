@@ -4,7 +4,7 @@ import Reveal from '../components/Reveal'
 import CenterCarousel from '../components/CenterCarousel'
 import { projects, getProject } from '../content/projects'
 
-function Drawing({ label, svg, url }) {
+function Drawing({ label, svg, url, showLabel = true }) {
   return (
     <figure className="overflow-hidden rounded-lg border border-line bg-surface">
       {svg ? (
@@ -15,9 +15,11 @@ function Drawing({ label, svg, url }) {
       ) : (
         <img src={url} alt={label} loading="lazy" className="h-auto w-full" />
       )}
-      <figcaption className="border-t border-line px-4 py-2 font-mono text-[11px] uppercase tracking-[0.2em] text-muted">
-        {label}
-      </figcaption>
+      {showLabel && (
+        <figcaption className="border-t border-line px-4 py-2 font-mono text-[11px] uppercase tracking-[0.2em] text-muted">
+          {label}
+        </figcaption>
+      )}
     </figure>
   )
 }
@@ -47,7 +49,7 @@ export default function ProjectDetail() {
       <main className="mx-auto max-w-6xl px-6 pb-24 pt-32 lg:grid lg:grid-cols-[200px_1fr] lg:gap-12">
         {/* All projects as a vertically scrolling rail of small cards. */}
         <aside className="hidden lg:block">
-          <div className="sticky top-28 flex max-h-[calc(100svh-9rem)] flex-col gap-4 overflow-y-auto pr-1 [scrollbar-width:thin]">
+          <div className="project-rail sticky top-28 flex max-h-[calc(100svh-9rem)] flex-col gap-4 overflow-y-auto pr-1">
             {projects.map((p) => (
               <Link
                 key={p.slug}
@@ -153,7 +155,7 @@ export default function ProjectDetail() {
 
         {project.cover && (
           <Reveal className="mt-16">
-            <Drawing label="Cover" svg={project.cover.svg} url={project.cover.url} />
+            <Drawing label={project.title} svg={project.cover.svg} url={project.cover.url} showLabel={false} />
           </Reveal>
         )}
 

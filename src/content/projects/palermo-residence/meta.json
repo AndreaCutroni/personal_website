@@ -1,12 +1,11 @@
 {
   "order": 4,
   "span": "tall",
-  "tags": ["Environmental", "Parametric"],
+  "tags": ["Environmental", "Computational Design"],
   "team": "Andrea Cutroni, Eleni Maglari",
   "program": "IAAC MaCAD 25/26 — Environmental Analysis",
-  "year": "2025–2026",
+  "year": "2025",
   "location": "Palermo, Italy",
-  "status": "",
   "link": "https://blog.iaac.net/data-driven-environmental-analysis-in-palermo-italy/",
   "description": "Data-driven environmental analysis for a residential development — climate, comfort and daylight steering the massing from the first move.",
   "body": [

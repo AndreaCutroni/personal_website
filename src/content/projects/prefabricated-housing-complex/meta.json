@@ -1,11 +1,10 @@
 {
   "order": 14,
-  "tags": ["BIM", "Academic"],
+  "tags": ["BIM"],
   "team": "Andrea Cutroni, Alessandro Abagnale",
   "program": "University of Rome Tor Vergata — Digital Processes for Building Design and Construction",
   "year": "2024",
-  "location": "Near Milan, Italy",
-  "status": "",
+  "location": "Milan, Italy",
   "description": "A parametric Revit model of a 1960s prefabricated housing complex, rebuilt from historical documentation, original patents and an as-built survey.",
   "body": [
     "A full BIM model in Revit of an existing prefabricated housing complex built in the 1960s near Milan, reconstructed from historical documentation, original construction patents and as-built conditions surveyed via Google Maps.",

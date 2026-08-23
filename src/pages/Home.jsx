@@ -140,14 +140,6 @@ export default function Home() {
           className="relative z-10 -mt-[38svh] flex min-h-svh w-full flex-col justify-center overflow-hidden pb-24"
         >
           <motion.div style={reduce ? undefined : { opacity: carouselOpacity, y: carouselY }}>
-            <div className="flex justify-end px-6 sm:px-10">
-              <Link
-                to="/projects"
-                className="border-b border-accent-mark pb-0.5 font-mono text-sm uppercase tracking-[0.2em] text-ink transition-colors duration-200 hover:text-accent"
-              >
-                View all projects →
-              </Link>
-            </div>
             <CenterCarousel
               itemClassName="w-[44vw] sm:w-[280px] md:w-[320px]"
               trackPadding="py-24 md:py-36"
@@ -158,6 +150,14 @@ export default function Home() {
                 node: <CarouselCard project={project} />,
               }))}
             />
+            <div className="flex justify-end px-6 sm:px-10">
+              <Link
+                to="/projects"
+                className="border-b border-accent-mark pb-0.5 font-mono text-sm uppercase tracking-[0.2em] text-ink transition-colors duration-200 hover:text-accent"
+              >
+                All Projects →
+              </Link>
+            </div>
           </motion.div>
         </section>
       </main>

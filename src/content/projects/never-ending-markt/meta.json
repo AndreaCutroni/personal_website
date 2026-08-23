@@ -1,12 +1,11 @@
 {
   "order": 1,
   "span": "large",
-  "tags": ["Architecture", "Parametric"],
+  "tags": ["Architecture", "Computational Design"],
   "team": "Andrea Cutroni",
   "program": "IAAC MaCAD 25/26 — Complex Forming",
-  "year": "2025–2026",
+  "year": "2025",
   "location": "Bab al-Luq, Cairo, Egypt",
-  "status": "",
   "link": "https://blog.iaac.net/never-ending-cairo-market/",
   "description": "Revitalizing Cairo's 1912 Bab al-Luq market with optimized circulation and a parametric roof of computationally controlled openings.",
   "body": [

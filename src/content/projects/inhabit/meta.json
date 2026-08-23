@@ -6,7 +6,6 @@
   "program": "IAAC MaCAD 25/26",
   "year": "2026",
   "location": "",
-  "status": "",
   "description": "An AI spatial-intelligence copilot that turns a description of daily routines into the housing layout that actually fits them.",
   "body": [
     "inHabit bridges architectural layouts and daily routines under the brief \"Describe your day. Find your layout.\" Natural-language text is converted into structured spatial criteria to help households, architects and real-estate agents evaluate housing options.",

@@ -1,12 +1,11 @@
 {
   "order": 16,
   "title": "ACA House",
-  "tags": ["Architecture", "Academic"],
+  "tags": ["Architecture"],
   "team": "Andrea Cutroni, Cristian Tolu, Alessio De Luca",
   "program": "University of Rome Tor Vergata — Architectural Design",
   "year": "2022",
   "location": "",
-  "status": "",
   "description": "A single-family house formed by the intersection of an ellipse and a rectangle, inspired by Richard Meier's Shamberg House.",
   "body": [
     "A two-storey single-family house inspired by Richard Meier's Shamberg House, with a plan generated from the intersection of the extrusion of an ellipse and a rectangle. The elliptical volume carries a large glass façade that opens the main living spaces to the site.",
