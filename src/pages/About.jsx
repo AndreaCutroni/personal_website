@@ -1,6 +1,5 @@
 import PageTransition from '../components/PageTransition'
 import Reveal from '../components/Reveal'
-import NetworkField from '../components/NetworkField'
 import portrait from '../assets/AndreaCutroni_11.jpg'
 
 const experience = [
@@ -103,11 +102,6 @@ export default function About() {
   return (
     <PageTransition>
       <main className="mx-auto max-w-4xl px-6 pb-24 pt-32">
-        {/* Same field as the hero, dimmed and without cursor coupling. */}
-        <div className="pointer-events-none fixed inset-0 -z-10 opacity-35" aria-hidden="true">
-          <NetworkField interactive={false} />
-        </div>
-
         <Reveal>
           <div className="grid gap-10 lg:grid-cols-[1fr_280px] lg:gap-16">
             <div>
