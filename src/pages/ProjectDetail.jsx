@@ -1,10 +1,76 @@
+import { useId, useState } from 'react'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import PageTransition from '../components/PageTransition'
 import Reveal from '../components/Reveal'
+import Collapsible, { CollapseToggle } from '../components/Collapsible'
 import CenterCarousel from '../components/CenterCarousel'
+import WorkflowDiagram from '../components/project/WorkflowDiagram'
+import MetricRow from '../components/project/MetricRow'
+import StoryPlayer from '../components/project/StoryPlayer'
+import ImageGrid from '../components/project/ImageGrid'
 import { projects, getProject } from '../content/projects'
 
-function Drawing({ label, svg, url, showLabel = true }) {
+/* One dossier section: heading, chevron, and everything under it collapsing
+   together — the same toggle used on the About timeline. */
+function ProjectSection({ section, workflow, images, scenes }) {
+  const [open, setOpen] = useState(false)
+  const panelId = useId()
+
+  return (
+    <>
+      <div className="flex items-center gap-3">
+        <h2 className="font-mono text-xs uppercase tracking-[0.25em] text-muted">
+          <span className="text-accent">{section.index}</span> — {section.title}
+        </h2>
+        <CollapseToggle
+          open={open}
+          onClick={() => setOpen((v) => !v)}
+          label={section.title}
+          controls={panelId}
+        />
+      </div>
+
+      {/* The gap under the heading lives inside the collapsing region, so a
+          closed section leaves nothing but its own heading behind. */}
+      <Collapsible open={open} id={panelId} className="pt-6">
+        {(section.body ?? []).length > 0 && (
+          <div className="mb-8 max-w-2xl space-y-5 leading-relaxed text-ink/85">
+            {section.body.map((paragraph) => (
+              <p key={paragraph.slice(0, 32)}>{paragraph}</p>
+            ))}
+          </div>
+        )}
+
+        {section.block === 'workflow' && <WorkflowDiagram {...workflow} />}
+
+        {section.block === 'metrics' && (
+          <>
+            <MetricRow metrics={section.metrics} />
+            <div className="mt-8">
+              {section.story ? (
+                <StoryPlayer scenes={scenes} aspect={section.aspect} />
+              ) : (
+                <ImageGrid items={images} columns={section.columns ?? 2} />
+              )}
+            </div>
+          </>
+        )}
+
+        {section.block === 'story' && <StoryPlayer scenes={scenes} aspect={section.aspect} />}
+
+        {section.block === 'grid' && <ImageGrid items={images} columns={section.columns ?? 2} />}
+
+        {section.block === 'pending' && (
+          <p className="rounded-lg border border-dashed border-line px-5 py-6 text-sm text-muted">
+            {section.note}
+          </p>
+        )}
+      </Collapsible>
+    </>
+  )
+}
+
+function Drawing({ label, svg, url, showLabel = true, aspect }) {
   return (
     <figure className="overflow-hidden rounded-lg border border-line bg-surface">
       {svg ? (
@@ -13,7 +79,13 @@ function Drawing({ label, svg, url, showLabel = true }) {
           dangerouslySetInnerHTML={{ __html: svg }}
         />
       ) : (
-        <img src={url} alt={label} loading="lazy" className="h-auto w-full" />
+        <img
+          src={url}
+          alt={label}
+          loading="lazy"
+          style={aspect ? { aspectRatio: aspect } : undefined}
+          className={aspect ? 'w-full object-cover' : 'h-auto w-full'}
+        />
       )}
       {showLabel && (
         <figcaption className="border-t border-line px-4 py-2 font-mono text-[11px] uppercase tracking-[0.2em] text-muted">
@@ -35,6 +107,19 @@ export default function ProjectDetail() {
   const next = projects[index + 1]
   const media = [...project.drawings, ...project.photos]
 
+  /* Sections are declared in meta.json and reference drawings by filename;
+     resolve those names against the globbed modules here. A project without
+     sections keeps the original single-carousel layout. */
+  const sections = project.sections ?? []
+  const byName = new Map(media.map((m) => [m.file.split('/').pop(), m]))
+  const resolve = (entries) =>
+    (entries ?? [])
+      .map((entry) => {
+        const match = byName.get(entry.file)
+        return match ? { ...entry, url: match.url, svg: match.svg, label: match.label } : null
+      })
+      .filter(Boolean)
+
   const meta = [
     ['Team', project.team],
     ['Architect', project.architect],
@@ -46,7 +131,10 @@ export default function ProjectDetail() {
 
   return (
     <PageTransition>
-      <main className="mx-auto max-w-6xl px-6 pb-24 pt-32 lg:grid lg:grid-cols-[200px_1fr] lg:gap-12">
+      <main
+        data-palette={project.palette}
+        className="mx-auto max-w-6xl px-6 pb-24 pt-32 lg:grid lg:grid-cols-[200px_1fr] lg:gap-12"
+      >
         {/* All projects as a vertically scrolling rail of small cards. */}
         <aside className="hidden lg:block">
           <div className="project-rail sticky top-28 flex max-h-[calc(100svh-9rem)] flex-col gap-4 overflow-y-auto pr-1">
@@ -100,7 +188,7 @@ export default function ProjectDetail() {
             ← Index
           </Link>
 
-          <div className="mt-10 grid gap-x-16 gap-y-10 lg:grid-cols-[1fr_280px]">
+          <div className="mt-10 grid gap-x-16 gap-y-10 lg:grid-cols-[1fr_280px] lg:items-start">
             <div>
               <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
                 {project.title}
@@ -128,7 +216,7 @@ export default function ProjectDetail() {
               </div>
             </div>
 
-            <div className="h-fit">
+            <div className="h-fit lg:sticky lg:top-28">
               <dl className="border-t border-line">
                 {meta.map(([key, value]) => (
                   <div key={key} className="flex justify-between gap-6 border-b border-line py-3">
@@ -155,11 +243,30 @@ export default function ProjectDetail() {
 
         {project.cover && (
           <Reveal className="mt-16">
-            <Drawing label={project.title} svg={project.cover.svg} url={project.cover.url} showLabel={false} />
+            {/* Cropped to a band: covers vary from square to panoramic, and a
+                full-height square hero pushes the whole dossier below the fold. */}
+            <Drawing
+              label={project.title}
+              svg={project.cover.svg}
+              url={project.cover.url}
+              showLabel={false}
+              aspect="21 / 9"
+            />
           </Reveal>
         )}
 
-        {media.length > 0 && (
+        {sections.map((section) => (
+          <Reveal key={section.index} className="mt-10">
+            <ProjectSection
+              section={section}
+              workflow={project.workflow}
+              images={resolve(section.images)}
+              scenes={resolve(section.scenes)}
+            />
+          </Reveal>
+        ))}
+
+        {sections.length === 0 && media.length > 0 && (
           <Reveal className="mt-4">
             <CenterCarousel
               itemClassName="w-[80vw] sm:w-[520px]"

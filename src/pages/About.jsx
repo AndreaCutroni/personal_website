@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { useReducedMotion } from 'framer-motion'
+import { useId, useState } from 'react'
+import Collapsible, { CollapseToggle } from '../components/Collapsible'
 import PageTransition from '../components/PageTransition'
 import Reveal from '../components/Reveal'
 import portrait from '../assets/AndreaCutroni_11.jpg'
@@ -97,8 +97,8 @@ const languages = [
 ]
 
 function TimelineItem({ period, role, org, details, isLast }) {
-  const reduce = useReducedMotion()
   const [open, setOpen] = useState(true)
+  const panelId = useId()
   const hasDetails = details?.length > 0
 
   return (
@@ -109,39 +109,17 @@ function TimelineItem({ period, role, org, details, isLast }) {
       <div className="mt-1 flex items-center gap-2">
         <p className="text-base text-muted">{org}</p>
         {hasDetails && (
-          <button
-            type="button"
+          <CollapseToggle
+            open={open}
             onClick={() => setOpen((v) => !v)}
-            aria-expanded={open}
-            aria-label={`${open ? 'Hide' : 'Show'} details for ${role}`}
-            className="shrink-0 text-muted transition-colors duration-200 hover:text-accent"
-          >
-            <svg
-              viewBox="0 0 12 12"
-              className={`h-5 w-5 transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.3"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              aria-hidden="true"
-            >
-              <path d="M2.5 4.5 6 8l3.5-3.5" />
-            </svg>
-          </button>
+            label={`details for ${role}`}
+            controls={panelId}
+          />
         )}
       </div>
       {hasDetails && (
-        // Pure CSS grid-rows collapse (no framer-motion): reliably animates
-        // to/from an unknown content height without measuring scrollHeight.
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateRows: open ? '1fr' : '0fr',
-            transition: `grid-template-rows ${reduce ? '10ms' : '250ms'} cubic-bezier(0.25,0.1,0.25,1)`,
-          }}
-        >
-          <ul className="max-w-2xl space-y-1.5 overflow-hidden pt-3" style={{ minHeight: 0 }}>
+        <Collapsible open={open} id={panelId}>
+          <ul className="max-w-2xl space-y-1.5 pt-3">
             {details.map((line) => (
               <li key={line} className="flex gap-2.5 text-sm leading-relaxed text-ink/85">
                 <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-muted" aria-hidden="true" />
@@ -149,7 +127,7 @@ function TimelineItem({ period, role, org, details, isLast }) {
               </li>
             ))}
           </ul>
-        </div>
+        </Collapsible>
       )}
     </div>
   )

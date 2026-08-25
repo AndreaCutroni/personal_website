@@ -31,6 +31,38 @@
   --veil: rgba(27, 27, 25, 0.9);
 }
 
+/* Per-project accent palettes, one per MaCAD poster section. A project opts in
+   via "palette" in its meta.json; the attribute scopes the override to that
+   page only. Same two-token split as the site accent — --accent carries text
+   and holds AA on its ground, --accent-mark is the saturated hue reserved for
+   fills and marks. Contrast on #fcfcfe / #1b1b19 noted per value. */
+[data-palette='computation'] {
+  --accent: #2f6e4c; /* 6.0:1 */
+  --accent-mark: #459d6e;
+}
+[data-theme='dark'] [data-palette='computation'] {
+  --accent: #459d6e; /* 5.2:1 */
+  --accent-mark: #459d6e;
+}
+
+[data-palette='intelligence'] {
+  --accent: #2f5fa8; /* 6.2:1 */
+  --accent-mark: #2f5fa8;
+}
+[data-theme='dark'] [data-palette='intelligence'] {
+  --accent: #7ba4e8; /* 6.9:1 */
+  --accent-mark: #2f5fa8;
+}
+
+[data-palette='construction'] {
+  --accent: #8f5e0a; /* 5.4:1 — #B5651D is 4.3:1 and fails as text */
+  --accent-mark: #b5651d;
+}
+[data-theme='dark'] [data-palette='construction'] {
+  --accent: #e0a25c; /* 7.8:1 */
+  --accent-mark: #b5651d;
+}
+
 @theme inline {
   --color-ground: var(--ground);
   --color-surface: var(--surface);

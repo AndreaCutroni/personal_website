@@ -1,7 +1,12 @@
 {
   "order": 3,
   "span": "standard",
-  "tags": ["Computational Design", "Environmental", "Structural"],
+  "palette": "computation",
+  "tags": [
+    "Computational Design",
+    "Environmental",
+    "Structural"
+  ],
   "team": "Andrea Cutroni, Rania Chihaoui, Symon Kipekemi",
   "program": "IAAC MaCAD 25/26 — ACESD Studio",
   "year": "2025",
@@ -11,5 +16,307 @@
   "body": [
     "Rather than resisting flooding, the project accepts water as a permanent condition and uses it as an organizing element. A ~30,000 m² floating complex in Penjaringan merges residential housing, a stadium and a commercial buffer zone into a single resilience hub, all built on a standardized 5 × 5 m modular grid for construction efficiency, adaptability and scalability. Pontoons sized through load analysis and Archimedes' principle sit roughly 1.5 m deep in the water.",
     "A Grasshopper-based parametric workflow drove solar orientation, wind and energy modeling, and stadium sightlines were verified with the C-value method. The optimized massing cuts solar radiation by over 30% compared to a simple box, while ~780,000 kWh of annual on-site photovoltaic production offsets nearly 40% of the total cooling load."
+  ],
+  "workflow": {
+    "boundary": "Site Boundary",
+    "columns": [
+      "Input",
+      "Orientation",
+      "Geometry",
+      "Aggregation",
+      "Analysis",
+      "Output"
+    ],
+    "shared": [
+      {
+        "title": "WASP",
+        "items": [
+          "Program",
+          "Kit of Parts",
+          "Rules",
+          "Constraint"
+        ]
+      },
+      {
+        "title": "Environmental & Structural"
+      },
+      {
+        "title": "Visualization & Data"
+      }
+    ],
+    "rows": [
+      {
+        "label": "Stadium",
+        "cells": [
+          {
+            "lines": [
+              "Width & Length",
+              "or",
+              "¼ of Site"
+            ]
+          },
+          "N-S Orientation",
+          "Bowl Creation"
+        ]
+      },
+      {
+        "label": "Buffer Zone",
+        "cells": [
+          "Offset",
+          null,
+          null
+        ]
+      },
+      {
+        "label": "Residential",
+        "cells": [
+          {
+            "highlight": true,
+            "lines": [
+              "FAR",
+              "Offset",
+              "sqm per Core",
+              "sqm per Plaza",
+              "Plaza Maximum Size"
+            ]
+          },
+          "Environmental Analysis",
+          "Orientated to minimize solar gains"
+        ]
+      }
+    ]
+  },
+  "sections": [
+    {
+      "index": "01",
+      "title": "Concept",
+      "block": "grid",
+      "columns": 1,
+      "body": [
+        "A floating multi-use center that reads community resilience and flood relief as the same problem — designed to connect residents to the river rather than turn away from it. Six programs stack onto one platform: floating ground, flood mitigation, green housing, water control, community resilience and sport."
+      ],
+      "images": [
+        {
+          "file": "Initial Design Strategy.png",
+          "caption": "Programmatic strategy"
+        }
+      ]
+    },
+    {
+      "index": "02",
+      "title": "Workflow",
+      "block": "workflow",
+      "body": [
+        "Three programs run as parallel tracks through a single Grasshopper definition. Each is driven by its own inputs, orientation logic and geometry rules, then converges on one WASP aggregation step before environmental and structural analysis feed back into the result."
+      ]
+    },
+    {
+      "index": "03",
+      "title": "Step by Step",
+      "block": "story",
+      "body": [
+        "Each of the three programs is built up through its own ordered sequence of moves, all of them sharing the same floating platform and the same 5 × 5 m module."
+      ],
+      "scenes": [
+        {
+          "file": "Definition of the modules.png",
+          "title": "Kit of Parts",
+          "caption": "The modules WASP aggregates, grouped by zone — residential units from 25 to 37.5 m², buffer-zone program from 25 to 50 m², and stadium cores and circulation up to 100 m²."
+        },
+        {
+          "file": "Topological Map.png",
+          "title": "Topology",
+          "caption": "The adjacency rules binding those modules — stadium units read from pitch to exterior, while buffer-zone and residential program is sorted by the level it can occupy: ground, ground-to-upper, or upper only."
+        },
+        {
+          "file": "StepByStep_Stadium.png",
+          "title": "Stadium",
+          "caption": "Any waterfront → flood resistance → S-N pitch orientation → create offset → modular stands"
+        },
+        {
+          "file": "StepByStep_BufferZone.png",
+          "title": "Buffer Zone",
+          "caption": "Create cores → GF aggregation → FX aggregation"
+        },
+        {
+          "file": "StepByStep_Residential.png",
+          "title": "Residential",
+          "caption": "Floating platform & start points → opening the ecosystem plazas → creating core and circulations → run aggregation"
+        }
+      ]
+    },
+    {
+      "index": "04",
+      "title": "Bowl Creation",
+      "block": "story",
+      "body": [
+        "Stadium seating was generated from FIFA sightline guidance rather than drawn. A target C-value of 90 mm drives a multi-tier 2D profile, which is swept along the bowl plan to produce the seating mesh and the spectator eyepoints used to verify every row."
+      ],
+      "scenes": [
+        {
+          "file": "BowlCreation_1.png",
+          "title": "C-Value",
+          "caption": "The vertical clearance between a spectator's sightline to the field and the eye level of the person in front. 90 mm was taken as the target."
+        },
+        {
+          "file": "BowlCreation_2.png",
+          "title": "Parameters",
+          "caption": "Pitch and tier inputs driving the bowl — dimensions, corner radius, row count, row width and seat spacing."
+        },
+        {
+          "file": "BowlCreation_3.png",
+          "title": "Generation",
+          "caption": "The multi-tier profile is swept along the bowl plan, then spectator eyepoints are picked and evaluated row by row."
+        }
+      ]
+    },
+    {
+      "index": "05",
+      "title": "Structural & Environmental Analysis",
+      "block": "metrics",
+      "story": true,
+      "body": [
+        "Energy modelling started from a single residential unit — a WWR × orientation sweep establishing that south and east glazing minimise annual loads — then scaled to the full masterplan. Structurally, a timber frame was compared against concrete and steel, verified in FEM, and its support reactions sized the pontoons through Archimedes' principle."
+      ],
+      "metrics": [
+        {
+          "label": "Annual Load",
+          "value": "553.6",
+          "unit": "kWh/m²",
+          "note": "single residential unit"
+        },
+        {
+          "label": "Solar Radiation",
+          "value": "−32%",
+          "note": "aggregation vs. simple box"
+        },
+        {
+          "label": "PV Production",
+          "value": "779,140",
+          "unit": "kWh/yr",
+          "note": "offsets 38% of cooling load"
+        },
+        {
+          "label": "Max Deflection",
+          "value": "1.57",
+          "unit": "mm",
+          "note": "timber frame, 3 floors"
+        },
+        {
+          "label": "Embodied Carbon",
+          "value": "−60%",
+          "note": "timber vs. concrete"
+        },
+        {
+          "label": "Immersed Height",
+          "value": "1.5",
+          "unit": "m",
+          "note": "360.6 kN max reaction"
+        }
+      ],
+      "scenes": [
+        {
+          "file": "Environmental_1.png",
+          "title": "Base Scenario",
+          "caption": "Annual loads swept across window-to-wall ratio and orientation. South and east glazing minimise the total."
+        },
+        {
+          "file": "Environmental_2.png",
+          "title": "Design Scenario",
+          "caption": "Monthly load intensity, daily peak load and incident radiation for a 25 m² residential unit."
+        },
+        {
+          "file": "Environmental_3.png",
+          "title": "Photovoltaics",
+          "caption": "Roof-mounted monocrystalline modules at 20% rated efficiency, offsetting half the unit's cooling load."
+        },
+        {
+          "file": "Environmental_4.png",
+          "title": "Masterplan Yield",
+          "caption": "Radiation across the full aggregation — 779,140 kWh of on-site production, 38% of the cooling load."
+        },
+        {
+          "file": "Environmental_5.png",
+          "title": "Façade Radiation",
+          "caption": "Average façade radiation falls from 830 to 564 kWh/m² once the massing is aggregated rather than boxed."
+        },
+        {
+          "file": "Structure_1.png",
+          "title": "Material Choice",
+          "caption": "Concrete, steel and timber compared by weight and embodied carbon. Timber wins on both counts."
+        },
+        {
+          "file": "Structure_3.png",
+          "title": "FEM Displacement",
+          "caption": "Three-storey timber frame under 2 kN/m² dead and live load, peaking at 1.57 mm."
+        },
+        {
+          "file": "Structure_4.png",
+          "title": "Buoyancy",
+          "caption": "Support reactions of 360.6 kN sized through Archimedes' principle to a 1.5 m immersed depth."
+        }
+      ]
+    },
+    {
+      "index": "06",
+      "title": "Testing",
+      "block": "story",
+      "body": [
+        "The definition was re-run against different scenarios and site locations from identical inputs — 29,250 m² of site at FAR 1, with 593 residential, 143 commercial and 63 stadium parts available — to see how stable the result stays. The residential part count settles at 625 every time; what moves is the built area and the commercial mix."
+      ],
+      "scenes": [
+        {
+          "file": "SCENARIOS GIF.gif",
+          "title": "Scenarios",
+          "caption": "11,000 m² of residential built area across 625 parts, with 3,300 m² of commercial across 106."
+        },
+        {
+          "file": "LOCATION 1 GIF.gif",
+          "title": "Location 1",
+          "caption": "10,650 m² of residential across the same 625 parts, trading floor area for a slightly larger commercial band — 3,350 m² across 108."
+        }
+      ]
+    },
+    {
+      "index": "07",
+      "title": "Drawings",
+      "block": "story",
+      "aspect": "4 / 3",
+      "body": [
+        "The aggregation resolves into a 29,250 m² lot holding 540 residents and a stadium capacity of 1,620, organized on a 45 m structural grid."
+      ],
+      "scenes": [
+        {
+          "file": "Masterplan.webp",
+          "title": "Masterplan",
+          "caption": "Roof plan on the 45 m grid, the stadium anchored to the shoreline and housing spreading north over the water."
+        },
+        {
+          "file": "GF Plan.webp",
+          "title": "Ground Floor",
+          "caption": "Ground level — stands, service cores and the open deck that carries the residential blocks."
+        },
+        {
+          "file": "Conceptual Section.png",
+          "title": "Conceptual Section",
+          "caption": "Long section through stand, buffer zone and housing, cut on the 5 m module."
+        },
+        {
+          "file": "Architectural 3D.png",
+          "title": "Aggregation",
+          "caption": "Programme distribution across the aggregation, with the full area schedule and occupancy figures."
+        },
+        {
+          "file": "Plan Colour Coded - Site Study.png",
+          "title": "Programme by Floor",
+          "caption": "Ground, first and second floors colour-coded by use across the whole site."
+        },
+        {
+          "file": "Plan Colour Coded - Block Study.png",
+          "title": "Residential Block",
+          "caption": "One block resolved floor by floor — workshop units at grade, R1 and R2 apartments above."
+        }
+      ]
+    }
   ]
 }
