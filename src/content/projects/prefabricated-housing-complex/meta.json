@@ -1,6 +1,12 @@
 {
   "order": 14,
-  "tags": ["BIM"],
+  "tags": [
+    "BIM"
+  ],
+  "stack": [
+    "Revit",
+    "Excel"
+  ],
   "team": "Andrea Cutroni, Alessandro Abagnale",
   "program": "University of Rome Tor Vergata — Digital Processes for Building Design and Construction",
   "year": "2024",

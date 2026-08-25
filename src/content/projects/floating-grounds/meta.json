@@ -7,6 +7,14 @@
     "Environmental",
     "Structural"
   ],
+  "stack": [
+    "Rhino",
+    "Grasshopper",
+    "WASP",
+    "Ladybug",
+    "Honeybee",
+    "Alpaca4D"
+  ],
   "team": "Andrea Cutroni, Rania Chihaoui, Symon Kipekemi",
   "program": "IAAC MaCAD 25/26 — ACESD Studio",
   "year": "2025",

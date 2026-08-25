@@ -1,6 +1,13 @@
 {
   "order": 11,
-  "tags": ["Spatial Analysis"],
+  "tags": [
+    "Spatial Analysis"
+  ],
+  "stack": [
+    "Rhino",
+    "topologicpy",
+    "Space Syntax"
+  ],
   "team": "Andrea Cutroni, Elena Corio, Symon Kipkemei, Giovanni Carlo Volpe",
   "program": "IAAC MaCAD 25/26",
   "year": "2026",

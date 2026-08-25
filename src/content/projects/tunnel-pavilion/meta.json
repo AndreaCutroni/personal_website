@@ -1,6 +1,16 @@
 {
   "order": 6,
-  "tags": ["Structural", "Computational Design"],
+  "tags": [
+    "Structural",
+    "Computational Design"
+  ],
+  "stack": [
+    "Rhino",
+    "Grasshopper",
+    "Karamba3D",
+    "Alpaca4D",
+    "Crystallon"
+  ],
   "team": "Andrea Cutroni, Eleni Maglari",
   "program": "IAAC MaCAD 25/26",
   "year": "2025",

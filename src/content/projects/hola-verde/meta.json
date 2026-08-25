@@ -1,7 +1,14 @@
 {
   "order": 17,
   "title": "hOla Verde",
-  "tags": ["Architecture"],
+  "tags": [
+    "Architecture"
+  ],
+  "stack": [
+    "AutoCAD",
+    "Revit",
+    "Twinmotion"
+  ],
   "team": "Andrea Cutroni, Carlos Román, Claudia Serment",
   "program": "University of Burgos — Sustainable Construction",
   "year": "2022",

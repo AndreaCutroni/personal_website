@@ -1,7 +1,19 @@
 {
   "order": 2,
   "span": "standard",
-  "tags": ["AI", "Web App", "Urban"],
+  "tags": [
+    "AI",
+    "Web App",
+    "Urban"
+  ],
+  "stack": [
+    "ComfyUI",
+    "SDXL",
+    "FLUX",
+    "LoRA",
+    "OpenStreetMap",
+    "Google Street View API"
+  ],
   "team": "Andrea Cutroni, Elena Corio",
   "program": "IAAC MaCAD 25/26 — Generative AI",
   "year": "2026",

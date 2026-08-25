@@ -1,6 +1,15 @@
 {
   "order": 15,
-  "tags": ["BIM", "Architecture", "Structural"],
+  "tags": [
+    "BIM",
+    "Architecture",
+    "Structural"
+  ],
+  "stack": [
+    "AutoCAD",
+    "Revit",
+    "Enscape"
+  ],
   "team": "Andrea Cutroni, Alessandro Abagnale",
   "program": "University of Rome Tor Vergata — Integrated Building Design",
   "year": "2023",

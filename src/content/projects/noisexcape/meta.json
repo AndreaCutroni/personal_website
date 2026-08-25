@@ -1,7 +1,17 @@
 {
   "order": 12,
   "title": "NoiseXcape",
-  "tags": ["Machine Learning", "Urban"],
+  "tags": [
+    "Machine Learning",
+    "Urban"
+  ],
+  "stack": [
+    "Python",
+    "PyTorch",
+    "OpenStreetMap",
+    "PCA",
+    "SHAP"
+  ],
   "team": "Andrea Cutroni, Elena Corio, Symon Kipkemei, Giovanni Carlo Volpe",
   "program": "IAAC MaCAD 25/26",
   "year": "2026",

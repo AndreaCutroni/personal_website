@@ -1,7 +1,14 @@
 {
   "order": 16,
   "title": "ACA House",
-  "tags": ["Architecture"],
+  "tags": [
+    "Architecture"
+  ],
+  "stack": [
+    "AutoCAD",
+    "Revit",
+    "Enscape"
+  ],
   "team": "Andrea Cutroni, Cristian Tolu, Alessio De Luca",
   "program": "University of Rome Tor Vergata — Architectural Design",
   "year": "2022",

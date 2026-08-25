@@ -1,7 +1,18 @@
 {
   "order": 4,
   "span": "tall",
-  "tags": ["Environmental", "Computational Design"],
+  "tags": [
+    "Environmental",
+    "Computational Design"
+  ],
+  "stack": [
+    "Rhino",
+    "Grasshopper",
+    "Ladybug",
+    "Honeybee",
+    "Galapagos",
+    "Infrared.city"
+  ],
   "team": "Andrea Cutroni, Eleni Maglari",
   "program": "IAAC MaCAD 25/26 — Environmental Analysis",
   "year": "2025",

@@ -1,7 +1,15 @@
 {
   "order": 8,
   "title": "Catenary Pavilion",
-  "tags": ["Structural", "Computational Design"],
+  "tags": [
+    "Structural",
+    "Computational Design"
+  ],
+  "stack": [
+    "Rhino",
+    "Grasshopper",
+    "Laser Cutting"
+  ],
   "team": "Andrea Cutroni, Flavia Tassi, Alessandra Del Pico",
   "program": "University of Rome Tor Vergata — Structures in Architecture",
   "year": "2022",

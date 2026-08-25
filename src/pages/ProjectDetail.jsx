@@ -185,7 +185,7 @@ export default function ProjectDetail() {
             to="/projects"
             className="font-mono text-xs uppercase tracking-[0.2em] text-muted transition-colors duration-200 hover:text-accent"
           >
-            ← Index
+            ← All projects
           </Link>
 
           <div className="mt-10 grid gap-x-16 gap-y-10 lg:grid-cols-[1fr_280px] lg:items-start">
@@ -227,6 +227,26 @@ export default function ProjectDetail() {
                   </div>
                 ))}
               </dl>
+              {/* Tools, not themes: bordered rather than filled, so they read as
+                  data next to the amber tag pills that link into the filter. */}
+              {(project.stack ?? []).length > 0 && (
+                <div className="mt-6">
+                  <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted">
+                    Stack
+                  </p>
+                  <ul className="mt-3 flex flex-wrap gap-1.5">
+                    {project.stack.map((tool) => (
+                      <li
+                        key={tool}
+                        className="rounded-full border border-line px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.1em] text-ink/80"
+                      >
+                        {tool}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
               {project.link && (
                 <a
                   href={project.link}

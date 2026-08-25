@@ -27,6 +27,7 @@ All fields optional:
   "span": "large",          // bento size: large | wide | tall | standard
   "title": "…",             // overrides the folder-name title
   "tags": ["…"],            // shown on cards + detail page, drive the filter
+  "stack": ["…"],           // software / tools, listed under the data table
   "team": "…",              // shown in the project data table
   "architect": "…",
   "program": "…",           // e.g. course / studio / client context

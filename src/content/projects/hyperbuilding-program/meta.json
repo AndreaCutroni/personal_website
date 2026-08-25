@@ -1,7 +1,18 @@
 {
   "order": 13,
   "title": "Hyperbuilding Program",
-  "tags": ["BIM", "Architecture"],
+  "tags": [
+    "BIM",
+    "Architecture"
+  ],
+  "stack": [
+    "Rhino",
+    "Grasshopper",
+    "Revit",
+    "Rhino.Inside.Revit",
+    "Speckle",
+    "Python"
+  ],
   "team": "Andrea Cutroni, Eva Vasileska, Chloe Nguyen, Eleni Maglari, Rania Chihaoui, Eduardo Martinez, Elena Corio, Symon Kipkemei",
   "program": "IAAC MaCAD 25/26",
   "year": "2026",

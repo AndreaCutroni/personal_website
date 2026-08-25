@@ -1,6 +1,18 @@
 {
   "order": 7,
-  "tags": ["Structural", "Computational Design"],
+  "tags": [
+    "Structural",
+    "Computational Design"
+  ],
+  "stack": [
+    "Rhino",
+    "Grasshopper",
+    "Karamba3D",
+    "Ladybug",
+    "Galapagos",
+    "3D Printing",
+    "Laser Cutting"
+  ],
   "team": "Andrea Cutroni",
   "program": "University of Rome Tor Vergata — Research Scholarship",
   "year": "2023–2024",

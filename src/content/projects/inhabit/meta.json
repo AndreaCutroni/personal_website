@@ -1,7 +1,16 @@
 {
   "order": 10,
   "title": "inHabit",
-  "tags": ["AI", "Web App"],
+  "tags": [
+    "AI",
+    "Web App"
+  ],
+  "stack": [
+    "Python",
+    "LangGraph",
+    "Anthropic API",
+    "NetworkX"
+  ],
   "team": "Andrea Cutroni, Elena Corio, Symon Kipkemei, Marina Osmolovska, Giovanni Carlo Volpe",
   "program": "IAAC MaCAD 25/26",
   "year": "2026",

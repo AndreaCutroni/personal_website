@@ -1,7 +1,17 @@
 {
   "order": 5,
   "span": "wide",
-  "tags": ["Structural", "Web App", "Environmental"],
+  "tags": [
+    "Structural",
+    "Web App",
+    "Environmental"
+  ],
+  "stack": [
+    "Rhino",
+    "Grasshopper",
+    "Rhino.Compute",
+    "JavaScript"
+  ],
   "team": "Andrea Cutroni",
   "program": "IAAC MaCAD 25/26 — Cloud-Based Data Management",
   "year": "2026",
