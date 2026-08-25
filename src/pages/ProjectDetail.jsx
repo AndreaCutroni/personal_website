@@ -5,6 +5,7 @@ import Reveal from '../components/Reveal'
 import Collapsible, { Chevron } from '../components/Collapsible'
 import CenterCarousel from '../components/CenterCarousel'
 import WorkflowDiagram from '../components/project/WorkflowDiagram'
+import FlowDiagram from '../components/project/FlowDiagram'
 import MetricRow from '../components/project/MetricRow'
 import StoryPlayer from '../components/project/StoryPlayer'
 import ImageGrid from '../components/project/ImageGrid'
@@ -12,7 +13,7 @@ import { projects, getProject } from '../content/projects'
 
 /* One dossier section: heading, chevron, and everything under it collapsing
    together — the same toggle used on the About timeline. */
-function ProjectSection({ section, workflow, images, scenes }) {
+function ProjectSection({ section, workflow, flow, images, scenes }) {
   const [open, setOpen] = useState(false)
   const panelId = useId()
 
@@ -51,6 +52,8 @@ function ProjectSection({ section, workflow, images, scenes }) {
 
         {section.block === 'workflow' && <WorkflowDiagram {...workflow} />}
 
+        {section.block === 'flow' && <FlowDiagram {...flow} />}
+
         {section.block === 'metrics' && (
           <>
             <MetricRow metrics={section.metrics} />
@@ -66,7 +69,14 @@ function ProjectSection({ section, workflow, images, scenes }) {
 
         {section.block === 'story' && <StoryPlayer scenes={scenes} aspect={section.aspect} />}
 
-        {section.block === 'grid' && <ImageGrid items={images} columns={section.columns ?? 2} />}
+        {section.block === 'grid' && (
+          <ImageGrid
+            items={images}
+            columns={section.columns ?? 2}
+            layout={section.layout}
+            captions={section.captions !== false}
+          />
+        )}
 
         {section.block === 'pending' && (
           <p className="rounded-lg border border-dashed border-line px-5 py-6 text-sm text-muted">
@@ -278,7 +288,7 @@ export default function ProjectDetail() {
               svg={project.cover.svg}
               url={project.cover.url}
               showLabel={false}
-              aspect="21 / 9"
+              aspect="16 / 9"
             />
           </Reveal>
         )}
@@ -288,6 +298,7 @@ export default function ProjectDetail() {
             <ProjectSection
               section={section}
               workflow={project.workflow}
+              flow={project.flow}
               images={resolve(section.images)}
               scenes={resolve(section.scenes)}
             />

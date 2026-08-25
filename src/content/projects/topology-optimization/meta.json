@@ -1,5 +1,7 @@
 {
   "order": 7,
+  "palette": "computation",
+  "title": "Topology Optimization for Architectural Structures",
   "tags": [
     "Structural",
     "Computational Design"
@@ -14,6 +16,7 @@
     "Laser Cutting"
   ],
   "team": "Andrea Cutroni",
+  "architect": "",
   "program": "University of Rome Tor Vergata — Research Scholarship",
   "year": "2023–2024",
   "location": "",
@@ -22,5 +25,205 @@
   "body": [
     "This research scholarship develops a Grasshopper workflow that performs graphic interpolation between the polylines of two topology-optimized limit-case geometries, generated with the SIMP method, exploring the full design space in between rather than a single optimized form.",
     "A demonstrator pavilion, based on a catenary shape, combines the interpolation method with shading criteria: Karamba3D verifies the stress distribution while Ladybug determines the optimal panel placement. The resulting geometry was validated with further FEM analysis, realized as 3D-printed and laser-cut prototypes, and presented at Maker Faire Rome 2023."
+  ],
+  "flow": {
+    "columns": 3,
+    "rows": 4,
+    "nodes": [
+      {
+        "label": "Topology optimization with FEM",
+        "col": 2,
+        "row": 1
+      },
+      {
+        "label": "Parametric modelling",
+        "col": 2,
+        "row": 2
+      },
+      {
+        "label": "2D and 3D vector drawings",
+        "col": 2,
+        "row": 3
+      },
+      {
+        "label": "CAM application",
+        "col": 3,
+        "row": 3
+      },
+      {
+        "label": "Climate Design",
+        "col": 1,
+        "row": 4
+      },
+      {
+        "label": "Graphic Interpolation",
+        "col": 2,
+        "row": 4,
+        "highlight": true
+      },
+      {
+        "label": "Check",
+        "col": 3,
+        "row": 4
+      }
+    ],
+    "arrows": [
+      {
+        "col": 2,
+        "row": 1,
+        "dir": "down"
+      },
+      {
+        "col": 2,
+        "row": 2,
+        "dir": "down"
+      },
+      {
+        "col": 2,
+        "row": 3,
+        "dir": "down"
+      },
+      {
+        "col": 2,
+        "row": 3,
+        "dir": "right"
+      },
+      {
+        "col": 3,
+        "row": 3,
+        "dir": "up"
+      },
+      {
+        "col": 1,
+        "row": 4,
+        "dir": "right"
+      },
+      {
+        "col": 2,
+        "row": 4,
+        "dir": "right"
+      }
+    ]
+  },
+  "sections": [
+    {
+      "index": "01",
+      "title": "Concept",
+      "body": [
+        "Topology optimization normally returns a single answer: the one geometry that minimises compliance for a given load case. This project treats that answer as one end of a range rather than the end of the process, and builds the tooling to move through everything in between."
+      ]
+    },
+    {
+      "index": "02",
+      "title": "Workflow",
+      "block": "flow",
+      "body": [
+        "A single Grasshopper chain carries the geometry from a finite-element result through to fabrication. Climate data feeds the interpolation step directly, so shading criteria shape the geometry alongside the structural ones, and the check loops back into the CAM output."
+      ]
+    },
+    {
+      "index": "03",
+      "title": "Method",
+      "block": "story",
+      "body": [
+        "The SIMP approach produces two limit cases from finite element analysis. Rather than picking one, the script rebuilds both as polylines and interpolates between them, generating the continuous family of solutions that lies in the design space between the two."
+      ],
+      "scenes": [
+        {
+          "file": "FEM Convergence.png",
+          "title": "Convergence",
+          "caption": "Normalized compliance against iteration count — the optimizer settles by roughly the 25th pass, with the geometry shown at each sampled step."
+        },
+        {
+          "file": "Method Steps.png",
+          "title": "Eight Steps",
+          "caption": "Initial domain and mesh → centroids at ρ = 1 → bitmap as control → numerical solution → internal and external polylines separated → spline approximation → triangular mesh → 3D geometry."
+        },
+        {
+          "file": "Interpolation Method.png",
+          "title": "Volume Fraction",
+          "caption": "The same member read at volume fraction 0.3 and 0.5 — material is added along the interpolation rather than re-optimised from scratch."
+        },
+        {
+          "file": "Limit Case 1.png",
+          "title": "Limit Case A",
+          "caption": "The first SIMP solution, with the optimized material distribution traced as a polyline."
+        },
+        {
+          "file": "Limit Case 2.png",
+          "title": "Limit Case B",
+          "caption": "The second SIMP solution under a different volume constraint — the opposite end of the interpolation range."
+        },
+        {
+          "file": "Interpolation Field.png",
+          "title": "Interpolated Family",
+          "caption": "Every geometry between the two limit cases, generated by the parametric script rather than solved individually."
+        }
+      ]
+    },
+    {
+      "index": "04",
+      "title": "Case Studies",
+      "block": "grid",
+      "columns": 1,
+      "body": [
+        "Three load cases carry the method end to end — a cantilever beam with a point load, an L-joint beam-column, and a beam under distributed load. Each runs from the initial domain through topology optimization, mesh generation and FEM verification, and finishes as a physical prototype."
+      ],
+      "images": [
+        {
+          "file": "Case Studies.png"
+        }
+      ],
+      "captions": false
+    },
+    {
+      "index": "05",
+      "title": "Structural & Environmental Analysis",
+      "block": "story",
+      "body": [
+        "The pavilion geometry is based on a catenary shape. Karamba3D identifies the stress distribution across the shell, while Ladybug drives the panel layout from direct sun hours — so the same surface answers to both structural and environmental criteria."
+      ],
+      "scenes": [
+        {
+          "file": "Structural Analysis.png",
+          "title": "Stress Distribution",
+          "caption": "Karamba3D analysis of the catenary shell, 7.00 m span, identifying where material is actually working."
+        },
+        {
+          "file": "Sun Path.png",
+          "title": "Sun Path",
+          "caption": "Annual sun path over the site, the input driving the shading study."
+        },
+        {
+          "file": "Direct Sun Hours.png",
+          "title": "Direct Sun Hours",
+          "caption": "Direct sun hours across the surface, from 1,515 to 3,577 — the map that determines optimal panel placement."
+        }
+      ]
+    },
+    {
+      "index": "06",
+      "title": "Prototypes",
+      "block": "grid",
+      "body": [
+        "The interpolated geometry was built at model scale in 3D-printed and laser-cut parts, testing whether the output of the workflow is genuinely fabricable. The project was presented at Maker Faire Rome 2023."
+      ],
+      "layout": "row",
+      "captions": false,
+      "images": [
+        {
+          "file": "Prototype 1.png"
+        },
+        {
+          "file": "Prototype 2.png"
+        },
+        {
+          "file": "Prototype 3.png"
+        },
+        {
+          "file": "Prototype 4.png"
+        }
+      ]
+    }
   ]
 }

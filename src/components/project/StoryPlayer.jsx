@@ -38,7 +38,10 @@ export default function StoryPlayer({ scenes, aspect = '16 / 9' }) {
       aria-label="Process steps"
     >
       <div className="relative overflow-hidden rounded-lg border border-line bg-surface">
-        <div className="relative" style={{ aspectRatio: aspect }}>
+        {/* Height is viewport-driven rather than a fixed ratio, so the stage,
+            caption and filmstrip all fit on screen together. object-contain
+            then letterboxes whatever aspect the scene actually is. */}
+        <div className="relative" style={{ height: 'clamp(220px, 52vh, 560px)' }}>
           {scenes.map((scene, i) => (
             <img
               key={scene.file}
@@ -74,7 +77,7 @@ export default function StoryPlayer({ scenes, aspect = '16 / 9' }) {
         </button>
       </div>
 
-      <div className="mt-4 flex items-baseline gap-4" aria-live="polite">
+      <div className="mt-3 flex items-baseline gap-4" aria-live="polite">
         <span className="shrink-0 font-mono text-[11px] uppercase tracking-[0.18em] text-accent">
           {pad(active + 1)} / {pad(count)}
         </span>
@@ -84,7 +87,7 @@ export default function StoryPlayer({ scenes, aspect = '16 / 9' }) {
         </div>
       </div>
 
-      <div className="mt-4 flex gap-3 overflow-x-auto pb-1">
+      <div className="mt-3 flex gap-2.5 overflow-x-auto pb-1">
         {scenes.map((scene, i) => (
           <button
             key={scene.file}
@@ -92,7 +95,7 @@ export default function StoryPlayer({ scenes, aspect = '16 / 9' }) {
             onClick={() => go(i)}
             aria-label={`Step ${i + 1}: ${scene.title}`}
             aria-current={i === active ? 'true' : undefined}
-            className={`w-28 shrink-0 overflow-hidden rounded-md border bg-surface transition-colors duration-200 sm:w-36 ${
+            className={`w-20 shrink-0 overflow-hidden rounded-md border bg-surface transition-colors duration-200 sm:w-24 ${
               i === active ? 'border-accent-mark' : 'border-line hover:border-accent-mark/60'
             }`}
           >
