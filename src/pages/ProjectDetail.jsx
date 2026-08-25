@@ -2,7 +2,7 @@ import { useId, useState } from 'react'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import PageTransition from '../components/PageTransition'
 import Reveal from '../components/Reveal'
-import Collapsible, { CollapseToggle } from '../components/Collapsible'
+import Collapsible, { Chevron } from '../components/Collapsible'
 import CenterCarousel from '../components/CenterCarousel'
 import WorkflowDiagram from '../components/project/WorkflowDiagram'
 import MetricRow from '../components/project/MetricRow'
@@ -18,17 +18,25 @@ function ProjectSection({ section, workflow, images, scenes }) {
 
   return (
     <>
-      <div className="flex items-center gap-3">
-        <h2 className="font-mono text-xs uppercase tracking-[0.25em] text-muted">
-          <span className="text-accent">{section.index}</span> — {section.title}
-        </h2>
-        <CollapseToggle
-          open={open}
+      {/* The heading itself is the control, so the title text toggles the
+          section. Button inside the h2 rather than around it, so the heading
+          keeps its semantics in the document outline. */}
+      <h2 className="font-mono text-xs uppercase tracking-[0.25em] text-muted">
+        <button
+          type="button"
           onClick={() => setOpen((v) => !v)}
-          label={section.title}
-          controls={panelId}
-        />
-      </div>
+          aria-expanded={open}
+          aria-controls={panelId}
+          /* Tailwind v4 preflight resets text-transform and cursor on button,
+             so both have to be restated to keep the heading's own styling. */
+          className="inline-flex cursor-pointer items-center gap-3 text-left uppercase transition-colors duration-200 hover:text-accent"
+        >
+          <span>
+            <span className="text-accent">{section.index}</span> — {section.title}
+          </span>
+          <Chevron open={open} />
+        </button>
+      </h2>
 
       {/* The gap under the heading lives inside the collapsing region, so a
           closed section leaves nothing but its own heading behind. */}

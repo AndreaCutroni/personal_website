@@ -4,6 +4,26 @@ import { useReducedMotion } from 'framer-motion'
    trigger sits in a different place per use — inline after the org line on the
    About timeline, next to the heading on a project section. */
 
+/* Presentational only. Exported so a caller can build its own trigger — a
+   project section makes the whole heading the button, and a button inside a
+   button is invalid, so it cannot reuse CollapseToggle. */
+export function Chevron({ open }) {
+  return (
+    <svg
+      viewBox="0 0 12 12"
+      className={`h-5 w-5 shrink-0 transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.3"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M2.5 4.5 6 8l3.5-3.5" />
+    </svg>
+  )
+}
+
 export function CollapseToggle({ open, onClick, label, controls, className = '' }) {
   return (
     <button
@@ -12,20 +32,9 @@ export function CollapseToggle({ open, onClick, label, controls, className = '' 
       aria-expanded={open}
       aria-controls={controls}
       aria-label={`${open ? 'Hide' : 'Show'} ${label}`}
-      className={`shrink-0 text-muted transition-colors duration-200 hover:text-accent ${className}`}
+      className={`shrink-0 cursor-pointer text-muted transition-colors duration-200 hover:text-accent ${className}`}
     >
-      <svg
-        viewBox="0 0 12 12"
-        className={`h-5 w-5 transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.3"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        aria-hidden="true"
-      >
-        <path d="M2.5 4.5 6 8l3.5-3.5" />
-      </svg>
+      <Chevron open={open} />
     </button>
   )
 }
