@@ -26,7 +26,13 @@
       "Bash(grep:*)",
       "Write",
       "Edit",
-      "Read"
+      "Read",
+      "Glob",
+      "Grep",
+      "mcp__398e72a7-36eb-474d-931f-569907f92c41__read-design",
+      "mcp__398e72a7-36eb-474d-931f-569907f92c41__export-design",
+      "mcp__398e72a7-36eb-474d-931f-569907f92c41__get-export-formats",
+      "mcp__398e72a7-36eb-474d-931f-569907f92c41__search-designs"
     ]
   }
 }

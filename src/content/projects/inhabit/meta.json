@@ -1,5 +1,6 @@
 {
   "order": 10,
+  "palette": "intelligence",
   "title": "inHabit",
   "tags": [
     "AI",
@@ -19,5 +20,199 @@
   "body": [
     "inHabit bridges architectural layouts and daily routines under the brief \"Describe your day. Find your layout.\" Natural-language text is converted into structured spatial criteria to help households, architects and real-estate agents evaluate housing options.",
     "Built on LangGraph, Anthropic's API and a NetworkX spatial graph, the tool extracts user preferences, runs graph-based semantic search across 800+ synthetic floor plans, and overlays the user's daily routine onto candidate layouts alongside a daylight analysis — scoring fit, simulating daylight and visualizing the routine before a final layout is selected."
+  ],
+  "sections": [
+    {
+      "index": "01",
+      "title": "Approach",
+      "block": "flow",
+      "body": [
+        "Three moves, in order: read the brief, search the space of layouts, then score what comes back. Each one is a separate agent step rather than a single prompt, so the reasoning behind a recommendation stays inspectable."
+      ],
+      "flow": {
+        "columns": 3,
+        "rows": 1,
+        "nodes": [
+          {
+            "col": 1,
+            "row": 1,
+            "label": "01. Understand",
+            "items": [
+              "Parse routines and preferences into structured queries"
+            ]
+          },
+          {
+            "col": 2,
+            "row": 1,
+            "label": "02. Explore",
+            "items": [
+              "Search layouts through graph reasoning and semantic embeddings"
+            ]
+          },
+          {
+            "col": 3,
+            "row": 1,
+            "label": "03. Evaluate",
+            "items": [
+              "Score layout fit, simulate daylight, visualize routines"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "index": "02",
+      "title": "Workflow",
+      "block": "flow",
+      "body": [
+        "The pipeline behind those three moves. Synthetic plans are generated and exported, their furniture clustered into a catalogue, each layout encoded as a semantic description plus a spatial graph, and an agent graph reasons over the result — with benchmarking across prompts and LLM providers closing the loop."
+      ],
+      "flow": {
+        "columns": 5,
+        "rows": 1,
+        "nodes": [
+          {
+            "col": 1,
+            "row": 1,
+            "label": "Dataset Generation",
+            "items": [
+              "Input Parameters",
+              "Planfinder",
+              "JSON Export"
+            ]
+          },
+          {
+            "col": 2,
+            "row": 1,
+            "label": "Furniture Clustering",
+            "items": [
+              "Features",
+              "JSON Dataset",
+              "HDBSCAN",
+              "Catalogue"
+            ]
+          },
+          {
+            "col": 3,
+            "row": 1,
+            "label": "Dataset Encoding",
+            "items": [
+              "Semantic Description & Layout Graph"
+            ]
+          },
+          {
+            "col": 4,
+            "row": 1,
+            "label": "Agent Graph",
+            "items": [
+              "Reason",
+              "Search",
+              "Adapt",
+              "Evaluate"
+            ]
+          },
+          {
+            "col": 5,
+            "row": 1,
+            "label": "Benchmarking",
+            "items": [
+              "Prompts & LLM Providers"
+            ]
+          }
+        ],
+        "arrows": [
+          {
+            "col": 1,
+            "row": 1,
+            "dir": "right"
+          },
+          {
+            "col": 2,
+            "row": 1,
+            "dir": "right"
+          },
+          {
+            "col": 3,
+            "row": 1,
+            "dir": "right"
+          },
+          {
+            "col": 4,
+            "row": 1,
+            "dir": "right"
+          }
+        ]
+      }
+    },
+    {
+      "index": "03",
+      "title": "What It Does",
+      "block": "story",
+      "body": [
+        "A household describes its day in plain language. inHabit turns that into spatial criteria, searches 800+ synthetic plans for the closest fit, and then explains the match — room by room, hour by hour, and against daylight."
+      ],
+      "scenes": [
+        {
+          "file": "Understand Brief.png",
+          "title": "01 — Understand Brief",
+          "caption": "The household describes itself in its own words; the copilot parses it into rooms, adjacencies and constraints."
+        },
+        {
+          "file": "Explore Layouts.png",
+          "title": "02 — Search the Layout Space",
+          "caption": "Every plan in the dataset embedded as a point. Best matches surface near the query, and any two can be interpolated between."
+        },
+        {
+          "file": "Layout Selected.png",
+          "title": "03 — Select the Best Option",
+          "caption": "The chosen layout with its area breakdown and a fit score across rooms, lifestyle, access, adjacency and size."
+        },
+        {
+          "file": "Daylight Analysis.png",
+          "title": "04 — Analyze Daylight",
+          "caption": "The same plan re-read as daylight autonomy, room by room, with day and night areas scored separately."
+        },
+        {
+          "file": "Daily Routine.png",
+          "title": "05 — Visualize Routine",
+          "caption": "The household placed in the plan hour by hour — at 21:00, who is where and doing what."
+        },
+        {
+          "file": "Room Explained.png",
+          "title": "06 — Evaluate & Explain",
+          "caption": "One room interrogated: its area, its character, and the adjacencies that earned or cost it points."
+        }
+      ]
+    },
+    {
+      "index": "04",
+      "title": "MCP Tools",
+      "block": "grid",
+      "columns": 1,
+      "captions": false,
+      "body": [
+        "Python, Grasshopper and Rhino are wired together through MCP, so custom tools and analyses run inside a single pipeline rather than being exported between applications."
+      ],
+      "images": [
+        {
+          "file": "MCP Tools.png"
+        }
+      ]
+    },
+    {
+      "index": "05",
+      "title": "Graph-Based Design Exploration",
+      "block": "grid",
+      "columns": 1,
+      "captions": false,
+      "body": [
+        "Each layout is encoded as a graph of spatial relationships. The search combines semantic descriptions generated through Anthropic’s API with that graph structure, so a query can be about how a home works, not only what it contains."
+      ],
+      "images": [
+        {
+          "file": "Graph Exploration.png"
+        }
+      ]
+    }
   ]
 }

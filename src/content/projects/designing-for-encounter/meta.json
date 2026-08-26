@@ -1,5 +1,7 @@
 {
   "order": 11,
+  "palette": "intelligence",
+  "title": "Designing for Encounter",
   "tags": [
     "Spatial Analysis"
   ],
@@ -16,5 +18,145 @@
   "body": [
     "Traditional housing corridors are often socially inert. This study applies spatial-network, space-syntax and visibility analyses — closeness, betweenness and degree centrality, isovists and shortest paths — to three built cohousing projects: Wohnprojekt Wien, Gleis21 and Spreefeld Berlin.",
     "Comparing double-loaded, perimeter and point-block circulation typologies shows that high connectivity and visual openness systematically drive chance encounters between residents — evidence that circulation design can shift community-building from an intuitive judgment call to a data-driven design decision."
+  ],
+  "sections": [
+    {
+      "index": "01",
+      "title": "Closeness Centrality",
+      "block": "grid",
+      "columns": 3,
+      "body": [
+        "How near every space is to every other, measured through the circulation graph rather than in metres. The perimeter block spreads access evenly; the double-loaded corridor concentrates it along one line; the point-block pulls it into a single core."
+      ],
+      "images": [
+        {
+          "file": "Closeness Wohnprojekt.png",
+          "caption": "Wohnprojekt Wien — perimeter"
+        },
+        {
+          "file": "Closeness Gleis21.png",
+          "caption": "Gleis21 Wien — double-loaded"
+        },
+        {
+          "file": "Closeness Spreefeld.png",
+          "caption": "Spreefeld Berlin — point-block"
+        }
+      ]
+    },
+    {
+      "index": "02",
+      "title": "Betweenness Centrality",
+      "block": "grid",
+      "columns": 3,
+      "body": [
+        "How often a space falls on the shortest route between two others — the spatial definition of passing traffic, and the strongest predictor of where chance encounters happen."
+      ],
+      "images": [
+        {
+          "file": "Betweenness Wohnprojekt.png",
+          "caption": "Wohnprojekt Wien — perimeter"
+        },
+        {
+          "file": "Betweenness Gleis21.png",
+          "caption": "Gleis21 Wien — double-loaded"
+        },
+        {
+          "file": "Betweenness Spreefeld.png",
+          "caption": "Spreefeld Berlin — point-block"
+        }
+      ]
+    },
+    {
+      "index": "03",
+      "title": "Degree Centrality",
+      "block": "grid",
+      "columns": 3,
+      "body": [
+        "How many other spaces each one connects to directly. A high-degree circulation space is a junction; a low-degree one is a dead end that only its neighbours use."
+      ],
+      "images": [
+        {
+          "file": "Degree Wohnprojekt.png",
+          "caption": "Wohnprojekt Wien — perimeter"
+        },
+        {
+          "file": "Degree Gleis21.png",
+          "caption": "Gleis21 Wien — double-loaded"
+        },
+        {
+          "file": "Degree Spreefeld.png",
+          "caption": "Spreefeld Berlin — point-block"
+        }
+      ]
+    },
+    {
+      "index": "04",
+      "title": "Shortest Paths",
+      "block": "grid",
+      "columns": 3,
+      "body": [
+        "The routes residents actually take between entrance, dwelling and shared facilities. Where those routes overlap, people meet; where they run in parallel, they do not."
+      ],
+      "images": [
+        {
+          "file": "Shortest Paths Wohnprojekt.png",
+          "caption": "Wohnprojekt Wien — perimeter"
+        },
+        {
+          "file": "Shortest Paths Gleis21.png",
+          "caption": "Gleis21 Wien — double-loaded"
+        },
+        {
+          "file": "Shortest Paths Spreefeld.png",
+          "caption": "Spreefeld Berlin — point-block"
+        }
+      ]
+    },
+    {
+      "index": "05",
+      "title": "Isovists",
+      "block": "grid",
+      "columns": 3,
+      "body": [
+        "Everything visible from a single standpoint. A wide isovist in a circulation space means a resident is seen — and can see others — long before arriving."
+      ],
+      "images": [
+        {
+          "file": "Isovists Wohnprojekt.png",
+          "caption": "Wohnprojekt Wien — perimeter"
+        },
+        {
+          "file": "Isovists Gleis21.png",
+          "caption": "Gleis21 Wien — double-loaded"
+        },
+        {
+          "file": "Isovists Spreefeld.png",
+          "caption": "Spreefeld Berlin — point-block"
+        }
+      ]
+    },
+    {
+      "index": "06",
+      "title": "Visibility Analysis",
+      "block": "grid",
+      "columns": 3,
+      "body": [
+        "The isovist calculation run across the whole floor at once, giving the visual field of every point. Read against betweenness, it separates circulation that is merely busy from circulation that is also open."
+      ],
+      "images": [
+        {
+          "file": "Visibility Wohnprojekt.png",
+          "caption": "Wohnprojekt Wien — perimeter"
+        },
+        {
+          "file": "Visibility Gleis21.png",
+          "caption": "Gleis21 Wien — double-loaded"
+        },
+        {
+          "file": "Visibility Spreefeld.png",
+          "caption": "Spreefeld Berlin — point-block"
+        }
+      ]
+    }
   ]
 }

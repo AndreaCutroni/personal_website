@@ -1,5 +1,6 @@
 {
   "order": 2,
+  "palette": "intelligence",
   "span": "standard",
   "tags": [
     "AI",
@@ -23,5 +24,165 @@
   "body": [
     "Vitru.views transforms ordinary street views into greener, more human-centered scenarios through a three-stage image-to-image workflow: cars and signage are removed, vegetation, bike lanes and pedestrian space are added, then architectural styling and lighting are applied. The pipeline runs on LoRAs trained across SDXL and FLUX, wired to OSM mapping and the Google Street View API.",
     "Trained on a dataset of 38 renders from Henning Larsen's urban design projects, the tool produced consistently strong results across the four tested cities. Next steps focus on improving human-figure generation and developing Vitru.views into a participatory design tool for community collaboration."
+  ],
+  "sections": [
+    {
+      "index": "01",
+      "title": "Workflow",
+      "block": "flow",
+      "columns": 1,
+      "captions": false,
+      "body": [
+        "A street view goes in and a people-first version of the same street comes out. The three middle steps are one FLUX.2 image-to-image chain, run twice through a LoRA trained on Henning Larsen urban design projects, so the output keeps the geometry of the real street while changing what fills it."
+      ],
+      "flow": {
+        "columns": 6,
+        "rows": 1,
+        "nodes": [
+          {
+            "col": 1,
+            "row": 1,
+            "label": "Source",
+            "items": [
+              "Street View URL",
+              "Upload File"
+            ]
+          },
+          {
+            "col": 2,
+            "row": 1,
+            "label": "Configure",
+            "items": [
+              "Features",
+              "Scenes"
+            ]
+          },
+          {
+            "col": 3,
+            "row": 1,
+            "label": "Remove cars and signs"
+          },
+          {
+            "col": 4,
+            "row": 1,
+            "label": "Add greenery",
+            "items": [
+              "LoRA"
+            ]
+          },
+          {
+            "col": 5,
+            "row": 1,
+            "label": "Render the vision",
+            "items": [
+              "LoRA"
+            ]
+          },
+          {
+            "col": 6,
+            "row": 1,
+            "label": "Results",
+            "items": [
+              "Download",
+              "Share",
+              "Pin to map"
+            ]
+          }
+        ],
+        "arrows": [
+          {
+            "col": 1,
+            "row": 1,
+            "dir": "right"
+          },
+          {
+            "col": 2,
+            "row": 1,
+            "dir": "right"
+          },
+          {
+            "col": 3,
+            "row": 1,
+            "dir": "right"
+          },
+          {
+            "col": 4,
+            "row": 1,
+            "dir": "right"
+          },
+          {
+            "col": 5,
+            "row": 1,
+            "dir": "right"
+          }
+        ]
+      },
+      "images": [
+        {
+          "file": "Workflow Steps.webp"
+        },
+        {
+          "file": "LoRA References.webp"
+        }
+      ]
+    },
+    {
+      "index": "02",
+      "title": "Model Iterations",
+      "block": "grid",
+      "columns": 1,
+      "captions": false,
+      "body": [
+        "Five approaches tested against the same street. SDXL image-to-image changes everything and loses the place; FLUX.1 Depth and Canny hold the geometry but stay literal; inpainting changes only what is masked. FLUX.2 image-to-image sat where the project needed it — the street rebuilt, the buildings untouched."
+      ],
+      "images": [
+        {
+          "file": "Iterations.webp"
+        }
+      ]
+    },
+    {
+      "index": "03",
+      "title": "Results",
+      "block": "grid",
+      "columns": 1,
+      "captions": false,
+      "body": [
+        "Two real streets carried through the three steps. Cars and signage go first, then planting and paving arrive, then the whole view is re-rendered with consistent light — the façades on either side unchanged throughout."
+      ],
+      "images": [
+        {
+          "file": "Results Milan.webp"
+        },
+        {
+          "file": "Results Paris.webp"
+        }
+      ]
+    },
+    {
+      "index": "04",
+      "title": "Cities",
+      "block": "story",
+      "body": [
+        "The same transformation, before and after, in Dublin, Paris and Rome."
+      ],
+      "scenes": [
+        {
+          "file": "Dublin.gif",
+          "title": "Dublin",
+          "caption": "A car-dominated street given over to planting and pedestrian space."
+        },
+        {
+          "file": "Paris.gif",
+          "title": "Paris",
+          "caption": "The Haussmann street front kept, the roadway between it rebuilt."
+        },
+        {
+          "file": "Rome.gif",
+          "title": "Rome",
+          "caption": "Parking cleared from a historic street and replaced with trees and paving."
+        }
+      ]
+    }
   ]
 }

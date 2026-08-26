@@ -1,5 +1,6 @@
 {
   "order": 12,
+  "palette": "intelligence",
   "title": "NoiseXcape",
   "tags": [
     "Machine Learning",
@@ -20,5 +21,193 @@
   "body": [
     "NoiseXcape tests whether urban noise can be predicted from open spatial data instead of costly traditional mapping campaigns. Eighteen features — land use, road proximity, and space-syntax centralities among them — were extracted from OpenStreetMap for Barcelona to train a set of shallow learning models and an artificial neural network, with PCA reducing feature dimensionality and SHAP providing model interpretability.",
     "Tree-based models outperformed linear ones, with Random Forest achieving the best regression and classification results. Cross-city testing showed that transferability is sensitive to demographic differences between cities, though relative noise gradients held up well across contexts."
+  ],
+  "sections": [
+    {
+      "index": "01",
+      "title": "Noise Data",
+      "block": "grid",
+      "columns": 1,
+      "captions": false,
+      "body": [
+        "Barcelona’s measured noise map, projected onto the OSM road network — every road segment carrying the level recorded within ten metres of it. This is what the models are asked to reproduce from spatial data alone, and what an equivalent map would otherwise cost a survey to produce."
+      ],
+      "images": [
+        {
+          "file": "Noise Levels.webp"
+        }
+      ]
+    },
+    {
+      "index": "02",
+      "title": "Workflow",
+      "block": "flow",
+      "body": [
+        "Four open datasets go in and a trained predictor comes out. Each source is preprocessed onto the same road segments, assembled into an 18-feature table, explored and reduced, then used to train shallow models and a neural network — with an ablation study and SHAP feeding back into training rather than only reporting on it."
+      ],
+      "flow": {
+        "columns": 5,
+        "rows": 4,
+        "nodes": [
+          {
+            "col": 1,
+            "row": 1,
+            "label": "Noise Data"
+          },
+          {
+            "col": 1,
+            "row": 2,
+            "label": "Street Network"
+          },
+          {
+            "col": 1,
+            "row": 3,
+            "label": "OSM Points"
+          },
+          {
+            "col": 1,
+            "row": 4,
+            "label": "Land Use"
+          },
+          {
+            "col": 2,
+            "row": 1,
+            "rowSpan": 4,
+            "label": "Preprocessing"
+          },
+          {
+            "col": 3,
+            "row": 1,
+            "rowSpan": 4,
+            "label": "Feature Table Assembling",
+            "items": [
+              "EDA",
+              "PCA"
+            ]
+          },
+          {
+            "col": 4,
+            "row": 1,
+            "rowSpan": 4,
+            "label": "Models Training",
+            "items": [
+              "Ablation Study",
+              "SHAP-ex"
+            ]
+          },
+          {
+            "col": 5,
+            "row": 1,
+            "rowSpan": 4,
+            "label": "Deployment"
+          }
+        ],
+        "arrows": [
+          {
+            "col": 1,
+            "row": 1,
+            "dir": "right"
+          },
+          {
+            "col": 1,
+            "row": 2,
+            "dir": "right"
+          },
+          {
+            "col": 1,
+            "row": 3,
+            "dir": "right"
+          },
+          {
+            "col": 1,
+            "row": 4,
+            "dir": "right"
+          },
+          {
+            "col": 2,
+            "row": 1,
+            "rowSpan": 4,
+            "dir": "right"
+          },
+          {
+            "col": 3,
+            "row": 1,
+            "rowSpan": 4,
+            "dir": "right"
+          },
+          {
+            "col": 4,
+            "row": 1,
+            "rowSpan": 4,
+            "dir": "right"
+          }
+        ]
+      }
+    },
+    {
+      "index": "03",
+      "title": "Feature Exploration",
+      "block": "grid",
+      "columns": 2,
+      "body": [
+        "Eighteen features were extracted per road segment. Four of them, mapped across the city: two space-syntax centralities describing how the network is used, and two descriptions of the street itself. Read together they already anticipate the noise map — the through-routes and the wide trunk roads are the loud ones."
+      ],
+      "images": [
+        {
+          "file": "Betweenness Map.webp",
+          "caption": "Betweenness centrality"
+        },
+        {
+          "file": "Straightness Map.webp",
+          "caption": "Straightness centrality"
+        },
+        {
+          "file": "Road Category.webp",
+          "caption": "Road category, trunk to living-street"
+        },
+        {
+          "file": "Street Width.webp",
+          "caption": "Total street width"
+        }
+      ]
+    },
+    {
+      "index": "04",
+      "title": "Dimensionality Reduction",
+      "block": "grid",
+      "columns": 1,
+      "captions": false,
+      "body": [
+        "The eighteen features are heavily correlated, so principal component analysis was used to compress them. The cumulative explained-variance curve is what sets the cut: most of the information survives in a fraction of the components."
+      ],
+      "images": [
+        {
+          "file": "PCA.png"
+        }
+      ]
+    },
+    {
+      "index": "05",
+      "title": "Regression & Classification",
+      "block": "grid",
+      "columns": 1,
+      "body": [
+        "Predicting the decibel value directly, then predicting which band it falls in. Tree-based models beat the linear one decisively — Random Forest reaches R² 0.705 on held-out data against linear regression’s 0.446 — and the gap between train and test scores shows how much of that comes from memorising the training city. The neural network converges but does not overtake them."
+      ],
+      "images": [
+        {
+          "file": "Regression Models.png",
+          "caption": "Regression — predicted against measured dB"
+        },
+        {
+          "file": "Neural Network.png",
+          "caption": "Artificial neural network"
+        },
+        {
+          "file": "Classification.png",
+          "caption": "Classification into noise bands"
+        }
+      ]
+    }
   ]
 }

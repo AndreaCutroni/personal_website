@@ -50,9 +50,26 @@ function ProjectSection({ section, workflow, flow, images, scenes }) {
           </div>
         )}
 
-        {section.block === 'workflow' && <WorkflowDiagram {...workflow} />}
+        {/* A diagram normally lives at the top of meta.json, since most projects
+            draw only one. A section can carry its own instead, for the sheets
+            that draw two. */}
+        {section.block === 'workflow' && <WorkflowDiagram {...(section.workflow ?? workflow)} />}
 
-        {section.block === 'flow' && <FlowDiagram {...flow} />}
+        {section.block === 'flow' && (
+          <>
+            <FlowDiagram {...(section.flow ?? flow)} />
+            {images.length > 0 && (
+              <div className="mt-8">
+                <ImageGrid
+                  items={images}
+                  columns={section.columns ?? 1}
+                  layout={section.layout}
+                  captions={section.captions !== false}
+                />
+              </div>
+            )}
+          </>
+        )}
 
         {section.block === 'metrics' && (
           <>

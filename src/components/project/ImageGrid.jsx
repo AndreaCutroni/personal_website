@@ -9,7 +9,7 @@ export default function ImageGrid({ items, columns = 2, layout = 'grid', caption
 
   const Caption = ({ item }) =>
     captions ? (
-      <figcaption className="border-t border-line px-4 py-2 font-mono text-[11px] uppercase tracking-[0.18em] text-muted">
+      <figcaption className="mt-auto border-t border-line px-4 py-2 font-mono text-[11px] uppercase tracking-[0.18em] text-muted">
         {item.caption || item.label}
       </figcaption>
     ) : null
@@ -35,12 +35,16 @@ export default function ImageGrid({ items, columns = 2, layout = 'grid', caption
     )
   }
 
+  /* Written out rather than interpolated, so Tailwind's scanner sees the class
+     names. Three columns is for comparing the same drawing across cases. */
+  const track = { 1: '', 2: 'sm:grid-cols-2', 3: 'sm:grid-cols-2 lg:grid-cols-3' }[columns] ?? ''
+
   return (
-    <div className={`grid gap-4 ${columns === 1 ? '' : 'sm:grid-cols-2'}`}>
+    <div className={`grid gap-4 ${track}`}>
       {items.map((item) => (
         <figure
           key={item.file}
-          className="overflow-hidden rounded-lg border border-line bg-surface"
+          className="flex flex-col overflow-hidden rounded-lg border border-line bg-surface"
         >
           <img
             src={item.url}

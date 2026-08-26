@@ -108,18 +108,32 @@ export default function FlowDiagram({ columns = 3, rows = 4, nodes, arrows = [] 
       >
         {nodes.map((node) => (
           <div
-            key={node.label}
-            style={{ gridColumn: node.col * 2 - 1, gridRow: node.row * 2 - 1 }}
+            key={`${node.col}-${node.row}-${node.label}`}
+            style={{
+              gridColumn: node.col * 2 - 1,
+              /* rowSpan covers the gap tracks it crosses, so a single stage can
+                 stand beside several inputs the way a fan-in is drawn. */
+              gridRow: node.rowSpan
+                ? `${node.row * 2 - 1} / span ${node.rowSpan * 2 - 1}`
+                : node.row * 2 - 1,
+            }}
           >
             <Node node={node} />
           </div>
         ))}
         {arrows.map((a) => (
           <div
-            key={`${a.col}-${a.row}-${a.dir}`}
+            key={`${a.col}-${a.row}-${a.dir}-${a.rowSpan ?? 1}`}
             style={
               a.dir === 'right'
-                ? { gridColumn: a.col * 2, gridRow: a.row * 2 - 1 }
+                ? {
+                    gridColumn: a.col * 2,
+                    /* Spanning the same rows as the stages it joins puts the
+                       arrowhead on their shared midline, not on one input's. */
+                    gridRow: a.rowSpan
+                      ? `${a.row * 2 - 1} / span ${a.rowSpan * 2 - 1}`
+                      : a.row * 2 - 1,
+                  }
                 : { gridColumn: a.col * 2 - 1, gridRow: a.row * 2 }
             }
           >
@@ -130,7 +144,7 @@ export default function FlowDiagram({ columns = 3, rows = 4, nodes, arrows = [] 
 
       <ol className="flex flex-col gap-2 sm:hidden">
         {ordered.map((node) => (
-          <li key={node.label}>
+          <li key={`${node.col}-${node.row}-${node.label}`}>
             <Node node={node} />
           </li>
         ))}
