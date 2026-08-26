@@ -1,5 +1,7 @@
 {
   "order": 5,
+  "palette": "construction",
+  "captions": false,
   "span": "wide",
   "tags": [
     "Structural",

@@ -1,5 +1,7 @@
 {
   "order": 14,
+  "palette": "construction",
+  "title": "Prefabricated Housing Complex",
   "tags": [
     "BIM"
   ],
@@ -15,5 +17,92 @@
   "body": [
     "A full BIM model in Revit of an existing prefabricated housing complex built in the 1960s near Milan, reconstructed from historical documentation, original construction patents and as-built conditions surveyed via Google Maps.",
     "The model covers both architectural and structural modeling with custom parametric families — including a catalogue of façade panel types — supported by a Common Data Environment and data extraction into Excel for further analysis."
+  ],
+  "sections": [
+    {
+      "index": "01",
+      "title": "Documentation",
+      "block": "grid",
+      "columns": 1,
+      "captions": false,
+      "body": [
+        "The model has no drawings to start from. Input came from three sources instead: historical construction photography of the complex going up in the 1960s, the original prefabrication patents, and an as-built survey of current conditions carried out over Google Maps."
+      ],
+      "images": [
+        {
+          "file": "Historic Survey.webp"
+        }
+      ]
+    },
+    {
+      "index": "02",
+      "title": "Model Structure",
+      "block": "grid",
+      "columns": 1,
+      "captions": false,
+      "body": [
+        "The reconstructed model opened up: floor slabs, the prefabricated façade panels hung off them, and the balconies — each element a family instance rather than modelled geometry."
+      ],
+      "images": [
+        {
+          "file": "Model Structure.webp"
+        }
+      ]
+    },
+    {
+      "index": "03",
+      "title": "Parametric Families",
+      "block": "story",
+      "body": [
+        "Every façade panel is a parametric family carrying its own dimensions, layer build-up and position. Catalogued across the elevation, the whole envelope resolves into a set of repeating types, and each type extracts to Excel as a schedule."
+      ],
+      "scenes": [
+        {
+          "file": "Panel Cataloguing.png",
+          "title": "Panel Catalogue",
+          "caption": "Every façade panel typed and colour-coded across the elevation — the repeating set the whole envelope is built from."
+        },
+        {
+          "file": "Panel Data Sheet.png",
+          "title": "Panel Data Sheet",
+          "caption": "One panel type resolved in full: components, layer build-up, dimensions and its position on the south elevation."
+        },
+        {
+          "file": "Panel Schedule.png",
+          "title": "Schedule Extraction",
+          "caption": "The family parameters extracted as scheduled data, ready to leave the model for Excel."
+        }
+      ]
+    },
+    {
+      "index": "04",
+      "title": "Structural Modeling",
+      "block": "grid",
+      "columns": 1,
+      "captions": false,
+      "body": [
+        "The structural model behind the envelope — panel-to-slab connections and the reinforcement detailing at the joints, drawn from the original patents."
+      ],
+      "images": [
+        {
+          "file": "Structural Modeling.png"
+        }
+      ]
+    },
+    {
+      "index": "05",
+      "title": "Architectural Modeling",
+      "block": "grid",
+      "columns": 1,
+      "captions": false,
+      "body": [
+        "The opening types that populate the panels: balcony doors, splayed windows, top-hung casements and the entrance door, each modelled as its own family."
+      ],
+      "images": [
+        {
+          "file": "Architectural Modeling.png"
+        }
+      ]
+    }
   ]
 }

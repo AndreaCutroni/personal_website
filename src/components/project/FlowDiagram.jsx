@@ -36,7 +36,7 @@ function Arrow({ dir }) {
       /* h-full on both axes: the grid cell stretches to the row height, and
          without it a horizontal arrow collapses to its own 7px and sits at the
          top of the cell rather than on the node's midline. */
-      className={`flex h-full text-accent ${
+      className={`flex h-full text-accent-mark ${
         vertical ? 'flex-col items-center justify-center' : 'w-full items-center'
       }`}
     >
@@ -53,10 +53,10 @@ function Node({ node }) {
   if (node.items?.length) {
     return (
       <div className="flex h-full flex-col">
-        <span className="rounded-t-md bg-accent px-3 py-2 text-center text-[13px] font-medium leading-tight text-ground">
+        <span className="rounded-t-md bg-accent-mark px-3 py-2 text-center text-[13px] font-medium leading-tight text-ground">
           {node.label}
         </span>
-        <ul className="flex flex-1 flex-col justify-center gap-1 rounded-b-md border-2 border-t-0 border-accent px-3 py-3">
+        <ul className="flex flex-1 flex-col justify-center gap-1 rounded-b-md border-2 border-t-0 border-accent-mark px-3 py-3">
           {node.items.map((item) => (
             <li key={item} className="text-center text-[13px] leading-tight">
               {item}
@@ -67,11 +67,20 @@ function Node({ node }) {
     )
   }
 
+  /* Three fills, matching how the sheets actually draw a node: solid mark with
+     reversed text, a light wash of the mark with normal text, or outline only.
+     All of them use --accent-mark, not --accent: borders and fills are
+     graphical objects at a 3:1 contrast floor, so they can carry the true brand
+     hue. --accent is the darkened variant and belongs to text only. */
+  const fill = node.highlight
+    ? 'bg-accent-mark text-ground'
+    : node.tint
+      ? 'bg-accent-mark/35 text-ink'
+      : 'border-2 border-accent-mark text-ink'
+
   return (
     <span
-      className={`flex h-full items-center justify-center rounded-md px-3 py-2 text-center text-[13px] font-medium leading-tight ${
-        node.highlight ? 'bg-accent text-ground' : 'border-2 border-accent text-ink'
-      }`}
+      className={`flex h-full items-center justify-center rounded-md px-3 py-2 text-center text-[13px] font-medium leading-tight ${fill}`}
     >
       {node.label}
     </span>

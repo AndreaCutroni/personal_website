@@ -1,5 +1,6 @@
 {
   "order": 16,
+  "palette": "construction",
   "title": "ACA House",
   "tags": [
     "Architecture"
@@ -17,5 +18,97 @@
   "body": [
     "A two-storey single-family house inspired by Richard Meier's Shamberg House, with a plan generated from the intersection of the extrusion of an ellipse and a rectangle. The elliptical volume carries a large glass façade that opens the main living spaces to the site.",
     "Designed in AutoCAD, Revit and Enscape, covering plans, sections and all four elevations."
+  ],
+  "sections": [
+    {
+      "index": "01",
+      "title": "Geometry",
+      "block": "story",
+      "body": [
+        "The plan comes from a single move: extrude an ellipse, extrude a rectangle, and intersect them. The elliptical volume takes the glazed façade and the living spaces; the rectangle holds everything that wants a straight wall."
+      ],
+      "scenes": [
+        {
+          "file": "Massing.png",
+          "title": "Volumes",
+          "caption": "The two extrusions and their intersection — the operation the whole plan derives from."
+        },
+        {
+          "file": "Axonometric.png",
+          "title": "Axonometric",
+          "caption": "The house in wireframe, both floors read at once against the intersecting geometry."
+        }
+      ]
+    },
+    {
+      "index": "02",
+      "title": "Plans",
+      "block": "grid",
+      "columns": 1,
+      "captions": false,
+      "body": [
+        "Ground and first floor. The curved edge carries the main living spaces toward the glass façade, with the rectangular wing taking service and circulation."
+      ],
+      "images": [
+        {
+          "file": "Plans.png"
+        }
+      ]
+    },
+    {
+      "index": "03",
+      "title": "Sections",
+      "block": "grid",
+      "columns": 1,
+      "captions": false,
+      "body": [
+        "Two sections cut through the intersection, showing the double-height space behind the glazing and how the two volumes meet in level."
+      ],
+      "images": [
+        {
+          "file": "Sections.png"
+        }
+      ]
+    },
+    {
+      "index": "04",
+      "title": "Elevations",
+      "block": "grid",
+      "columns": 1,
+      "captions": false,
+      "body": [
+        "All four elevations — the ellipse reading as a curved glazed front to the south and west, the rectangle as a flat, largely solid face to the north and east."
+      ],
+      "images": [
+        {
+          "file": "Elevations.png"
+        }
+      ]
+    },
+    {
+      "index": "05",
+      "title": "Views",
+      "block": "story",
+      "body": [
+        "The house in its landscape, and the interior behind the curved glass façade."
+      ],
+      "scenes": [
+        {
+          "file": "Exterior View.webp",
+          "title": "Exterior",
+          "caption": "The elliptical volume and its glazing seen across the garden, with the rectangular wing behind."
+        },
+        {
+          "file": "Interior Living.webp",
+          "title": "Living Space",
+          "caption": "Inside the curved façade, where the glazing follows the ellipse around the living space."
+        },
+        {
+          "file": "Interior Lounge.webp",
+          "title": "Double Height",
+          "caption": "The double-height volume, lit along its full length by the curved glass wall."
+        }
+      ]
+    }
   ]
 }

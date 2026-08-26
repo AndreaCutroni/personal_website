@@ -23,7 +23,10 @@
       "Bash(rm:*)",
       "Bash(unzip:*)",
       "Bash(find:*)",
-      "Bash(grep:*)"
+      "Bash(grep:*)",
+      "Write",
+      "Edit",
+      "Read"
     ]
   }
 }

@@ -28,6 +28,7 @@ All fields optional:
   "title": "…",             // overrides the folder-name title
   "tags": ["…"],            // shown on cards + detail page, drive the filter
   "stack": ["…"],           // software / tools, listed under the data table
+  "captions": false,        // hide filename captions on the carousel
   "team": "…",              // shown in the project data table
   "architect": "…",
   "program": "…",           // e.g. course / studio / client context

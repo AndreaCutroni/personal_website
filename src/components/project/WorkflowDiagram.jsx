@@ -25,7 +25,7 @@ function Cell({ cell }) {
   return (
     <div
       className={`flex h-full flex-col justify-center rounded-md border border-dashed px-2 py-2 text-center ${
-        highlight ? 'border-accent' : 'border-muted/50'
+        highlight ? 'border-accent-mark' : 'border-muted/50'
       }`}
     >
       {lines.map((line) => (
@@ -39,7 +39,7 @@ function Cell({ cell }) {
 
 function Header({ children }) {
   return (
-    <div className="rounded-sm bg-accent px-3 py-2 text-center font-mono text-[10px] uppercase tracking-[0.16em] text-ground">
+    <div className="rounded-sm bg-accent-mark px-3 py-2 text-center font-mono text-[10px] uppercase tracking-[0.16em] text-ground">
       {children}
     </div>
   )

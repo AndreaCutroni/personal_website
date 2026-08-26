@@ -1,5 +1,6 @@
 {
   "order": 13,
+  "palette": "construction",
   "title": "Hyperbuilding Program",
   "tags": [
     "BIM",
@@ -11,7 +12,9 @@
     "Revit",
     "Rhino.Inside.Revit",
     "Speckle",
-    "Python"
+    "Python",
+    "Autodesk Forma",
+    "Ladybug"
   ],
   "team": "Andrea Cutroni, Eva Vasileska, Chloe Nguyen, Eleni Maglari, Rania Chihaoui, Eduardo Martinez, Elena Corio, Symon Kipkemei",
   "program": "IAAC MaCAD 25/26",
@@ -21,5 +24,151 @@
   "body": [
     "Hyperbuilding — The Cells is part of \"The Vertical Machine,\" a complex of three towers at 1 million sqm each in Santiago, Chile, developed across specialized Data, Structure and Program teams. As part of the Program team, the goal was to coordinate across teams to define the massing strategy and translate human needs into spatial logic, organizing the vertical distribution of programs into a livable, interconnected environment.",
     "An automated pipeline generates program distribution from both view-quality analysis and program-interconnection requirements, using a Python script that runs a local-optimum allocation against an adjacency matrix. Data flows to a shared metric dashboard and through Speckle, with a Rhino.inside.Revit workflow enabling real-time metrics and automated documentation."
+  ],
+  "flow": {
+    "columns": 3,
+    "rows": 2,
+    "nodes": [
+      {
+        "label": "View Analysis",
+        "col": 1,
+        "row": 1,
+        "tint": true
+      },
+      {
+        "label": "Program Allocation",
+        "col": 2,
+        "row": 1,
+        "tint": true
+      },
+      {
+        "label": "Program Allocation Optimization",
+        "col": 3,
+        "row": 1,
+        "tint": true
+      },
+      {
+        "label": "Floor Ranges",
+        "col": 2,
+        "row": 2
+      },
+      {
+        "label": "Adjacency Matrix",
+        "col": 3,
+        "row": 2
+      }
+    ],
+    "arrows": [
+      {
+        "col": 1,
+        "row": 1,
+        "dir": "right"
+      },
+      {
+        "col": 2,
+        "row": 1,
+        "dir": "right"
+      },
+      {
+        "col": 2,
+        "row": 1,
+        "dir": "up"
+      },
+      {
+        "col": 3,
+        "row": 1,
+        "dir": "up"
+      }
+    ]
+  },
+  "sections": [
+    {
+      "index": "01",
+      "title": "Workflow",
+      "block": "flow",
+      "body": [
+        "View quality sets the program ranges, those ranges drive an initial allocation, and the allocation is then optimized against the adjacency matrix — each stage fed by the input beneath it."
+      ]
+    },
+    {
+      "index": "02",
+      "title": "Massing Strategy",
+      "block": "grid",
+      "columns": 1,
+      "captions": false,
+      "body": [
+        "Using key metrics from the early KPIs, iterations were generated in Autodesk Forma and Ladybug against three criteria: shadow study, daylight potential and sun analysis."
+      ],
+      "images": [
+        {
+          "file": "Massing Strategy.png"
+        }
+      ]
+    },
+    {
+      "index": "03",
+      "title": "Massing Iterations",
+      "block": "grid",
+      "columns": 1,
+      "captions": false,
+      "body": [
+        "From a single tower to the final scheme: equal heights, then differentiated heights, then bridges carrying green space between the towers — each step tested against the same metrics."
+      ],
+      "images": [
+        {
+          "file": "Massing Iterations.png"
+        }
+      ]
+    },
+    {
+      "index": "04",
+      "title": "Program & Interoperability",
+      "block": "grid",
+      "columns": 1,
+      "captions": false,
+      "body": [
+        "Data is sent to a shared metric dashboard to track the KPIs and distributed through Speckle, while a Rhino.Inside.Revit workflow enables real-time metrics and automated documentation across the three teams."
+      ],
+      "images": [
+        {
+          "file": "Program and Interoperability.png"
+        }
+      ]
+    },
+    {
+      "index": "05",
+      "title": "View Analysis",
+      "block": "grid",
+      "columns": 1,
+      "captions": false,
+      "body": [
+        "View quality analysis informs which programs belong on which floors, establishing the program ranges that guide the initial allocation strategy."
+      ],
+      "images": [
+        {
+          "file": "View Analysis.png"
+        }
+      ]
+    },
+    {
+      "index": "06",
+      "title": "Data-Driven Program Allocation",
+      "block": "story",
+      "body": [
+        "A Python script automates the allocation, applying a local-optimum approach that weighs the adjacency matrix — how strongly each program wants to sit next to each other — against the floor ranges the view analysis produced."
+      ],
+      "scenes": [
+        {
+          "file": "Adjacency Matrix.png",
+          "title": "Adjacency Matrix",
+          "caption": "Programs scored against each other from 0 (weak adjacency) to 2 (strong), the constraint the optimizer solves against."
+        },
+        {
+          "file": "Program Allocation.png",
+          "title": "Vertical Distribution",
+          "caption": "The resulting distribution through the towers — living, community, commerce, learning, working, health and sport stacked by both view quality and interconnection."
+        }
+      ]
+    }
   ]
 }

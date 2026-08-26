@@ -1,5 +1,6 @@
 {
   "order": 17,
+  "palette": "construction",
   "title": "hOla Verde",
   "tags": [
     "Architecture"
@@ -17,5 +18,132 @@
   "body": [
     "hOla Verde develops sustainable design strategies for an office building in Málaga, prioritizing natural ventilation, shading systems and a green roof. Sun-path studies across summer and winter days informed the shading and massing strategy.",
     "The structure uses a timber platform-frame system with cork insulation and bamboo and recycled-material plaster for interior finishes, designed in AutoCAD, Revit and Twinmotion."
+  ],
+  "sections": [
+    {
+      "index": "01",
+      "title": "Passive Strategies",
+      "block": "story",
+      "body": [
+        "The building is cooled without machinery. Cross-ventilation runs through the plan at both levels and exhausts under the curved roof, while fixed louvres and a deep overhang keep the summer sun off the glazing. Sun-path sections across a summer and a winter day set how far that overhang had to reach."
+      ],
+      "scenes": [
+        {
+          "file": "Ventilation Strategy.webp",
+          "title": "Ventilation",
+          "caption": "Cool air drawn in at both levels and warm air released along the curve of the roof."
+        },
+        {
+          "file": "Summer Sun Path.png",
+          "title": "Summer",
+          "caption": "At 9:00, 12:00 and 18:00 the high sun is cut by the overhang and the louvred screen before it reaches the glass."
+        },
+        {
+          "file": "Winter Sun Path.png",
+          "title": "Winter",
+          "caption": "At 10:00, 12:00 and 16:00 the lower sun passes under the same overhang and reaches deep into the plan."
+        }
+      ]
+    },
+    {
+      "index": "02",
+      "title": "Construction Process",
+      "block": "story",
+      "body": [
+        "The building goes up in eight stages, from a ventilated foundation to a planted roof. Everything above the slab is timber: platform-frame walls storey by storey, joisted floors, and curved glulam ribs carrying the roof."
+      ],
+      "scenes": [
+        {
+          "file": "Step 1.png",
+          "title": "01 — Foundation",
+          "caption": "Strip footings with the ventilated cavity system laid between them, forming the void under the ground floor."
+        },
+        {
+          "file": "Step 2.png",
+          "title": "02 — Ground Slab",
+          "caption": "The slab cast over the cavity formers, closing the ventilated void."
+        },
+        {
+          "file": "Step 3.png",
+          "title": "03 — Ground Floor Walls",
+          "caption": "Platform-frame walls raised on the slab, with openings framed and the internal partitions set out."
+        },
+        {
+          "file": "Step 4.png",
+          "title": "04 — First Floor Joists",
+          "caption": "Timber joists spanning across the ground-floor walls, with the stair opening left clear."
+        },
+        {
+          "file": "Step 5.png",
+          "title": "05 — First Floor Deck",
+          "caption": "The deck closed over the joists, giving the platform the next storey is built from."
+        },
+        {
+          "file": "Step 6.png",
+          "title": "06 — Upper Walls",
+          "caption": "The second set of platform-frame walls raised, with the window openings framed."
+        },
+        {
+          "file": "Step 7.png",
+          "title": "07 — Roof Ribs",
+          "caption": "Curved glulam ribs set on the upper wall plate, overhanging on both sides to shade the façades."
+        },
+        {
+          "file": "Step 8.png",
+          "title": "08 — Green Roof",
+          "caption": "The planted roof completed over the curve, its overhang forming the shading eave."
+        }
+      ]
+    },
+    {
+      "index": "03",
+      "title": "Platform-Frame Structure",
+      "block": "story",
+      "body": [
+        "The envelope resolved in detail. Timber studs at 90×150 mm every 60 cm carry 15 cm of TRADITERM cork between OSB panels, finished outside in photocatalytic mortar and inside in recycled-material plasterboard, with a bamboo floor over cork insulation."
+      ],
+      "scenes": [
+        {
+          "file": "Wall to Foundation.png",
+          "title": "Wall to Foundation",
+          "caption": "The frame landing on the strip footing — sole plate, anchor bolts and the ventilated cavity with its PVC aeration pipe below."
+        },
+        {
+          "file": "Wall Build-Up.png",
+          "title": "Wall Build-Up",
+          "caption": "The wall in plan: cork between the studs, OSB either side, and a 3 cm service void behind the interior finish."
+        },
+        {
+          "file": "Floor to Wall.png",
+          "title": "Floor to Wall",
+          "caption": "The floor meeting the frame — 10×20 cm joists on a steel angle, cork insulation and a bamboo finish over self-levelling screed."
+        }
+      ]
+    },
+    {
+      "index": "04",
+      "title": "Views",
+      "block": "story",
+      "body": [
+        "The building in Málaga: a white volume under a planted curve, with louvred screens and a bamboo hedge along the shaded side."
+      ],
+      "scenes": [
+        {
+          "file": "Garden View.webp",
+          "title": "Garden",
+          "caption": "The shaded side across the garden, with the pergola, the water channel and the planting spilling off the roof."
+        },
+        {
+          "file": "Street View.webp",
+          "title": "Street",
+          "caption": "The entrance front from the street, louvres closed against the afternoon sun."
+        },
+        {
+          "file": "Upper Floor.webp",
+          "title": "Upper Floor",
+          "caption": "Inside the open office level, under the exposed curve of the glulam ribs."
+        }
+      ]
+    }
   ]
 }

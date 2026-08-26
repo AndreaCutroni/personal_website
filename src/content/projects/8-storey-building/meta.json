@@ -23,26 +23,18 @@
   "sections": [
     {
       "index": "01",
-      "title": "Framed Structure",
-      "block": "grid",
-      "columns": 1,
-      "captions": false,
-      "body": [
-        "The reinforced-concrete frame in plan — column grid, primary and secondary beams, and the stair and lift cores that carry the seismic action."
-      ],
-      "images": [
-        { "file": "Structural Plan.png" }
-      ]
-    },
-    {
-      "index": "02",
       "title": "Slab",
       "block": "story",
       "aspect": "4 / 3",
       "body": [
-        "The slab worked through from layout to reinforcement: the one-way system spanning between beams, its section build-up, and the bar schedule that follows from the static and seismic verifications."
+        "The frame in plan, then the slab worked through from layout to reinforcement: the one-way system spanning between beams, its section build-up, and the bar schedule that follows from the static and seismic verifications."
       ],
       "scenes": [
+        {
+          "file": "Structural Plan.png",
+          "title": "Framed Structure",
+          "caption": "The reinforced-concrete frame in plan — column grid, primary and secondary beams, and the cores that carry the seismic action."
+        },
         {
           "file": "Slab Plan.png",
           "title": "Layout and Section",
@@ -53,6 +45,58 @@
           "title": "Reinforcement",
           "caption": "Bar layout and schedule, sized from the static and seismic verifications to NTC."
         }
+      ]
+    },
+    {
+      "index": "02",
+      "title": "Beams",
+      "block": "grid",
+      "columns": 1,
+      "captions": false,
+      "body": [
+        "Bending moment and shear envelopes along a continuous beam line, with the resulting longitudinal bars and stirrup spacing drawn span by span."
+      ],
+      "images": [
+        { "file": "Beam.png" }
+      ]
+    },
+    {
+      "index": "03",
+      "title": "Columns",
+      "block": "grid",
+      "columns": 1,
+      "captions": false,
+      "body": [
+        "Column schedule through the full height of the building, with cross sections and reinforcement detailing at the changes in section."
+      ],
+      "images": [
+        { "file": "Column.png" }
+      ]
+    },
+    {
+      "index": "04",
+      "title": "Stair",
+      "block": "grid",
+      "columns": 1,
+      "captions": false,
+      "body": [
+        "The stair as an inclined slab spanning between landings, with its reinforcement drawn through the knee joints where the geometry changes direction."
+      ],
+      "images": [
+        { "file": "Stair.png" }
+      ]
+    },
+    {
+      "index": "05",
+      "title": "Foundations",
+      "block": "grid",
+      "columns": 1,
+      "captions": false,
+      "body": [
+        "Foundation beams tying the column bases together, detailed in section and set out across the footprint below the frame."
+      ],
+      "images": [
+        { "file": "Foundation.png" }
       ]
     }
   ]

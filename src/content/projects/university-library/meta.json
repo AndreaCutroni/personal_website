@@ -1,5 +1,6 @@
 {
   "order": 15,
+  "palette": "construction",
   "tags": [
     "BIM",
     "Architecture",
@@ -18,5 +19,111 @@
   "body": [
     "An integrated architectural and structural design for a new university library with two levels and a basement garage, formed by two overlapping, rotated rectangular blocks in reinforced concrete with circular pillars and bidirectional slabs.",
     "A steel structure supports the central staircase while a system of CLT beams carries the skylight; the terrace features a green roof, the envelope uses a ventilated façade, and the main entrance opens behind a glass façade. The project was developed in AutoCAD 2D, Revit and Enscape."
+  ],
+  "sections": [
+    {
+      "index": "01",
+      "title": "Plans",
+      "block": "story",
+      "aspect": "4 / 3",
+      "body": [
+        "Two levels over a basement garage, set out as two overlapping rotated rectangular blocks. Circular pillars and bidirectional slabs carry the floors; a steel structure holds the central staircase."
+      ],
+      "scenes": [
+        {
+          "file": "Ground Floor.png",
+          "title": "Ground Floor",
+          "caption": "Entrance, reading areas and the central staircase where the two rotated blocks overlap."
+        },
+        {
+          "file": "First Floor.png",
+          "title": "First Floor",
+          "caption": "Upper reading level, opening onto the terrace and its green roof."
+        },
+        {
+          "file": "Structural Plan.png",
+          "title": "Structural Plan",
+          "caption": "Circular pillars on the reinforced-concrete grid, with bidirectional slabs spanning between them."
+        }
+      ]
+    },
+    {
+      "index": "02",
+      "title": "Elevations & Section",
+      "block": "grid",
+      "columns": 1,
+      "captions": false,
+      "body": [
+        "East and north elevations with two sections cut through the overlap — the ventilated façade reading as a solid band against the glazed entrance below."
+      ],
+      "images": [
+        {
+          "file": "Elevations and Sections.png"
+        }
+      ]
+    },
+    {
+      "index": "03",
+      "title": "Construction Details",
+      "block": "story",
+      "body": [
+        "The envelope resolved at 1:10 and 1:20: a green roof over the terrace, a ventilated façade around the blocks, and a glass façade at the main entrance. Each detail is keyed back to the section it is cut from."
+      ],
+      "scenes": [
+        {
+          "file": "Exploded Axonometric.png",
+          "title": "Envelope",
+          "caption": "The building opened up — green roof, ventilated façade and glazed entrance as separate layers."
+        },
+        {
+          "file": "Section Detail.png",
+          "title": "Section",
+          "caption": "The 1:50 section carrying the D1 and D2 callouts that the roof details enlarge."
+        },
+        {
+          "file": "Green Roof Eaves.png",
+          "title": "Green Roof — D1",
+          "caption": "Roof build-up at the eaves at 1:10, from the planted layer down through drainage and insulation to the slab."
+        },
+        {
+          "file": "Green Roof Parapet.png",
+          "title": "Green Roof — D2",
+          "caption": "The parapet at 1:20, where the roof build-up turns up and meets the façade."
+        },
+        {
+          "file": "Ventilated Facade Detail.png",
+          "title": "Ventilated Façade — D3",
+          "caption": "The cavity behind the cladding at 1:10, with its fixings back to the structure."
+        },
+        {
+          "file": "Ventilated Facade Section.png",
+          "title": "Ventilated Façade — Section",
+          "caption": "The façade through its full height, showing how the cavity runs past each floor."
+        },
+        {
+          "file": "Glass Facade.png",
+          "title": "Glass Façade — D4",
+          "caption": "The glazed entrance at 1:10, where the curtain wall meets the slab edge."
+        }
+      ]
+    },
+    {
+      "index": "04",
+      "title": "Views",
+      "block": "grid",
+      "layout": "row",
+      "captions": false,
+      "body": [
+        "Interior views under the skylight, which is carried on a system of CLT beams."
+      ],
+      "images": [
+        {
+          "file": "Reading Room.webp"
+        },
+        {
+          "file": "Staircase.webp"
+        }
+      ]
+    }
   ]
 }

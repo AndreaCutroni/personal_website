@@ -45,22 +45,25 @@
   --accent-mark: #459d6e;
 }
 
+/* Section 02 marks in #0082c2, per the portfolio index — 4.2:1 as text, so
+   the glyph colour darkens on light and lightens on dark. */
 [data-palette='intelligence'] {
-  --accent: #2f5fa8; /* 6.2:1 */
-  --accent-mark: #2f5fa8;
+  --accent: #00699c; /* 5.9:1 */
+  --accent-mark: #0082c2;
 }
 [data-theme='dark'] [data-palette='intelligence'] {
-  --accent: #7ba4e8; /* 6.9:1 */
-  --accent-mark: #2f5fa8;
+  --accent: #4fb3e8; /* 7.4:1 */
+  --accent-mark: #0082c2;
 }
 
+/* Section 03 marks in #db6530 — 3.5:1 as text on the light ground. */
 [data-palette='construction'] {
-  --accent: #8f5e0a; /* 5.4:1 — #B5651D is 4.3:1 and fails as text */
-  --accent-mark: #b5651d;
+  --accent: #a8471a; /* 5.8:1 */
+  --accent-mark: #db6530;
 }
 [data-theme='dark'] [data-palette='construction'] {
-  --accent: #e0a25c; /* 7.8:1 */
-  --accent-mark: #b5651d;
+  --accent: #db6530; /* 4.9:1 */
+  --accent-mark: #db6530;
 }
 
 @theme inline {

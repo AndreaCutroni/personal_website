@@ -12,6 +12,13 @@ const coversImg = import.meta.glob('./*/cover.{png,jpg,jpeg,webp}', {
   query: '?url',
   import: 'default',
 })
+// A project can lead with a silent looping clip instead of a still. The still
+// stays required — it is what the index grid and rail show.
+const coversVideo = import.meta.glob('./*/cover.{mp4,webm}', {
+  eager: true,
+  query: '?url',
+  import: 'default',
+})
 const drawingsSvg = import.meta.glob('./*/drawings/*.svg', { eager: true, query: '?raw', import: 'default' })
 const drawingsImg = import.meta.glob('./*/drawings/*.{png,jpg,jpeg,webp,gif}', {
   eager: true,
@@ -66,13 +73,18 @@ export const projects = slugs
     const meta = metaModule ? (metaModule.default ?? metaModule) : {}
     const coverSvg = coversSvg[`${prefix}cover.svg`]
     const coverUrl = Object.entries(coversImg).find(([p]) => p.startsWith(prefix))?.[1]
+    const coverVideo = Object.entries(coversVideo).find(([p]) => p.startsWith(prefix))?.[1]
     return {
       order: 999,
       span: 'standard',
       ...meta,
       slug,
       title: meta.title || titleFromSlug(slug),
-      cover: coverSvg ? { svg: coverSvg } : coverUrl ? { url: coverUrl } : null,
+      cover: coverSvg
+        ? { svg: coverSvg }
+        : coverUrl || coverVideo
+          ? { url: coverUrl, video: coverVideo }
+          : null,
       drawings: collect(drawingsSvg, drawingsImg, `${prefix}drawings/`),
       photos: collect({}, photos, `${prefix}photos/`),
     }

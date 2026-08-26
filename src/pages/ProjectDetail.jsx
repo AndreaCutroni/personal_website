@@ -93,10 +93,24 @@ function ProjectSection({ section, workflow, flow, images, scenes }) {
   )
 }
 
-function Drawing({ label, svg, url, showLabel = true, aspect }) {
+function Drawing({ label, svg, url, video, showLabel = true, aspect }) {
   return (
     <figure className="overflow-hidden rounded-lg border border-line bg-surface">
-      {svg ? (
+      {video ? (
+        /* Silent, looping, no controls — this is a hero, not a player.
+           The still is the poster so the frame is never empty while it loads. */
+        <video
+          src={video}
+          poster={url}
+          autoPlay
+          loop
+          muted
+          playsInline
+          aria-label={label}
+          style={aspect ? { aspectRatio: aspect } : undefined}
+          className={aspect ? 'w-full object-cover' : 'h-auto w-full'}
+        />
+      ) : svg ? (
         <div
           className="p-6 text-ink [&_svg]:mx-auto [&_svg]:h-auto [&_svg]:max-h-[440px] [&_svg]:w-full [&_svg]:max-w-full sm:p-8"
           dangerouslySetInnerHTML={{ __html: svg }}
@@ -292,6 +306,7 @@ export default function ProjectDetail() {
               label={project.title}
               svg={project.cover.svg}
               url={project.cover.url}
+              video={project.cover.video}
               showLabel={false}
               aspect="16 / 9"
             />
@@ -337,9 +352,11 @@ export default function ProjectDetail() {
                         />
                       )}
                     </div>
-                    <figcaption className="border-t border-line px-4 py-2 font-mono text-[11px] uppercase tracking-[0.2em] text-muted">
-                      {item.label}
-                    </figcaption>
+                    {project.captions !== false && (
+                      <figcaption className="border-t border-line px-4 py-2 font-mono text-[11px] uppercase tracking-[0.2em] text-muted">
+                        {item.label}
+                      </figcaption>
+                    )}
                   </figure>
                 ),
               }))}
