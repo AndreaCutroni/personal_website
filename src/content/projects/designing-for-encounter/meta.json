@@ -30,15 +30,15 @@
       ],
       "images": [
         {
-          "file": "Closeness Wohnprojekt.png",
+          "file": "Closeness Wohnprojekt.webp",
           "caption": "Wohnprojekt Wien — perimeter"
         },
         {
-          "file": "Closeness Gleis21.png",
+          "file": "Closeness Gleis21.webp",
           "caption": "Gleis21 Wien — double-loaded"
         },
         {
-          "file": "Closeness Spreefeld.png",
+          "file": "Closeness Spreefeld.webp",
           "caption": "Spreefeld Berlin — point-block"
         }
       ]
@@ -53,15 +53,15 @@
       ],
       "images": [
         {
-          "file": "Betweenness Wohnprojekt.png",
+          "file": "Betweenness Wohnprojekt.webp",
           "caption": "Wohnprojekt Wien — perimeter"
         },
         {
-          "file": "Betweenness Gleis21.png",
+          "file": "Betweenness Gleis21.webp",
           "caption": "Gleis21 Wien — double-loaded"
         },
         {
-          "file": "Betweenness Spreefeld.png",
+          "file": "Betweenness Spreefeld.webp",
           "caption": "Spreefeld Berlin — point-block"
         }
       ]
@@ -76,15 +76,15 @@
       ],
       "images": [
         {
-          "file": "Degree Wohnprojekt.png",
+          "file": "Degree Wohnprojekt.webp",
           "caption": "Wohnprojekt Wien — perimeter"
         },
         {
-          "file": "Degree Gleis21.png",
+          "file": "Degree Gleis21.webp",
           "caption": "Gleis21 Wien — double-loaded"
         },
         {
-          "file": "Degree Spreefeld.png",
+          "file": "Degree Spreefeld.webp",
           "caption": "Spreefeld Berlin — point-block"
         }
       ]
@@ -99,15 +99,15 @@
       ],
       "images": [
         {
-          "file": "Shortest Paths Wohnprojekt.png",
+          "file": "Shortest Paths Wohnprojekt.webp",
           "caption": "Wohnprojekt Wien — perimeter"
         },
         {
-          "file": "Shortest Paths Gleis21.png",
+          "file": "Shortest Paths Gleis21.webp",
           "caption": "Gleis21 Wien — double-loaded"
         },
         {
-          "file": "Shortest Paths Spreefeld.png",
+          "file": "Shortest Paths Spreefeld.webp",
           "caption": "Spreefeld Berlin — point-block"
         }
       ]
@@ -122,15 +122,15 @@
       ],
       "images": [
         {
-          "file": "Isovists Wohnprojekt.png",
+          "file": "Isovists Wohnprojekt.webp",
           "caption": "Wohnprojekt Wien — perimeter"
         },
         {
-          "file": "Isovists Gleis21.png",
+          "file": "Isovists Gleis21.webp",
           "caption": "Gleis21 Wien — double-loaded"
         },
         {
-          "file": "Isovists Spreefeld.png",
+          "file": "Isovists Spreefeld.webp",
           "caption": "Spreefeld Berlin — point-block"
         }
       ]
@@ -145,15 +145,15 @@
       ],
       "images": [
         {
-          "file": "Visibility Wohnprojekt.png",
+          "file": "Visibility Wohnprojekt.webp",
           "caption": "Wohnprojekt Wien — perimeter"
         },
         {
-          "file": "Visibility Gleis21.png",
+          "file": "Visibility Gleis21.webp",
           "caption": "Gleis21 Wien — double-loaded"
         },
         {
-          "file": "Visibility Spreefeld.png",
+          "file": "Visibility Spreefeld.webp",
           "caption": "Spreefeld Berlin — point-block"
         }
       ]
