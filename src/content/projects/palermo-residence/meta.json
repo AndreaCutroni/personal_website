@@ -1,6 +1,7 @@
 {
   "order": 4,
-  "span": "tall",
+  "palette": "computation",
+  "title": "Data-Driven Environmental Analysis",
   "tags": [
     "Environmental",
     "Computational Design"
@@ -17,10 +18,139 @@
   "program": "IAAC MaCAD 25/26 — Environmental Analysis",
   "year": "2025",
   "location": "Palermo, Italy",
-  "link": "https://blog.iaac.net/data-driven-environmental-analysis-in-palermo-italy/",
   "description": "Data-driven environmental analysis for a residential development — climate, comfort and daylight steering the massing from the first move.",
   "body": [
-    "A comprehensive environmental assessment for a ~6,500 m² site in a dense residential district of Palermo: two housing blocks and a public park shaped by climate analysis, evolutionary massing optimization (Galapagos), outdoor thermal comfort (UTCI), daylight factor, wind and sea-visibility studies — built on Ladybug, Honeybee and Infrared.city, with voxelization used for design-space exploration.",
-    "The optimized scheme reduces solar radiation on the façades by roughly 30%, reaches a 4% daylight factor against an initial 2.5% target, preserves sea visibility, and brings peak outdoor UTCI down from 37.3 °C to 35.5 °C through tree integration in the park."
+    "A performance-driven environmental analysis informs the design of a residential development and landscape in Palermo. The study integrates climate assessment, massing placement optimization through an evolutionary algorithm driven by solar radiation and sea visibility, outdoor thermal comfort in Honeybee, wind analysis in infrared.city, and a design exploration across voxel-based geometries.",
+    "The final proposal cuts façade solar exposure by roughly a third against a simple box while improving daylight and preserving sea views."
+  ],
+  "sections": [
+    {
+      "index": "01",
+      "title": "Climate Analysis",
+      "block": "grid",
+      "columns": 1,
+      "captions": false,
+      "body": [
+        "The site's baseline: temperature, humidity, wind and radiation for Palermo, establishing which months the design actually has to work against."
+      ],
+      "images": [
+        {
+          "file": "Climate Analysis.png"
+        }
+      ]
+    },
+    {
+      "index": "02",
+      "title": "Massing Placement Optimization",
+      "block": "metrics",
+      "story": true,
+      "body": [
+        "To minimise average façade solar radiation through the hottest months, the study ran a simple box through an evolutionary search over orientation, position and building dimensions. Sea visibility is recovered by rotating the second building."
+      ],
+      "metrics": [
+        {
+          "label": "Sun Hours",
+          "value": "10.8",
+          "unit": "h",
+          "note": "site average"
+        },
+        {
+          "label": "Façade Radiation",
+          "value": "215.2",
+          "unit": "kWh/m²",
+          "note": "simple-box baseline"
+        }
+      ],
+      "scenes": [
+        {
+          "file": "Sun Hours.png",
+          "title": "Sun Hours",
+          "caption": "Annual sun hours across the site, averaging 10.8 hours — the input the placement search optimises against."
+        },
+        {
+          "file": "Solar Radiation.png",
+          "title": "Solar Radiation",
+          "caption": "Façade radiation on the baseline box seen from north-east and south-west, averaging 215.2 kWh/m²."
+        },
+        {
+          "file": "Sea Visibility.png",
+          "title": "Sea Visibility",
+          "caption": "Visibility toward the sea, the competing objective that rotates the second building rather than simply turning it away from the sun."
+        }
+      ]
+    },
+    {
+      "index": "03",
+      "title": "Outdoor Comfort",
+      "block": "story",
+      "body": [
+        "Outdoor comfort is assessed through the UTCI reduction gained from added trees, a comparison of ground materials, and urban wind analysis across the site."
+      ],
+      "scenes": [
+        {
+          "file": "UTCI Evaluation.png",
+          "title": "UTCI Evaluation",
+          "caption": "Universal Thermal Climate Index before and after tree integration, with ground material compared alongside."
+        },
+        {
+          "file": "Wind Analysis.png",
+          "title": "Wind Analysis",
+          "caption": "Dominant and maximum wind speed across the site, run in infrared.city."
+        }
+      ]
+    },
+    {
+      "index": "04",
+      "title": "Design Concept",
+      "block": "grid",
+      "columns": 1,
+      "captions": false,
+      "body": [
+        "Two residential blocks and a public park, laid out from the placement study — the design proposition that the voxel exploration then tests and refines."
+      ],
+      "images": [
+        {
+          "file": "Design Concept.png"
+        }
+      ]
+    },
+    {
+      "index": "05",
+      "title": "Design Exploration",
+      "block": "metrics",
+      "story": true,
+      "body": [
+        "Varying the bounding box's plan dimensions and height generates a field of voxel-based geometries, compared on a parallel-coordinate chart against volume, gross floor area, solar radiation, daylight factor and visibility to select the proposal."
+      ],
+      "metrics": [
+        {
+          "label": "Solar Radiation",
+          "value": "−27.4%",
+          "note": "vs. the simple box"
+        },
+        {
+          "label": "Daylight Factor",
+          "value": "+56%",
+          "note": "vs. the 2.5% target"
+        }
+      ],
+      "scenes": [
+        {
+          "file": "Voxel Exploration.png",
+          "title": "Voxel Field",
+          "caption": "Fifteen voxel-based geometries generated from the bounding box parameters, with the selected proposal outlined."
+        },
+        {
+          "file": "Solar Radiation Result.png",
+          "title": "Solar Radiation",
+          "caption": "The chosen geometry drops façade radiation 27.4% against the simple box."
+        },
+        {
+          "file": "Daylight Factor Result.png",
+          "title": "Daylight Factor",
+          "caption": "Daylight factor lands 56% above the 2.5% target across the residential floors."
+        }
+      ]
+    }
   ]
 }

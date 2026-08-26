@@ -48,6 +48,25 @@ function Arrow({ dir }) {
 }
 
 function Node({ node }) {
+  // A stage that names its sub-steps: filled header over a bordered card,
+  // as the sheet draws it.
+  if (node.items?.length) {
+    return (
+      <div className="flex h-full flex-col">
+        <span className="rounded-t-md bg-accent px-3 py-2 text-center text-[13px] font-medium leading-tight text-ground">
+          {node.label}
+        </span>
+        <ul className="flex flex-1 flex-col justify-center gap-1 rounded-b-md border-2 border-t-0 border-accent px-3 py-3">
+          {node.items.map((item) => (
+            <li key={item} className="text-center text-[13px] leading-tight">
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+    )
+  }
+
   return (
     <span
       className={`flex h-full items-center justify-center rounded-md px-3 py-2 text-center text-[13px] font-medium leading-tight ${

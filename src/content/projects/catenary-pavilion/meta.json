@@ -1,5 +1,6 @@
 {
   "order": 8,
+  "palette": "computation",
   "title": "Catenary Pavilion",
   "tags": [
     "Structural",
@@ -18,5 +19,55 @@
   "body": [
     "Inspired by Félix Candela's Restaurante Los Manantiales, the Catenary Pavilion is a parametric structure whose surface is obtained from the intersection of two hyperbolic paraboloids. The surface is discretized into a waffle structure, with the arches optimized as catenary curves for pure compression behavior.",
     "A 1:1 prototype was realized in MDF using a laser-cutting service, testing the buildability of the parametric geometry and demonstrating how computational form-finding can generate complex, materially efficient shell structures."
+  ],
+
+  "sections": [
+    {
+      "index": "01",
+      "title": "From Félix Candela to Digital Fabrication",
+      "block": "story",
+      "body": [
+        "The starting point is Candela's Restaurante Los Manantiales — a concrete shell whose geometry comes from intersecting hyperbolic paraboloids. Rebuilt parametrically, that same intersection is discretized into a waffle of interlocking ribs, with each arch optimized as a catenary so the structure works in pure compression."
+      ],
+      "scenes": [
+        {
+          "file": "Reference and Hypars.png",
+          "title": "Reference",
+          "caption": "Candela's Los Manantiales alongside the hypar intersection that generates the surface."
+        },
+        {
+          "file": "Waffle Structure.png",
+          "title": "Waffle Structure",
+          "caption": "The surface discretized into two interlocking rib families, each arch drawn as a catenary curve."
+        }
+      ]
+    },
+    {
+      "index": "02",
+      "title": "Construction Process",
+      "block": "grid",
+      "columns": 1,
+      "captions": false,
+      "body": [
+        "Seven assembly steps take the laser-cut MDF ribs from flat parts to the standing shell, each rib slotting into its cross-member without fixings."
+      ],
+      "images": [
+        { "file": "Construction Process.png" }
+      ]
+    },
+    {
+      "index": "03",
+      "title": "Prototype",
+      "block": "grid",
+      "layout": "row",
+      "captions": false,
+      "body": [
+        "The 1:1 prototype, built in MDF through a laser-cutting service — the test of whether the parametric geometry is actually buildable."
+      ],
+      "images": [
+        { "file": "Prototype.webp" },
+        { "file": "Prototype Detail.webp" }
+      ]
+    }
   ]
 }

@@ -1,6 +1,8 @@
 {
   "order": 1,
   "span": "large",
+  "palette": "computation",
+  "title": "Never Ending Cairo Market",
   "tags": [
     "Architecture",
     "Computational Design"
@@ -20,5 +22,114 @@
   "body": [
     "The market is reorganized as a multi-level shopping environment driven by circulation: differential-growth principles generate smooth, fluid pathways connecting the four primary entrances, with two paths displacing vertically into ramps that link the ground floor to the upper levels and storage tucked beneath. The traditional Cairo tessellation is reconstructed parametrically and settled through dynamic relaxation in Kangaroo.",
     "Above, a parametric roof turns the initially flat surface into a highly expressive structure. A heat-map proximity analysis of the flows below controls the roof's deformation, frame sizing and openings, so the light and shadow patterns cast into the market are strategically aligned with the movement beneath."
+  ],
+
+  "sections": [
+    {
+      "index": "01",
+      "title": "Design Concept",
+      "block": "grid",
+      "columns": 1,
+      "captions": false,
+      "body": [
+        "Two computational principles carry the whole scheme. Differential growth generates the circulation and drives the roof; the traditional Cairo tessellation, reconstructed parametrically, defines the roof modules."
+      ],
+      "images": [
+        { "file": "Design Concept.png" }
+      ]
+    },
+    {
+      "index": "02",
+      "title": "Computational Design Methodology",
+      "block": "grid",
+      "columns": 1,
+      "captions": false,
+      "body": [
+        "The circulation layout is the input everything else derives from — pathways settle through dynamic relaxation, then feed the roof's deformation, frame sizing and openings."
+      ],
+      "images": [
+        { "file": "Design Methodology.png" }
+      ]
+    },
+    {
+      "index": "03",
+      "title": "Form Iterations",
+      "block": "grid",
+      "columns": 1,
+      "captions": false,
+      "body": [
+        "Varying the growth parameters produces a family of circulation geometries, each compared for how the resulting paths connect the four entrances."
+      ],
+      "images": [
+        { "file": "Form Iterations.png" }
+      ]
+    },
+    {
+      "index": "04",
+      "title": "Form Finding Process",
+      "block": "grid",
+      "columns": 1,
+      "captions": false,
+      "body": [
+        "Seven steps take the roof from a flat surface to its final form: the Cairo tessellation is applied, frame sizes varied, and points displaced in Z — then the circulation heat map drives both the frame sizing and the point movement, so the openings above line up with the flows beneath."
+      ],
+      "images": [
+        { "file": "Form Finding Steps.png" }
+      ]
+    },
+    {
+      "index": "05",
+      "title": "Exploded View",
+      "block": "grid",
+      "columns": 1,
+      "captions": false,
+      "body": [
+        "The intervention separated into its three layers — the new roof carrying the Cairo tessellation, the support structure beneath it, and the existing 1912 market it sits over."
+      ],
+      "images": [
+        { "file": "Exploded View.png" }
+      ]
+    },
+    {
+      "index": "06",
+      "title": "Drawings",
+      "block": "story",
+      "aspect": "4 / 3",
+      "body": [
+        "The market resolved across levels, with the roof reading as a single continuous surface over the restored historic shell."
+      ],
+      "scenes": [
+        {
+          "file": "Aerial View.png",
+          "title": "Aerial View",
+          "caption": "The deformed roof seen from above, its openings tracking the circulation below."
+        },
+        {
+          "file": "Ground Floor.png",
+          "title": "Ground Floor",
+          "caption": "Market level, with the differential-growth pathways connecting all four entrances."
+        },
+        {
+          "file": "1st Floor.png",
+          "title": "First Floor",
+          "caption": "Upper level, reached by the two pathways that displace vertically into ramps."
+        },
+        {
+          "file": "Longitudinal Section.png",
+          "title": "Longitudinal Section",
+          "caption": "The long section through the market, showing the roof's deformation against the existing structure."
+        },
+        {
+          "file": "Transversal Section.png",
+          "title": "Transversal Section",
+          "caption": "Cross section through the market hall and the storage tucked beneath the ramps."
+        },
+        {
+          "file": "Interior View.webp",
+          "title": "Interior",
+          "caption": "Under the roof — light and shadow patterns cast by the tessellated openings onto the market floor."
+        }
+      ]
+    }
   ]
 }

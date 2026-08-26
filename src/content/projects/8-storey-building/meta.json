@@ -1,6 +1,7 @@
 {
   "order": 9,
-  "title": "8-Storey Building",
+  "palette": "computation",
+  "title": "8-Storey Building Structural Design",
   "tags": [
     "Structural"
   ],
@@ -17,5 +18,42 @@
   "body": [
     "A complete structural design for an 8-storey mixed residential and commercial building with a reinforced-concrete framed structure, covering slabs, beams, columns, stairs and foundations.",
     "Static and seismic verifications follow Italian technical standards (NTC), with the full calculation and drafting carried out in AutoCAD, SAP2000 and Excel."
+  ],
+
+  "sections": [
+    {
+      "index": "01",
+      "title": "Framed Structure",
+      "block": "grid",
+      "columns": 1,
+      "captions": false,
+      "body": [
+        "The reinforced-concrete frame in plan — column grid, primary and secondary beams, and the stair and lift cores that carry the seismic action."
+      ],
+      "images": [
+        { "file": "Structural Plan.png" }
+      ]
+    },
+    {
+      "index": "02",
+      "title": "Slab",
+      "block": "story",
+      "aspect": "4 / 3",
+      "body": [
+        "The slab worked through from layout to reinforcement: the one-way system spanning between beams, its section build-up, and the bar schedule that follows from the static and seismic verifications."
+      ],
+      "scenes": [
+        {
+          "file": "Slab Plan.png",
+          "title": "Layout and Section",
+          "caption": "Slab layout across the floor plate, with the section detail showing the build-up through the depth."
+        },
+        {
+          "file": "Slab Reinforcement.png",
+          "title": "Reinforcement",
+          "caption": "Bar layout and schedule, sized from the static and seismic verifications to NTC."
+        }
+      ]
+    }
   ]
 }

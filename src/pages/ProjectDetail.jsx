@@ -61,7 +61,12 @@ function ProjectSection({ section, workflow, flow, images, scenes }) {
               {section.story ? (
                 <StoryPlayer scenes={scenes} aspect={section.aspect} />
               ) : (
-                <ImageGrid items={images} columns={section.columns ?? 2} />
+                <ImageGrid
+                  items={images}
+                  columns={section.columns ?? 2}
+                  layout={section.layout}
+                  captions={section.captions !== false}
+                />
               )}
             </div>
           </>
