@@ -16,8 +16,8 @@
     "Autodesk Forma",
     "Ladybug"
   ],
-  "team": "Andrea Cutroni, Eva Vasileska, Chloe Nguyen, Eleni Maglari, Rania Chihaoui, Eduardo Martinez, Elena Corio, Symon Kipkemei",
-  "program": "IAAC MaCAD 25/26",
+  "team": "Andrea Cutroni, Eva Vasileska, Chloe Nguyen, Eleni Maglari, Rania Chihaoui, Eduardo Martinez, Elena Corio, Symon Kipekemi",
+  "program": "IAAC MaCAD 25/26 — BIMSC Studio",
   "year": "2026",
   "location": "Santiago, Chile",
   "description": "Program strategy for a 1-million-sqm vertical district in Santiago, Chile — translating human needs into the massing and floor allocation of a hyperbuilding.",
@@ -170,5 +170,6 @@
         }
       ]
     }
-  ]
+  ],
+  "link": "https://blog.iaac.net/hyperbuilding-03-program-team/"
 }

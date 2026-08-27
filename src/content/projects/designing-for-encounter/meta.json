@@ -10,8 +10,8 @@
     "topologicpy",
     "Space Syntax"
   ],
-  "team": "Andrea Cutroni, Elena Corio, Symon Kipkemei, Giovanni Carlo Volpe",
-  "program": "IAAC MaCAD 25/26",
+  "team": "Andrea Cutroni, Elena Corio, Symon Kipekemi, Giovanni Carlo Volpe",
+  "program": "IAAC MaCAD 25/26 — Graph Machine Learning",
   "year": "2026",
   "location": "",
   "description": "Spatial-network analysis of three European cohousing projects, testing whether circulation design can be engineered for chance social encounters.",
@@ -181,5 +181,6 @@
         }
       ]
     }
-  ]
+  ],
+  "link": "https://blog.iaac.net/designing-for-encounter-how-spatial-analysis-reveals-the-social-potential-of-circulation-spaces/"
 }

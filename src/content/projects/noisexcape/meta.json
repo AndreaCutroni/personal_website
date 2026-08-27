@@ -13,8 +13,8 @@
     "PCA",
     "SHAP"
   ],
-  "team": "Andrea Cutroni, Elena Corio, Symon Kipkemei, Giovanni Carlo Volpe",
-  "program": "IAAC MaCAD 25/26",
+  "team": "Andrea Cutroni, Elena Corio, Symon Kipekemi, Giovanni Carlo Volpe",
+  "program": "IAAC MaCAD 25/26 — Data Encoding",
   "year": "2026",
   "location": "Barcelona, Spain",
   "description": "Predicting urban noise levels from open spatial data alone, benchmarking machine-learning models against costly traditional noise mapping.",
@@ -242,5 +242,6 @@
         }
       ]
     }
-  ]
+  ],
+  "link": "https://blog.iaac.net/noisexcape-can-open-data-help-us-predict-urban-noise/"
 }
