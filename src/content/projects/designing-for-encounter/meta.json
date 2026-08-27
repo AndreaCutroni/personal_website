@@ -22,20 +22,43 @@
   "sections": [
     {
       "index": "01",
+      "title": "Graph",
+      "block": "grid",
+      "columns": 1,
+      "body": [
+        "Every analysis that follows runs on the same structure: each room becomes a node typed by what it is, and every door or threshold between two rooms becomes an edge. What the three buildings differ in is not the drawing but the shape of that graph — a perimeter block, a double-loaded corridor and a point-block produce three different circulation topologies from the same set of room types."
+      ],
+      "images": [
+        {
+          "file": "Graph Wohnprojekt.png",
+          "caption": "Wohnprojekt Wien — double-loaded"
+        },
+        {
+          "file": "Graph Gleis21.png",
+          "caption": "Gleis21 Wien — perimeter"
+        },
+        {
+          "file": "Graph Spreefeld.png",
+          "caption": "Spreefeld Berlin — point-block"
+        }
+      ]
+    },
+    {
+      "index": "02",
       "title": "Closeness Centrality",
       "block": "grid",
       "columns": 3,
       "body": [
-        "How near every space is to every other, measured through the circulation graph rather than in metres. The perimeter block spreads access evenly; the double-loaded corridor concentrates it along one line; the point-block pulls it into a single core."
+        "How near every space is to every other, measured through the circulation graph rather than in metres. The perimeter walkway spreads access evenly; the double-loaded corridor concentrates it along one line; in the point-block, integration is driven by the corridor rather than a single core."
       ],
       "images": [
         {
           "file": "Closeness Wohnprojekt.webp",
-          "caption": "Wohnprojekt Wien — perimeter"
+          "caption": "Wohnprojekt Wien — double-loaded"
         },
         {
           "file": "Closeness Gleis21.webp",
-          "caption": "Gleis21 Wien — double-loaded"
+          "caption": "Gleis21 Wien — perimeter"
         },
         {
           "file": "Closeness Spreefeld.webp",
@@ -44,7 +67,7 @@
       ]
     },
     {
-      "index": "02",
+      "index": "03",
       "title": "Betweenness Centrality",
       "block": "grid",
       "columns": 3,
@@ -54,11 +77,11 @@
       "images": [
         {
           "file": "Betweenness Wohnprojekt.webp",
-          "caption": "Wohnprojekt Wien — perimeter"
+          "caption": "Wohnprojekt Wien — double-loaded"
         },
         {
           "file": "Betweenness Gleis21.webp",
-          "caption": "Gleis21 Wien — double-loaded"
+          "caption": "Gleis21 Wien — perimeter"
         },
         {
           "file": "Betweenness Spreefeld.webp",
@@ -67,7 +90,7 @@
       ]
     },
     {
-      "index": "03",
+      "index": "04",
       "title": "Degree Centrality",
       "block": "grid",
       "columns": 3,
@@ -77,11 +100,11 @@
       "images": [
         {
           "file": "Degree Wohnprojekt.webp",
-          "caption": "Wohnprojekt Wien — perimeter"
+          "caption": "Wohnprojekt Wien — double-loaded"
         },
         {
           "file": "Degree Gleis21.webp",
-          "caption": "Gleis21 Wien — double-loaded"
+          "caption": "Gleis21 Wien — perimeter"
         },
         {
           "file": "Degree Spreefeld.webp",
@@ -90,7 +113,7 @@
       ]
     },
     {
-      "index": "04",
+      "index": "05",
       "title": "Shortest Paths",
       "block": "grid",
       "columns": 3,
@@ -100,11 +123,11 @@
       "images": [
         {
           "file": "Shortest Paths Wohnprojekt.webp",
-          "caption": "Wohnprojekt Wien — perimeter"
+          "caption": "Wohnprojekt Wien — double-loaded"
         },
         {
           "file": "Shortest Paths Gleis21.webp",
-          "caption": "Gleis21 Wien — double-loaded"
+          "caption": "Gleis21 Wien — perimeter"
         },
         {
           "file": "Shortest Paths Spreefeld.webp",
@@ -113,7 +136,7 @@
       ]
     },
     {
-      "index": "05",
+      "index": "06",
       "title": "Isovists",
       "block": "grid",
       "columns": 3,
@@ -123,11 +146,11 @@
       "images": [
         {
           "file": "Isovists Wohnprojekt.webp",
-          "caption": "Wohnprojekt Wien — perimeter"
+          "caption": "Wohnprojekt Wien — double-loaded"
         },
         {
           "file": "Isovists Gleis21.webp",
-          "caption": "Gleis21 Wien — double-loaded"
+          "caption": "Gleis21 Wien — perimeter"
         },
         {
           "file": "Isovists Spreefeld.webp",
@@ -136,7 +159,7 @@
       ]
     },
     {
-      "index": "06",
+      "index": "07",
       "title": "Visibility Analysis",
       "block": "grid",
       "columns": 3,
@@ -146,11 +169,11 @@
       "images": [
         {
           "file": "Visibility Wohnprojekt.webp",
-          "caption": "Wohnprojekt Wien — perimeter"
+          "caption": "Wohnprojekt Wien — double-loaded"
         },
         {
           "file": "Visibility Gleis21.webp",
-          "caption": "Gleis21 Wien — double-loaded"
+          "caption": "Gleis21 Wien — perimeter"
         },
         {
           "file": "Visibility Spreefeld.webp",

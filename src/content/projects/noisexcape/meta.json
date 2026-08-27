@@ -28,13 +28,18 @@
       "title": "Noise Data",
       "block": "grid",
       "columns": 1,
-      "captions": false,
       "body": [
-        "Barcelona’s measured noise map, projected onto the OSM road network — every road segment carrying the level recorded within ten metres of it. This is what the models are asked to reproduce from spatial data alone, and what an equivalent map would otherwise cost a survey to produce."
+        "Barcelona’s measured noise map, projected onto the OSM road network — every segment carrying the level recorded within ten metres of it, for day, evening and night. This is what the models are asked to reproduce from spatial data alone, and what an equivalent map would otherwise cost a survey to produce.",
+        "The distribution shifts rather than shrinks after dark: the city loses its loudest streets but gains a mass of segments in the 45–55 dB range, so the night model is predicting a different problem, not a quieter version of the same one."
       ],
       "images": [
         {
-          "file": "Noise Levels.webp"
+          "file": "Noise Levels.png",
+          "caption": "Measured levels by period"
+        },
+        {
+          "file": "Noise Distribution.png",
+          "caption": "Streets per noise class, day / evening / night"
         }
       ]
     },
@@ -147,27 +152,36 @@
     {
       "index": "03",
       "title": "Feature Exploration",
-      "block": "grid",
-      "columns": 2,
+      "block": "story",
+      "aspect": "16 / 9",
       "body": [
-        "Eighteen features were extracted per road segment. Four of them, mapped across the city: two space-syntax centralities describing how the network is used, and two descriptions of the street itself. Read together they already anticipate the noise map — the through-routes and the wide trunk roads are the loud ones."
+        "Eighteen features per road segment, in five families: what the road is, how the network uses it, where movement stops and starts, and what surrounds it. Each is mapped across the whole city, and each carries the reason it should predict noise at all."
       ],
-      "images": [
+      "scenes": [
         {
-          "file": "Betweenness Map.webp",
-          "caption": "Betweenness centrality"
+          "file": "Road Features.png",
+          "title": "Road",
+          "caption": "Road category and total building-to-building width — the structural predictors, standing in for traffic capacity, speed and how far sound carries."
         },
         {
-          "file": "Straightness Map.webp",
-          "caption": "Straightness centrality"
+          "file": "Centrality Features.png",
+          "title": "Centrality",
+          "caption": "Betweenness accumulates through-traffic; straightness marks the streets that carry it fast and continuously."
         },
         {
-          "file": "Road Category.webp",
-          "caption": "Road category, trunk to living-street"
+          "file": "Closeness Features.png",
+          "title": "Closeness",
+          "caption": "Global closeness finds the centre that attracts movement; the 400 m radius finds local circulation, and with it fine-grained variation."
         },
         {
-          "file": "Street Width.webp",
-          "caption": "Total street width"
+          "file": "Point Features.png",
+          "title": "Points",
+          "caption": "Traffic signals, transport stops and points of interest within 50 m — the locations that force stop-and-go movement."
+        },
+        {
+          "file": "Land Use Features.png",
+          "title": "Land Use",
+          "caption": "Green, industrial and commercial share within 50 m. Green cover is the one feature that consistently pushes the prediction down."
         }
       ]
     },
@@ -178,7 +192,7 @@
       "columns": 1,
       "captions": false,
       "body": [
-        "The eighteen features are heavily correlated, so principal component analysis was used to compress them. The cumulative explained-variance curve is what sets the cut: most of the information survives in a fraction of the components."
+        "Most of the eighteen features correlate only moderately with each other, which is encouraging for modelling but leaves little for principal component analysis to compress. The elbow sits at PC2, but explained variance only flattens to nothing around PC16 — so most of the set is doing some work, and little can be discarded outright."
       ],
       "images": [
         {
@@ -206,6 +220,25 @@
         {
           "file": "Classification.png",
           "caption": "Classification into noise bands"
+        }
+      ]
+    },
+    {
+      "index": "06",
+      "title": "SHAP Analysis",
+      "block": "grid",
+      "columns": 1,
+      "body": [
+        "What the model is actually using. Across the whole test set, traffic signals and global closeness dominate, with betweenness and straightness behind them — the movement features outweigh the physical description of the street. The waterfall plots take single segments the model got worst and show which feature pushed each prediction away from the truth."
+      ],
+      "images": [
+        {
+          "file": "SHAP Regression.png",
+          "caption": "Regression — per-segment waterfalls and global feature impact"
+        },
+        {
+          "file": "SHAP Classification.png",
+          "caption": "Classification — the same ranking, split by predicted noise band"
         }
       ]
     }

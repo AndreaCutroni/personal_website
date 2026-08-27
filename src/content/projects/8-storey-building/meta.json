@@ -33,7 +33,7 @@
         {
           "file": "Structural Plan.png",
           "title": "Framed Structure",
-          "caption": "The reinforced-concrete frame in plan — column grid, primary and secondary beams, and the cores that carry the seismic action."
+          "caption": "The reinforced-concrete frame in plan — column grid, primary and secondary beams — the frame alone resists the seismic action, with no cores or shear walls."
         },
         {
           "file": "Slab Plan.png",

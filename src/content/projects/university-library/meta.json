@@ -18,7 +18,7 @@
   "description": "Architectural and structural design of a two-level university library in reinforced concrete, formed by two overlapping rotated rectangular blocks.",
   "body": [
     "An integrated architectural and structural design for a new university library with two levels and a basement garage, formed by two overlapping, rotated rectangular blocks in reinforced concrete with circular pillars and bidirectional slabs.",
-    "A steel structure supports the central staircase while a system of CLT beams carries the skylight; the terrace features a green roof, the envelope uses a ventilated façade, and the main entrance opens behind a glass façade. The project was developed in AutoCAD 2D, Revit and Enscape."
+    "A steel structure supports the central staircase while a system of glulam beams carries the skylight; the terrace features a green roof, the envelope uses a ventilated façade, and the main entrance opens behind a glass façade. The project was developed in AutoCAD 2D, Revit and Enscape."
   ],
   "sections": [
     {
@@ -114,7 +114,7 @@
       "layout": "row",
       "captions": false,
       "body": [
-        "Interior views under the skylight, which is carried on a system of CLT beams."
+        "Interior views under the skylight, which is carried on a system of glulam beams."
       ],
       "images": [
         {

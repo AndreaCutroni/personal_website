@@ -18,7 +18,7 @@
   "description": "A Grasshopper structure inspired by Félix Candela's hypar shells, discretized into a waffle system of optimized catenary arches.",
   "body": [
     "Inspired by Félix Candela's Restaurante Los Manantiales, the Catenary Pavilion is a parametric structure whose surface is obtained from the intersection of two hyperbolic paraboloids. The surface is discretized into a waffle structure, with the arches optimized as catenary curves for pure compression behavior.",
-    "A 1:1 prototype was realized in MDF using a laser-cutting service, testing the buildability of the parametric geometry and demonstrating how computational form-finding can generate complex, materially efficient shell structures."
+    "A 1:20 model was realized in MDF using a laser-cutting service, testing the buildability of the parametric geometry and demonstrating how computational form-finding can generate complex, materially efficient shell structures."
   ],
 
   "sections": [
@@ -62,7 +62,7 @@
       "layout": "row",
       "captions": false,
       "body": [
-        "The 1:1 prototype, built in MDF through a laser-cutting service — the test of whether the parametric geometry is actually buildable."
+        "The 1:20 model, built in MDF through a laser-cutting service — the test of whether the parametric geometry is actually buildable."
       ],
       "images": [
         { "file": "Prototype.webp" },
