@@ -4,7 +4,8 @@
   "title": "Catenary Pavilion",
   "tags": [
     "Structural",
-    "Computational Design"
+    "Computational Design",
+    "Digital Fabrication"
   ],
   "stack": [
     "Rhino",
@@ -20,7 +21,6 @@
     "Inspired by Félix Candela's Restaurante Los Manantiales, the Catenary Pavilion is a parametric structure whose surface is obtained from the intersection of two hyperbolic paraboloids. The surface is discretized into a waffle structure, with the arches optimized as catenary curves for pure compression behavior.",
     "A 1:20 model was realized in MDF using a laser-cutting service, testing the buildability of the parametric geometry and demonstrating how computational form-finding can generate complex, materially efficient shell structures."
   ],
-
   "sections": [
     {
       "index": "01",
@@ -52,7 +52,9 @@
         "Seven assembly steps take the laser-cut MDF ribs from flat parts to the standing shell, each rib slotting into its cross-member without fixings."
       ],
       "images": [
-        { "file": "Construction Process.png" }
+        {
+          "file": "Construction Process.png"
+        }
       ]
     },
     {
@@ -65,8 +67,12 @@
         "The 1:20 model, built in MDF through a laser-cutting service — the test of whether the parametric geometry is actually buildable."
       ],
       "images": [
-        { "file": "Prototype.webp" },
-        { "file": "Prototype Detail.webp" }
+        {
+          "file": "Prototype.webp"
+        },
+        {
+          "file": "Prototype Detail.webp"
+        }
       ]
     }
   ]

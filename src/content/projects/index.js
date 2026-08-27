@@ -92,3 +92,14 @@ export const projects = slugs
   .sort((a, b) => a.order - b.order || a.slug.localeCompare(b.slug))
 
 export const getProject = (slug) => projects.find((p) => p.slug === slug)
+
+/* The three sections the portfolio is organised into. A project's palette
+   already names its section, so the category is read from that rather than
+   stored twice. Tags stay free-form underneath. */
+export const categories = [
+  { id: 'computation', label: 'Computational Design' },
+  { id: 'construction', label: 'BIM & Smart Construction' },
+  { id: 'intelligence', label: 'AI & Machine Learning' },
+]
+
+export const categoryOf = (palette) => categories.find((c) => c.id === palette)

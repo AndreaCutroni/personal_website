@@ -9,7 +9,7 @@ import FlowDiagram from '../components/project/FlowDiagram'
 import MetricRow from '../components/project/MetricRow'
 import StoryPlayer from '../components/project/StoryPlayer'
 import ImageGrid from '../components/project/ImageGrid'
-import { projects, getProject } from '../content/projects'
+import { projects, getProject, categoryOf } from '../content/projects'
 
 /* One dossier section: heading, chevron, and everything under it collapsing
    together — the same toggle used on the About timeline. */
@@ -174,6 +174,8 @@ export default function ProjectDetail() {
       })
       .filter(Boolean)
 
+  const category = categoryOf(project.palette)
+
   const meta = [
     ['Team', project.team],
     ['Architect', project.architect],
@@ -197,10 +199,13 @@ export default function ProjectDetail() {
                 key={p.slug}
                 to={`/projects/${p.slug}`}
                 aria-current={p.slug === project.slug ? 'page' : undefined}
+                /* Each card carries its own palette, so the border reads as
+                   that project's category rather than the one being viewed. */
+                data-palette={p.palette}
                 className={`group block shrink-0 overflow-hidden rounded-md border bg-surface transition-colors duration-200 ${
                   p.slug === project.slug
                     ? 'border-accent-mark'
-                    : 'border-line hover:border-accent-mark/60'
+                    : 'border-accent-mark/35 hover:border-accent-mark/70'
                 }`}
               >
                 <div className="relative aspect-[16/10] overflow-hidden">
@@ -235,12 +240,22 @@ export default function ProjectDetail() {
 
         <div className="min-w-0">
         <Reveal>
-          <Link
-            to="/projects"
-            className="font-mono text-xs uppercase tracking-[0.2em] text-muted transition-colors duration-200 hover:text-accent"
-          >
-            ← All projects
-          </Link>
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+            <Link
+              to="/projects"
+              className="font-mono text-xs uppercase tracking-[0.2em] text-muted transition-colors duration-200 hover:text-accent"
+            >
+              ← All projects
+            </Link>
+            {category && (
+              <Link
+                to={`/projects?category=${category.id}`}
+                className="rounded-full border border-accent-mark px-3 py-1 font-mono text-[11px] uppercase tracking-[0.12em] text-accent transition-colors duration-200 hover:bg-accent-mark hover:text-ink"
+              >
+                {category.label}
+              </Link>
+            )}
+          </div>
 
           <div className="mt-10 grid gap-x-16 gap-y-10 lg:grid-cols-[1fr_280px] lg:items-start">
             <div>
@@ -249,14 +264,15 @@ export default function ProjectDetail() {
               </h1>
               {(project.tags ?? []).length > 0 && (
                 <div className="mt-4 flex flex-wrap gap-2">
+                  {/* Labels, not controls — the category button above is what
+                      leads back to a filtered index. */}
                   {project.tags.map((tag) => (
-                    <Link
+                    <span
                       key={tag}
-                      to="/projects"
-                      className="rounded-full bg-accent-mark/20 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.15em] text-accent transition-colors duration-200 hover:bg-accent-mark/35"
+                      className="rounded-full bg-accent-mark/20 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.15em] text-accent"
                     >
                       {tag}
-                    </Link>
+                    </span>
                   ))}
                 </div>
               )}

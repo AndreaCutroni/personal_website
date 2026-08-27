@@ -1,17 +1,22 @@
-import { useState } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import PageTransition from '../components/PageTransition'
 import Reveal from '../components/Reveal'
-import { projects } from '../content/projects'
-
-const allTags = [...new Set(projects.flatMap((p) => p.tags ?? []))].sort()
+import { projects, categories } from '../content/projects'
 
 export default function Projects() {
   const reduce = useReducedMotion()
-  const [activeTag, setActiveTag] = useState(null)
 
-  const shown = activeTag ? projects.filter((p) => (p.tags ?? []).includes(activeTag)) : projects
+  /* The filter lives in the URL, so a project page can link straight to its
+     own category and the choice survives a reload or a shared link. */
+  const [params, setParams] = useSearchParams()
+  const requested = params.get('category')
+  const activeCategory = categories.some((c) => c.id === requested) ? requested : null
+  const setActiveCategory = (id) => setParams(id ? { category: id } : {}, { replace: true })
+
+  const shown = activeCategory
+    ? projects.filter((p) => p.palette === activeCategory)
+    : projects
 
   const grid = {
     hidden: {},
@@ -26,8 +31,10 @@ export default function Projects() {
     },
   }
 
+  /* Sized to keep all four on one line at the container width; below that the
+     row scrolls sideways rather than wrapping. */
   const filterClass = (isActive) =>
-    `rounded-full border px-3.5 py-1.5 font-mono text-xs uppercase tracking-[0.15em] transition-colors duration-200 hover:bg-accent-mark hover:text-ink hover:border-accent-mark ${
+    `shrink-0 whitespace-nowrap rounded-full border px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.12em] transition-colors duration-200 hover:bg-accent-mark hover:text-ink hover:border-accent-mark ${
       isActive
         ? 'border-accent-mark bg-accent-mark text-ink'
         : 'border-line text-muted'
@@ -39,25 +46,29 @@ export default function Projects() {
         <Reveal>
           <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">Projects</h1>
 
-          <div className="mt-8 flex flex-wrap gap-2">
-            <button type="button" onClick={() => setActiveTag(null)} className={filterClass(!activeTag)}>
+          <div className="mt-8 -mx-6 flex gap-2 overflow-x-auto px-6 pb-1">
+            <button
+              type="button"
+              onClick={() => setActiveCategory(null)}
+              className={filterClass(!activeCategory)}
+            >
               All
             </button>
-            {allTags.map((tag) => (
+            {categories.map(({ id, label }) => (
               <button
-                key={tag}
+                key={id}
                 type="button"
-                onClick={() => setActiveTag(tag === activeTag ? null : tag)}
-                className={filterClass(tag === activeTag)}
+                onClick={() => setActiveCategory(id === activeCategory ? null : id)}
+                className={filterClass(id === activeCategory)}
               >
-                {tag}
+                {label}
               </button>
             ))}
           </div>
         </Reveal>
 
         <motion.div
-          key={activeTag ?? 'all'}
+          key={activeCategory ?? 'all'}
           variants={grid}
           initial="hidden"
           animate="show"
@@ -101,7 +112,9 @@ export default function Projects() {
                       {project.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="rounded-full bg-accent-mark/15 px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.15em] text-accent transition-colors duration-200 hover:bg-accent-mark hover:text-ink"
+                          /* Labels, not controls — the three category pills
+                             above do the filtering, so these stay put on hover. */
+                          className="rounded-full bg-accent-mark/15 px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.15em] text-accent"
                         >
                           {tag}
                         </span>
