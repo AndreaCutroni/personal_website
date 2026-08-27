@@ -255,6 +255,18 @@ export default function ProjectDetail() {
                 {category.label}
               </Link>
             )}
+            {project.sheets && (
+              /* No download attribute: this opens the browser's PDF viewer, so
+                 the sheets can be read first and saved from there if wanted. */
+              <a
+                href={project.sheets}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="ml-auto font-mono text-xs uppercase tracking-[0.2em] text-muted transition-colors duration-200 hover:text-accent"
+              >
+                Portfolio sheets ↗
+              </a>
+            )}
           </div>
 
           <div className="mt-10 grid gap-x-16 gap-y-10 lg:grid-cols-[1fr_280px] lg:items-start">

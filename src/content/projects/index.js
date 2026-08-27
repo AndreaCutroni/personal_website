@@ -30,6 +30,13 @@ const photos = import.meta.glob('./*/photos/*.{png,jpg,jpeg,webp,gif}', {
   query: '?url',
   import: 'default',
 })
+// The project's pages cut out of the portfolio, offered as a preview rather
+// than a download — the browser's own viewer has the save button.
+const sheets = import.meta.glob('./*/sheets.pdf', {
+  eager: true,
+  query: '?url',
+  import: 'default',
+})
 
 const slugOf = (path) => path.split('/')[1]
 
@@ -87,6 +94,7 @@ export const projects = slugs
           : null,
       drawings: collect(drawingsSvg, drawingsImg, `${prefix}drawings/`),
       photos: collect({}, photos, `${prefix}photos/`),
+      sheets: sheets[`${prefix}sheets.pdf`] ?? null,
     }
   })
   .sort((a, b) => a.order - b.order || a.slug.localeCompare(b.slug))
