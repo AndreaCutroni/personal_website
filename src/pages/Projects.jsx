@@ -44,7 +44,20 @@ export default function Projects() {
     <PageTransition>
       <main className="mx-auto max-w-3xl px-6 pb-24 pt-32">
         <Reveal>
-          <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">Projects</h1>
+          <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-3">
+            <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">Projects</h1>
+            {/* Lives in public/ rather than the bundle, so it keeps a stable,
+                shareable URL and a filename worth saving. No download
+                attribute: it opens in the browser's PDF viewer first. */}
+            <a
+              href="/Andrea-Cutroni-Portfolio.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-mono text-xs uppercase tracking-[0.2em] text-muted transition-colors duration-200 hover:text-accent"
+            >
+              Full portfolio ↗
+            </a>
+          </div>
 
           <div className="mt-8 -mx-6 flex gap-2 overflow-x-auto px-6 pb-1">
             <button
