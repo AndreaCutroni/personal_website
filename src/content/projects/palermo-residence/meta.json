@@ -21,7 +21,7 @@
   "description": "Data-driven environmental analysis for a residential development — climate, comfort and daylight steering the massing from the first move.",
   "body": [
     "A performance-driven environmental analysis informs the design of a residential development and landscape in Palermo. The study integrates climate assessment, massing placement optimization through an evolutionary algorithm driven by solar radiation and sea visibility, outdoor thermal comfort in Honeybee, wind analysis in infrared.city, and a design exploration across voxel-based geometries.",
-    "The final proposal cuts façade solar exposure by roughly a third against a simple box while improving daylight and preserving sea views."
+    "The final proposal cuts façade solar exposure by about 30% against a simple box while improving daylight and preserving sea views."
   ],
   "sections": [
     {
@@ -152,5 +152,6 @@
         }
       ]
     }
-  ]
+  ],
+  "link": "https://blog.iaac.net/data-driven-environmental-analysis-in-palermo-italy/"
 }

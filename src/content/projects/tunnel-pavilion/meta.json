@@ -14,14 +14,13 @@
     "Crystallon"
   ],
   "team": "Andrea Cutroni, Eleni Maglari",
-  "program": "IAAC MaCAD 25/26",
+  "program": "IAAC MaCAD 25/26 — Structural Optimization",
   "year": "2025",
   "description": "A lattice pavilion structure evaluated through shell analysis, catenary form-finding and beam optimization for 3D-printable fabrication.",
   "body": [
     "Tunnel Pavilion investigates the design and evaluation of a lattice structure using computational geometry and structural optimization. The workflow begins with a shell analysis to understand stress distribution and deflection behaviour, which then guides the lattice design.",
     "The structure is converted into a lattice system and analysed under self-weight and wind loads using recycled reinforced-glass beam elements, with lattice topologies compared for both structural performance and fabrication efficiency."
   ],
-
   "flow": {
     "columns": 3,
     "rows": 1,
@@ -30,27 +29,43 @@
         "label": "Geometry Exploration",
         "col": 1,
         "row": 1,
-        "items": ["Parametric Surface Equation", "Catenary Curves"]
+        "items": [
+          "Parametric Surface Equation",
+          "Catenary Curves"
+        ]
       },
       {
         "label": "Shell Analysis",
         "col": 2,
         "row": 1,
-        "items": ["FEM Model", "Stress Lines"]
+        "items": [
+          "FEM Model",
+          "Stress Lines"
+        ]
       },
       {
         "label": "Lattice Structure Analysis",
         "col": 3,
         "row": 1,
-        "items": ["Lattice Structure Comparison", "Optimization Process"]
+        "items": [
+          "Lattice Structure Comparison",
+          "Optimization Process"
+        ]
       }
     ],
     "arrows": [
-      { "col": 1, "row": 1, "dir": "right" },
-      { "col": 2, "row": 1, "dir": "right" }
+      {
+        "col": 1,
+        "row": 1,
+        "dir": "right"
+      },
+      {
+        "col": 2,
+        "row": 1,
+        "dir": "right"
+      }
     ]
   },
-
   "sections": [
     {
       "index": "01",
@@ -157,8 +172,11 @@
       "columns": 1,
       "captions": false,
       "images": [
-        { "file": "Lattice Structure Analysis.png" }
+        {
+          "file": "Lattice Structure Analysis.png"
+        }
       ]
     }
-  ]
+  ],
+  "link": "https://blog.iaac.net/pavilion-tunnel/"
 }
