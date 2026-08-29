@@ -401,6 +401,19 @@ export default function ProjectDetail() {
           </Reveal>
         )}
 
+        {/* Also outside the sections: a strip of media that belongs with the
+            cover rather than under any one heading. */}
+        {project.gallery && (
+          <Reveal className="mt-6">
+            <ImageGrid
+              items={resolve(project.gallery.images)}
+              columns={project.gallery.columns ?? 3}
+              layout={project.gallery.layout}
+              captions={project.gallery.captions !== false}
+            />
+          </Reveal>
+        )}
+
         {sections.map((section) => (
           <Reveal key={section.index} className="mt-10">
             <ProjectSection

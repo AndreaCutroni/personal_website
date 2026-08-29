@@ -18,15 +18,32 @@
   ],
   "team": "Andrea Cutroni",
   "architect": "",
-  "program": "University of Rome Tor Vergata — Research Scholarship",
+  "program": "University of Rome Tor Vergata — Research",
   "year": "2023–2024",
   "location": "",
   "status": "",
   "description": "A parametric graphic-interpolation method between topology-optimized limit cases, verified by FEM and realized as a 3D-printed, laser-cut pavilion.",
   "body": [
-    "This research scholarship develops a Grasshopper workflow that performs graphic interpolation between the polylines of two topology-optimized limit-case geometries, generated with the SIMP method, exploring the full design space in between rather than a single optimized form.",
+    "This research develops a Grasshopper workflow that performs graphic interpolation between the polylines of two topology-optimized limit-case geometries, generated with the SIMP method, exploring the full design space in between rather than a single optimized form.",
     "A demonstrator pavilion, based on a catenary shape, combines the interpolation method with shading criteria: Karamba3D verifies the stress distribution while Ladybug sets the volume fraction of each panel. The resulting geometry was validated with further FEM analysis, realized as 3D-printed and laser-cut prototypes, and presented at Maker Faire Rome 2023."
   ],
+  "gallery": {
+    "columns": 3,
+    "images": [
+      {
+        "file": "cant-beam.gif",
+        "caption": "Cantilever beam"
+      },
+      {
+        "file": "joint.gif",
+        "caption": "L-joint beam-column"
+      },
+      {
+        "file": "str-beam.gif",
+        "caption": "Beam, distributed load"
+      }
+    ]
+  },
   "flow": {
     "columns": 3,
     "rows": 4,
@@ -199,6 +216,11 @@
           "file": "Direct Sun Hours.png",
           "title": "Direct Sun Hours",
           "caption": "Direct sun hours across the surface, from 1,515 to 3,577 — the map that sets each panel’s volume fraction."
+        },
+        {
+          "file": "Panel Distribution.webp",
+          "title": "Panel Distribution",
+          "caption": "The finished shell, each panel coloured by the volume fraction the two analyses settled on — denser where the structure works, more open where the shading allows."
         }
       ]
     },
