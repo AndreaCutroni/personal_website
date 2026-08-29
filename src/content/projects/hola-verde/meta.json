@@ -29,11 +29,6 @@
       ],
       "scenes": [
         {
-          "file": "Ventilation Strategy.webp",
-          "title": "Ventilation",
-          "caption": "Cool air drawn in at both levels and warm air released along the curve of the roof."
-        },
-        {
           "file": "Summer Sun Path.png",
           "title": "Summer",
           "caption": "At 9:00, 12:00 and 18:00 the high sun is cut by the overhang and the louvred screen before it reaches the glass."
