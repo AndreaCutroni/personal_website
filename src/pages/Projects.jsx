@@ -42,7 +42,9 @@ export default function Projects() {
 
   return (
     <PageTransition>
-      <main className="mx-auto max-w-3xl px-6 pb-24 pt-32">
+      {/* 1100px centred, matching the content column on a project page, so the
+          two read as the same width when you move between them. */}
+      <main className="mx-auto max-w-[1100px] px-6 pb-24 pt-32 md:px-12">
         <Reveal>
           <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-3">
             <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">Projects</h1>
@@ -85,7 +87,9 @@ export default function Projects() {
           variants={grid}
           initial="hidden"
           animate="show"
-          className="mt-12 grid grid-cols-1 gap-8"
+          /* Two columns from lg: seventeen projects in one column at this width
+             is a long scroll for something you are meant to browse. */
+          className="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-2"
         >
           {shown.map((project) => (
             <motion.article
@@ -97,7 +101,9 @@ export default function Projects() {
               className="group relative overflow-hidden rounded-lg border border-line bg-surface transition-colors duration-200 hover:border-accent-mark/70"
             >
               <Link to={`/projects/${project.slug}`} className="flex flex-col">
-                <div className="relative aspect-[16/9] overflow-hidden sm:aspect-[21/9]">
+                {/* The wide letterbox suits a full-width card; at half width it
+                    crops the covers too hard, so two-up goes back to 16:9. */}
+                <div className="relative aspect-[16/9] overflow-hidden sm:aspect-[21/9] lg:aspect-[16/9]">
                   {project.cover?.svg ? (
                     <div
                       aria-hidden="true"
