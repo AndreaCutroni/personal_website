@@ -7,7 +7,9 @@ const links = [
 export default function Footer() {
   return (
     <footer className="relative z-10 border-t border-line bg-ground">
-      <div className="mx-auto flex max-w-6xl flex-col gap-4 px-6 py-8 sm:flex-row sm:items-baseline sm:justify-between">
+      {/* Full bleed to match the header: copyright holds the left corner and the
+          links the right, at any width. */}
+      <div className="flex flex-col gap-4 px-6 py-8 md:px-12 xl:px-24 sm:flex-row sm:items-baseline sm:justify-between">
         <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted">
           © {new Date().getFullYear()} Andrea Cutroni
         </p>

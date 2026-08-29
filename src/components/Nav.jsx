@@ -22,7 +22,11 @@ export default function Nav() {
     <header
       className={`fixed inset-x-0 top-0 z-20 ${isHome ? '' : 'border-b border-line bg-ground'}`}
     >
-      <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
+      {/* Full bleed, unlike the page containers below it: the wordmark holds the
+          left corner and the links the right, at any width. The gutter steps
+          with the screen — at a flat 96px the two would not fit a phone between
+          them. Footer.jsx repeats these steps so the two edges line up. */}
+      <nav className="flex h-16 items-center justify-between px-6 md:px-12 xl:px-24">
         <Link
           to="/"
           className="group flex items-center gap-3 font-mono text-xs uppercase tracking-[0.18em] text-ink"
