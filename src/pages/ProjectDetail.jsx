@@ -187,9 +187,12 @@ export default function ProjectDetail() {
 
   return (
     <PageTransition>
+      {/* Full bleed on the same gutter as the header, so the rail lines up under
+          the wordmark. Prose is capped separately below — only the drawings
+          should take the extra width. */}
       <main
         data-palette={project.palette}
-        className="mx-auto max-w-6xl px-6 pb-24 pt-32 lg:grid lg:grid-cols-[200px_1fr] lg:gap-12"
+        className="px-6 pb-24 pt-32 md:px-12 lg:grid lg:grid-cols-[200px_1fr] lg:gap-12 xl:px-24"
       >
         {/* All projects as a vertically scrolling rail of small cards. */}
         <aside className="hidden lg:block">
@@ -238,7 +241,13 @@ export default function ProjectDetail() {
           </div>
         </aside>
 
-        <div className="min-w-0">
+        {/* The rail stays out on the page gutter, aligned with the wordmark,
+            while the content holds a readable width and centres on the screen.
+            The margin is measured against this grid track rather than the
+            viewport, so it is exact — vw would count the scrollbar and land
+            the content a few pixels off. It clamps to 0 on narrower screens,
+            where centring would drive the content under the rail. */}
+        <div className="min-w-0 max-w-[1100px] xl:ml-[max(0px,calc(50%-674px))]">
         <Reveal>
           <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
             <Link
@@ -269,8 +278,10 @@ export default function ProjectDetail() {
             )}
           </div>
 
-          <div className="mt-10 grid gap-x-16 gap-y-10 lg:grid-cols-[1fr_280px] lg:items-start">
-            <div>
+          <div className="mt-10 grid gap-x-16 gap-y-10 lg:grid-cols-[minmax(0,1fr)_280px] lg:items-start">
+            {/* Measure held at ~62 characters however wide the page gets — the
+                container grew for the drawings, not for the prose. */}
+            <div className="max-w-[62ch]">
               <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
                 {project.title}
               </h1>

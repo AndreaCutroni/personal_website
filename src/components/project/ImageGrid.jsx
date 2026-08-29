@@ -46,11 +46,14 @@ export default function ImageGrid({ items, columns = 2, layout = 'grid', caption
           key={item.file}
           className="flex flex-col overflow-hidden rounded-lg border border-line bg-surface"
         >
+          {/* Capped by height as well as width: a portrait drawing given the
+              full container width runs several screens tall. Landscape work is
+              width-bound and unaffected. */}
           <img
             src={item.url}
             alt={item.caption || item.label}
             loading="lazy"
-            className="h-auto w-full"
+            className="mx-auto h-auto max-h-[80vh] w-auto max-w-full"
           />
           <Caption item={item} />
         </figure>
