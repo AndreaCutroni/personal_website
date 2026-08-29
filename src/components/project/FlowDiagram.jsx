@@ -80,14 +80,32 @@ function Node({ node }) {
 
   return (
     <span
-      className={`flex h-full items-center justify-center rounded-md px-3 py-2 text-center text-[13px] font-medium leading-tight ${fill}`}
+      className={`relative flex h-full items-center justify-center rounded-md px-3 py-2 text-center text-[13px] font-medium leading-tight ${fill}`}
     >
       {node.label}
+      {/* A pill clipped to the top-right corner, the way the sheet tags a stage
+          that carries something extra. */}
+      {node.badge && (
+        <span className="absolute -top-2.5 -right-2 rounded-full bg-accent-mark px-2 py-0.5 text-[10px] font-medium leading-tight text-ground">
+          {node.badge}
+        </span>
+      )}
     </span>
   )
 }
 
-export default function FlowDiagram({ columns = 3, rows = 4, nodes, arrows = [] }) {
+/* A logical column maps to grid column 2c-1; spanning n columns also swallows
+   the n-1 gaps between them. */
+const track = (col, span = 1) => (span > 1 ? `${col * 2 - 1} / span ${span * 2 - 1}` : col * 2 - 1)
+
+export default function FlowDiagram({
+  columns = 3,
+  rows = 4,
+  nodes,
+  arrows = [],
+  groups = [],
+  notes = [],
+}) {
   if (!nodes?.length) return null
 
   // logical col c -> grid column 2c-1; the gap after it -> 2c. Same for rows.
@@ -106,9 +124,20 @@ export default function FlowDiagram({ columns = 3, rows = 4, nodes, arrows = [] 
         className="hidden sm:grid"
         style={{ gridTemplateColumns: gridCols, gridTemplateRows: gridRows }}
       >
+        {/* Drawn first and inset negatively so the dotted outline sits behind
+            the stages it encloses, standing off them on every side. */}
+        {groups.map((g) => (
+          <div
+            key={`${g.col}-${g.row}-${g.span}`}
+            aria-hidden="true"
+            className="pointer-events-none -m-2.5 rounded-xl border-2 border-dotted border-accent-mark"
+            style={{ gridColumn: track(g.col, g.span), gridRow: g.row * 2 - 1 }}
+          />
+        ))}
         {nodes.map((node) => (
           <div
             key={`${node.col}-${node.row}-${node.label}`}
+            className="relative"
             style={{
               gridColumn: node.col * 2 - 1,
               /* rowSpan covers the gap tracks it crosses, so a single stage can
@@ -142,10 +171,42 @@ export default function FlowDiagram({ columns = 3, rows = 4, nodes, arrows = [] 
         ))}
       </div>
 
+      {/* Captions hang below on their own grid rather than inside the stages,
+          so every box stays the same height and a caption can sit under a
+          group of them. */}
+      {notes.length > 0 && (
+        <div className="mt-3 hidden sm:grid" style={{ gridTemplateColumns: gridCols }}>
+          {notes.map((n) => (
+            <p
+              key={`${n.col}-${n.lines.join()}`}
+              className="text-center text-[13px] font-semibold leading-tight text-accent"
+              style={{ gridColumn: track(n.col, n.span) }}
+            >
+              {n.lines.map((line) => (
+                <span key={line} className="block">
+                  {line}
+                </span>
+              ))}
+            </p>
+          ))}
+        </div>
+      )}
+
       <ol className="flex flex-col gap-2 sm:hidden">
         {ordered.map((node) => (
           <li key={`${node.col}-${node.row}-${node.label}`}>
             <Node node={node} />
+            {/* Stacked, a caption belongs to the stage it starts under. */}
+            {notes
+              .filter((n) => n.col === node.col && (n.row ?? 1) === node.row)
+              .map((n) => (
+                <p
+                  key={n.lines.join()}
+                  className="mt-1 text-center text-[12px] font-semibold leading-tight text-accent"
+                >
+                  {n.lines.join(' · ')}
+                </p>
+              ))}
           </li>
         ))}
       </ol>

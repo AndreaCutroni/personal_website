@@ -25,6 +25,27 @@
     "Vitru.views transforms ordinary street views into greener, more human-centered scenarios through a three-stage image-to-image workflow: cars and signage are removed, vegetation, bike lanes and pedestrian space are added, then architectural styling and lighting are applied. The pipeline runs on LoRAs trained across SDXL and FLUX, wired to OSM mapping and the Google Street View API.",
     "Trained on a dataset of 38 renders from Henning Larsen's urban design projects, the tool produced consistently strong results across the four tested cities. Next steps focus on improving human-figure generation and developing Vitru.views into a participatory design tool for community collaboration."
   ],
+  "compare": {
+    "beforeLabel": "Reality",
+    "afterLabel": "vitru.views",
+    "pairs": [
+      {
+        "before": "00_Rome.webp",
+        "after": "03_Rome.webp",
+        "caption": "Rome"
+      },
+      {
+        "before": "00_Paris.webp",
+        "after": "03_Paris.webp",
+        "caption": "Paris"
+      },
+      {
+        "before": "00_Dublin.webp",
+        "after": "03_Dublin.webp",
+        "caption": "Dublin"
+      }
+    ]
+  },
   "sections": [
     {
       "index": "01",
@@ -42,20 +63,12 @@
           {
             "col": 1,
             "row": 1,
-            "label": "Source",
-            "items": [
-              "Street View URL",
-              "Upload File"
-            ]
+            "label": "Source"
           },
           {
             "col": 2,
             "row": 1,
-            "label": "Configure",
-            "items": [
-              "Features",
-              "Scenes"
-            ]
+            "label": "Configure"
           },
           {
             "col": 3,
@@ -66,27 +79,18 @@
             "col": 4,
             "row": 1,
             "label": "Add greenery",
-            "items": [
-              "LoRA"
-            ]
+            "badge": "LoRA"
           },
           {
             "col": 5,
             "row": 1,
             "label": "Render the vision",
-            "items": [
-              "LoRA"
-            ]
+            "badge": "LoRA"
           },
           {
             "col": 6,
             "row": 1,
-            "label": "Results",
-            "items": [
-              "Download",
-              "Share",
-              "Pin to map"
-            ]
+            "label": "Results"
           }
         ],
         "arrows": [
@@ -114,6 +118,45 @@
             "col": 5,
             "row": 1,
             "dir": "right"
+          }
+        ],
+        "groups": [
+          {
+            "col": 3,
+            "row": 1,
+            "span": 3
+          }
+        ],
+        "notes": [
+          {
+            "col": 1,
+            "lines": [
+              "Street View URL",
+              "Upload File"
+            ]
+          },
+          {
+            "col": 2,
+            "lines": [
+              "Features",
+              "Scenes"
+            ]
+          },
+          {
+            "col": 3,
+            "span": 3,
+            "lines": [
+              "FLUX.2",
+              "Img-to-Img"
+            ]
+          },
+          {
+            "col": 6,
+            "lines": [
+              "Download /",
+              "Share /",
+              "Pin to map"
+            ]
           }
         ]
       },
@@ -153,31 +196,6 @@
         },
         {
           "file": "Results Paris.webp"
-        }
-      ]
-    },
-    {
-      "index": "04",
-      "title": "Cities",
-      "block": "story",
-      "body": [
-        "The same transformation, before and after, in Dublin, Paris and Rome."
-      ],
-      "scenes": [
-        {
-          "file": "Dublin.gif",
-          "title": "Dublin",
-          "caption": "A car-dominated street given over to planting and pedestrian space."
-        },
-        {
-          "file": "Paris.gif",
-          "title": "Paris",
-          "caption": "The Haussmann street front kept, the roadway between it rebuilt."
-        },
-        {
-          "file": "Rome.gif",
-          "title": "Rome",
-          "caption": "Parking cleared from a historic street and replaced with trees and paving."
         }
       ]
     }

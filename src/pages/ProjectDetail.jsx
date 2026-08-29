@@ -9,11 +9,12 @@ import FlowDiagram from '../components/project/FlowDiagram'
 import MetricRow from '../components/project/MetricRow'
 import StoryPlayer from '../components/project/StoryPlayer'
 import ImageGrid from '../components/project/ImageGrid'
+import BeforeAfter from '../components/project/BeforeAfter'
 import { projects, getProject, categoryOf } from '../content/projects'
 
 /* One dossier section: heading, chevron, and everything under it collapsing
    together — the same toggle used on the About timeline. */
-function ProjectSection({ section, workflow, flow, images, scenes }) {
+function ProjectSection({ section, workflow, flow, images, scenes, pairs }) {
   const [open, setOpen] = useState(false)
   const panelId = useId()
 
@@ -90,6 +91,14 @@ function ProjectSection({ section, workflow, flow, images, scenes }) {
         )}
 
         {section.block === 'story' && <StoryPlayer scenes={scenes} aspect={section.aspect} />}
+
+        {section.block === 'compare' && (
+          <BeforeAfter
+            pairs={pairs}
+            beforeLabel={section.beforeLabel}
+            afterLabel={section.afterLabel}
+          />
+        )}
 
         {section.block === 'grid' && (
           <ImageGrid
@@ -173,6 +182,17 @@ export default function ProjectDetail() {
         return match ? { ...entry, url: match.url, svg: match.svg, label: match.label } : null
       })
       .filter(Boolean)
+
+  /* A comparison names two drawings rather than one; a pair missing either half
+     is dropped, the same way a missing image is. */
+  const resolvePairs = (entries) =>
+    (entries ?? [])
+      .map((entry) => ({
+        ...entry,
+        before: byName.get(entry.before)?.url,
+        after: byName.get(entry.after)?.url,
+      }))
+      .filter((entry) => entry.before && entry.after)
 
   const category = categoryOf(project.palette)
 
@@ -369,6 +389,18 @@ export default function ProjectDetail() {
           </Reveal>
         )}
 
+        {/* Declared at the top of meta.json rather than as a section: this sits
+            under the cover, open, as part of the introduction. */}
+        {project.compare && (
+          <Reveal className="mt-6">
+            <BeforeAfter
+              pairs={resolvePairs(project.compare.pairs)}
+              beforeLabel={project.compare.beforeLabel}
+              afterLabel={project.compare.afterLabel}
+            />
+          </Reveal>
+        )}
+
         {sections.map((section) => (
           <Reveal key={section.index} className="mt-10">
             <ProjectSection
@@ -377,6 +409,7 @@ export default function ProjectDetail() {
               flow={project.flow}
               images={resolve(section.images)}
               scenes={resolve(section.scenes)}
+              pairs={resolvePairs(section.pairs)}
             />
           </Reveal>
         ))}
