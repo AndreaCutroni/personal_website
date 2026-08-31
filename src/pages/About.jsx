@@ -153,13 +153,13 @@ export default function About() {
               </h1>
               <div className="mt-8 max-w-2xl space-y-5 leading-relaxed text-ink/85">
                 <p>
-                  I'm Andrea Cutroni, a building engineer and computational designer based in
-                  Rome. My work bridges architecture, complex structures and sustainable design,
+                  I'm Andrea Cutroni, a building engineer and computational designer. 
+                  My work bridges architecture, complex structures and sustainable design,
                   built on a foundation of computational workflows and data-driven methods.
                 </p>
                 <p>
-                  With an international background across Italy, Spain and remote research
-                  collaborations, my academic and professional path reflects a consistent
+                  With an international background across Italy, Spain and France, 
+                  my academic and professional path reflects a consistent
                   commitment to research and innovation — from topology optimization and
                   environmental simulation to parametric tooling for large-scale projects.
                 </p>
