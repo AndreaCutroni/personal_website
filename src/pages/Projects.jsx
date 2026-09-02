@@ -31,10 +31,13 @@ export default function Projects() {
     },
   }
 
-  /* Sized to keep all four on one line at the container width; below that the
-     row scrolls sideways rather than wrapping. */
+  /* Sized to keep all four on one line at the container width. On a phone the
+     labels are too wide to pair up, so they go into a 2x2 grid instead of
+     wrapping — four flexed pills would find their own three rows, and the
+     longest label alone is wider than half a 375px screen. Centred, and free
+     to break across two lines, since the grid gives every pill equal height. */
   const filterClass = (isActive) =>
-    `shrink-0 whitespace-nowrap rounded-full border px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.12em] transition-colors duration-200 hover:bg-accent-mark hover:text-ink hover:border-accent-mark ${
+    `rounded-full border px-3 py-1.5 text-center sm:whitespace-nowrap font-mono text-[11px] uppercase tracking-[0.12em] transition-colors duration-200 hover:bg-accent-mark hover:text-ink hover:border-accent-mark ${
       isActive
         ? 'border-accent-mark bg-accent-mark text-ink'
         : 'border-line text-muted'
@@ -61,7 +64,9 @@ export default function Projects() {
             </a>
           </div>
 
-          <div className="mt-8 -mx-6 flex gap-2 overflow-x-auto px-6 pb-1">
+          {/* auto-rows-fr so the two rows match: without it a row of one-line
+              labels sits shorter than a row of two-line ones. */}
+          <div className="mt-8 grid auto-rows-fr grid-cols-2 gap-2 sm:flex sm:flex-wrap">
             <button
               type="button"
               onClick={() => setActiveCategory(null)}
