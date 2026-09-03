@@ -3,8 +3,7 @@
   "palette": "computation",
   "title": "Data-Driven Environmental Analysis",
   "tags": [
-    "Environmental",
-    "Computational Design"
+    "Environmental"
   ],
   "stack": [
     "Rhino",
@@ -16,6 +15,7 @@
   ],
   "team": "Andrea Cutroni, Eleni Maglari",
   "program": "IAAC MaCAD 25/26 — Environmental Analysis",
+  "faculty": "Angelos Chronis, Aris Vartholomaios, Maria Papadimitraki, Alex Christodoulou, Ekaterina Vititneva, Vasiliki Fragkia, Mohammad Mahdi Mohammadi",
   "year": "2025",
   "location": "Palermo, Italy",
   "description": "Data-driven environmental analysis for a residential development — climate, comfort and daylight steering the massing from the first move.",

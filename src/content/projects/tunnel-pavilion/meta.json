@@ -4,7 +4,6 @@
   "title": "Structural Optimization",
   "tags": [
     "Structural",
-    "Computational Design",
     "Digital Fabrication"
   ],
   "stack": [
@@ -16,6 +15,7 @@
   ],
   "team": "Andrea Cutroni, Eleni Maglari",
   "program": "IAAC MaCAD 25/26 — Structural Optimization",
+  "faculty": "Aaron Porterfield, Marco Pellegrino, Matea Pinjusic",
   "year": "2025",
   "description": "A lattice pavilion structure evaluated through shell analysis, catenary form-finding and beam optimization for 3D-printable fabrication.",
   "body": [

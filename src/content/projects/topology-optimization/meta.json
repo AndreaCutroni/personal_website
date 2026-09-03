@@ -4,7 +4,6 @@
   "title": "Topology Optimization for Architectural Structures",
   "tags": [
     "Structural",
-    "Computational Design",
     "Digital Fabrication"
   ],
   "stack": [
@@ -19,6 +18,7 @@
   "team": "Andrea Cutroni",
   "architect": "",
   "program": "University of Rome Tor Vergata — Research",
+  "faculty": "Ilaria Giannetti, Michele Marino",
   "year": "2023–2024",
   "location": "",
   "status": "",

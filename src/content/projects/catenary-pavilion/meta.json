@@ -4,7 +4,6 @@
   "title": "Catenary Pavilion",
   "tags": [
     "Structural",
-    "Computational Design",
     "Digital Fabrication"
   ],
   "stack": [
@@ -14,6 +13,7 @@
   ],
   "team": "Andrea Cutroni, Flavia Tassi, Alessandra Del Pico",
   "program": "University of Rome Tor Vergata — Structures in Architecture",
+  "faculty": "Ilaria Giannetti",
   "year": "2022",
   "location": "",
   "description": "A Grasshopper structure inspired by Félix Candela's hypar shells, discretized into a waffle system of optimized catenary arches.",

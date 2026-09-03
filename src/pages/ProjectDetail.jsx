@@ -192,6 +192,7 @@ export default function ProjectDetail() {
     ['Team', project.team],
     ['Architect', project.architect],
     ['Program', project.program],
+    ['Faculty', project.faculty],
     ['Year', project.year],
     ['Location', project.location],
     ['Status', project.status],

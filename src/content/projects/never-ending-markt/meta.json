@@ -4,8 +4,7 @@
   "palette": "computation",
   "title": "Never Ending Cairo Market",
   "tags": [
-    "Architecture",
-    "Computational Design"
+    "Architecture"
   ],
   "stack": [
     "Rhino",
@@ -15,6 +14,7 @@
   ],
   "team": "Andrea Cutroni",
   "program": "IAAC MaCAD 25/26 — Complex Forming",
+  "faculty": "Hesham Shawqy, Angeliki Maragakis",
   "year": "2025",
   "location": "Bab al-Luq, Cairo, Egypt",
   "link": "https://blog.iaac.net/never-ending-cairo-market/",

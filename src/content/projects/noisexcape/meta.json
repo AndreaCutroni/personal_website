@@ -15,6 +15,7 @@
   ],
   "team": "Andrea Cutroni, Elena Corio, Symon Kipekemi, Giovanni Carlo Volpe",
   "program": "IAAC MaCAD 25/26 — Data Encoding",
+  "faculty": "Gabriella Rossi, Georgios Bekakos",
   "year": "2026",
   "location": "Barcelona, Spain",
   "description": "Predicting urban noise levels from open spatial data alone, benchmarking machine-learning models against costly traditional noise mapping.",
