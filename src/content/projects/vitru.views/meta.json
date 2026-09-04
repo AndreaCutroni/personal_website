@@ -17,12 +17,13 @@
   ],
   "team": "Andrea Cutroni, Elena Corio",
   "program": "IAAC MaCAD 25/26 — Generative AI",
+  "faculty": "James McBennett, Aymeric Brouez",
   "year": "2026",
   "location": "",
   "link": "https://blog.iaac.net/vitru-views-see-cities-at-human-scale/",
   "description": "A generative-AI web app that reimagines street views at human scale — more trees and pedestrian space, fewer cars.",
   "body": [
-    "Vitru.views transforms ordinary street views into greener, more human-centered scenarios through a three-stage image-to-image workflow: cars and signage are removed, vegetation, bike lanes and pedestrian space are added, then architectural styling and lighting are applied. The pipeline runs on LoRAs trained across SDXL and FLUX, wired to OSM mapping and the Google Street View API.",
+    "Vitru.views transforms ordinary street views into greener, more human-centered scenarios through a three-stage FLUX.2 image-to-image workflow: cars and signage are removed, vegetation, bike lanes and pedestrian space are added, then architectural styling and lighting are applied. The pipeline runs on LoRAs trained across SDXL and FLUX, wired to OSM mapping and the Google Street View API.",
     "Trained on a dataset of 38 renders from Henning Larsen's urban design projects, the tool produced consistently strong results across the four tested cities. Next steps focus on improving human-figure generation and developing Vitru.views into a participatory design tool for community collaboration."
   ],
   "compare": {
@@ -54,7 +55,7 @@
       "columns": 1,
       "captions": false,
       "body": [
-        "A street view goes in and a people-first version of the same street comes out. The three middle steps are one FLUX.2 image-to-image chain, run twice through a LoRA trained on Henning Larsen urban design projects, so the output keeps the geometry of the real street while changing what fills it."
+        "Anchored on an OSM map, users can upload an image or locate a street through Google Street View, then select features and lighting before a three-step FLUX.2 image-to-image chain clears the clutter, introduces pedestrian-friendly elements, and applies architectural style and light. The LoRA is trained on 38 renders from Henning Larsen’s urban design projects, guiding the visual transformation."
       ],
       "flow": {
         "columns": 6,
@@ -173,7 +174,7 @@
       "columns": 1,
       "captions": false,
       "body": [
-        "Five approaches tested against the same street. SDXL image-to-image changes everything and loses the place; FLUX.1 Depth and Canny hold the geometry but stay literal; inpainting changes only what is masked. FLUX.2 image-to-image sat where the project needed it — the street rebuilt, the buildings untouched."
+        "Five approaches were tested, from SDXL image-to-image to Flux.1 Canny, Depth, and inpainting. Hallucination, loss of contextual identity, and limited scalability led to Flux.2 image-to-image, which fit the project’s needs — the street rebuilt, the buildings untouched."
       ],
       "images": [
         {
@@ -188,14 +189,14 @@
       "columns": 1,
       "captions": false,
       "body": [
-        "Two real streets carried through the three steps. Cars and signage go first, then planting and paving arrive, then the whole view is re-rendered with consistent light — the façades on either side unchanged throughout."
+        "Four real streets carried through the three steps. Cars and signage go first, then planting and paving arrive, then the whole view is re-rendered with consistent light — the façades on either side unchanged throughout."
       ],
       "images": [
         {
-          "file": "Results Milan.webp"
+          "file": "Results Rome-Milan.webp"
         },
         {
-          "file": "Results Paris.webp"
+          "file": "Results Dublin-Paris.webp"
         }
       ]
     }
