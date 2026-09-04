@@ -313,9 +313,15 @@ export default function ProjectDetail() {
                 </div>
               )}
               {project.description && (
-                <p className="mt-5 text-lg leading-relaxed text-ink/85">{project.description}</p>
+                /* A lead sentence, not just a bigger paragraph: full-strength
+                   ink against the body's dimmer /70, a rule to give it its
+                   own shape, tighter leading so it reads as a distinct voice
+                   rather than a large first line of the same text. */
+                <p className="mt-5 border-l-2 border-accent-mark pl-4 text-lg leading-snug text-ink">
+                  {project.description}
+                </p>
               )}
-              <div className="mt-6 space-y-5 leading-relaxed text-ink/85">
+              <div className="mt-6 space-y-5 leading-relaxed text-ink/70">
                 {(project.body ?? []).map((paragraph) => (
                   <p key={paragraph.slice(0, 32)}>{paragraph}</p>
                 ))}

@@ -18,11 +18,11 @@
   "year": "2025",
   "location": "Bab al-Luq, Cairo, Egypt",
   "link": "https://blog.iaac.net/never-ending-cairo-market/",
-  "description": "Revitalizing a historic Cairo market through computational form-finding, with a redesigned circulation and a parametric roof system based on the Cairo pattern.",
+  "description": "Revitalizing a historic Cairo market through computational form-finding, with a redesigned circulation and a parametric roof system.",
   "body": [
-    "The project explores how computational methods can manage complex geometries and shape new ways of experiencing space. The Bab al-Luq market is reorganized as a multi-level shopping environment driven by the circulation layout.",
-    "Differential growth principles, settled through dynamic relaxation in Kangaroo, generate smooth, fluid pathways connecting the primary entrances, with two paths displacing into ramps with storage beneath. The roof follows the same flows: a heat map sets its frame sizing and deformation, and the parametric Cairo tessellation its modules.",
-    "The result is an organic network of routes and ramps that invites exploration rather than a single pass through, under a roof that turns the initial flat surface into a highly expressive structure whose openings cast light and shadow strategically aligned with the movement beneath."
+    "The project explores how computational methods can manage complex geometries and shape new ways of experiencing space, reorganizing the Bab al-Luq market into a multi-level shopping environment driven by circulation.",
+    "Differential growth principles, settled through dynamic relaxation in Kangaroo, generate smooth pathways and ramps. The roof follows the same flows: a heat map sets its frame sizing and deformation, and the parametric Cairo tessellation its modules.",
+    "The result is an organic network of routes that invites exploration rather than a single pass through, under a roof that turns the initial flat surface into a highly expressive structure whose openings cast light and shadow strategically aligned with the movement beneath."
   ],
 
   "sections": [
