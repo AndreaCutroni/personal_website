@@ -20,10 +20,11 @@
   "year": "2025",
   "location": "Penjaringan, North Jakarta, Indonesia",
   "link": "https://blog.iaac.net/floating-grounds-rethinking-resilience-in-jakarta/",
-  "description": "A flood-resilient floating urban model for Jakarta — housing, public program and a stadium organized by water rather than against it.",
+  "description": "A computational approach to Jakarta's flood resilience, using rule-based aggregation to merge housing, public programs and a stadium.",
   "body": [
-    "Rather than resisting flooding, the project accepts water as a permanent condition and uses it as an organizing element. A ~30,000 m² floating complex in Penjaringan merges residential housing, a stadium and a commercial buffer zone into a single resilience hub, all built on a standardized 5 × 5 m modular grid for construction efficiency, adaptability and scalability. Pontoons sized through load analysis and Archimedes' principle sit roughly 1.5 m deep in the water.",
-    "A Grasshopper-based parametric workflow drove solar orientation, wind and energy modeling, and stadium sightlines were verified with the C-value method. The optimized massing cuts solar radiation by over 30% compared to a simple box, while ~780,000 kWh of annual on-site photovoltaic production offsets nearly 40% of the total cooling load."
+    "Floating Grounds explores how large-scale infrastructure can support community life while addressing land subsidence, flooding, and environmental stress through modular, floating architecture.",
+    "Powered by the WASP plug-in, the Grasshopper workflow generates a responsive design that adapts to the site conditions and runs environmental and structural analysis. A standardized 5 × 5 m grid, lightweight timber and floating pontoons, improve construction efficiency, reduce carbon impact and ensure stability via Archimede's principle.",
+    "The project follows a parametric, bottom-up approach and data-driven workflow ensuring sustainable, scalable solutions for flood-prone cities."
   ],
   "workflow": {
     "boundary": "Site Boundary",
@@ -97,21 +98,6 @@
   "sections": [
     {
       "index": "01",
-      "title": "Concept",
-      "block": "grid",
-      "columns": 1,
-      "body": [
-        "A floating multi-use center that reads community resilience and flood relief as the same problem — designed to connect residents to the river rather than turn away from it. Six programs stack onto one platform: floating ground, flood mitigation, green housing, water control, community resilience and sport."
-      ],
-      "images": [
-        {
-          "file": "Initial Design Strategy.png",
-          "caption": "Programmatic strategy"
-        }
-      ]
-    },
-    {
-      "index": "02",
       "title": "Workflow",
       "block": "workflow",
       "body": [
@@ -119,7 +105,7 @@
       ]
     },
     {
-      "index": "03",
+      "index": "02",
       "title": "Step by Step",
       "block": "story",
       "body": [
@@ -129,7 +115,7 @@
         {
           "file": "Definition of the modules.png",
           "title": "Kit of Parts",
-          "caption": "The modules WASP aggregates, grouped by zone — residential units from 25 to 37.5 m², buffer-zone program from 25 to 50 m², and stadium cores and circulation up to 100 m²."
+          "caption": "The modules WASP aggregates, grouped by zone. Modules include residential units, circulation, cores, workshops, coworking spaces, and service areas."
         },
         {
           "file": "Topological Map.png",
@@ -154,7 +140,7 @@
       ]
     },
     {
-      "index": "04",
+      "index": "03",
       "title": "Bowl Creation",
       "block": "story",
       "body": [
@@ -179,7 +165,7 @@
       ]
     },
     {
-      "index": "05",
+      "index": "04",
       "title": "Structural & Environmental Analysis",
       "block": "metrics",
       "story": true,
@@ -199,12 +185,6 @@
           "note": "aggregation vs. simple box"
         },
         {
-          "label": "PV Production",
-          "value": "779,140",
-          "unit": "kWh/yr",
-          "note": "offsets 38% of cooling load"
-        },
-        {
           "label": "Max Deflection",
           "value": "1.57",
           "unit": "mm",
@@ -214,12 +194,6 @@
           "label": "Embodied Carbon",
           "value": "−60%",
           "note": "timber vs. concrete"
-        },
-        {
-          "label": "Immersed Height",
-          "value": "1.5",
-          "unit": "m",
-          "note": "360.6 kN max reaction"
         }
       ],
       "scenes": [
@@ -266,7 +240,7 @@
       ]
     },
     {
-      "index": "06",
+      "index": "05",
       "title": "Testing",
       "block": "story",
       "body": [
@@ -286,7 +260,7 @@
       ]
     },
     {
-      "index": "07",
+      "index": "06",
       "title": "Drawings",
       "block": "story",
       "aspect": "4 / 3",
