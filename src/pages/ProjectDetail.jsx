@@ -1,4 +1,4 @@
-import { useId, useState } from 'react'
+import { useEffect, useId, useRef, useState } from 'react'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import PageTransition from '../components/PageTransition'
 import Reveal from '../components/Reveal'
@@ -188,6 +188,23 @@ export default function ProjectDetail() {
 
   const category = categoryOf(project.palette)
 
+  /* The rail is a long scrolling list of all projects, and it always mounted
+     scrolled to its own top — so a project near the end sat off-screen in its
+     own navigator until you scrolled to find it. Centering the active card on
+     every visit fixes that, scrolling only the rail's own scrollTop rather
+     than scrollIntoView, which would also consider the window a candidate. */
+  const railRef = useRef(null)
+  const activeRailItemRef = useRef(null)
+  useEffect(() => {
+    const rail = railRef.current
+    const item = activeRailItemRef.current
+    if (!rail || !item) return
+    const railRect = rail.getBoundingClientRect()
+    const itemRect = item.getBoundingClientRect()
+    const delta = itemRect.top - railRect.top - (rail.clientHeight - item.clientHeight) / 2
+    rail.scrollTop += delta
+  }, [project.slug])
+
   const meta = [
     ['Team', project.team],
     ['Architect', project.architect],
@@ -209,10 +226,14 @@ export default function ProjectDetail() {
       >
         {/* All projects as a vertically scrolling rail of small cards. */}
         <aside className="hidden lg:block">
-          <div className="project-rail sticky top-28 flex max-h-[calc(100svh-9rem)] flex-col gap-4 overflow-y-auto pr-1">
+          <div
+            ref={railRef}
+            className="project-rail sticky top-28 flex max-h-[calc(100svh-9rem)] flex-col gap-4 overflow-y-auto pr-1"
+          >
             {projects.map((p) => (
               <Link
                 key={p.slug}
+                ref={p.slug === project.slug ? activeRailItemRef : undefined}
                 to={`/projects/${p.slug}`}
                 aria-current={p.slug === project.slug ? 'page' : undefined}
                 /* Each card carries its own palette, so the border reads as
