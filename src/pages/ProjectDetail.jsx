@@ -342,7 +342,7 @@ export default function ProjectDetail() {
                   {project.description}
                 </p>
               )}
-              <div className="mt-6 space-y-5 leading-relaxed text-ink/70">
+              <div className="mt-6 space-y-5 leading-relaxed text-ink/85">
                 {(project.body ?? []).map((paragraph) => (
                   <p key={paragraph.slice(0, 32)}>{paragraph}</p>
                 ))}
