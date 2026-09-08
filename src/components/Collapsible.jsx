@@ -57,10 +57,23 @@ export default function Collapsible({ open, id, children, className = '' }) {
       style={{
         display: 'grid',
         gridTemplateRows: open ? '1fr' : '0fr',
+        /* Without a fixed column, the browser is free to shrink the item's
+           width toward min-content too while sizing the 0fr row — which
+           rewraps the content onto far narrower lines and inflates the very
+           height the row is trying to collapse to. Locking it at 100% keeps
+           reflow out of the picture, so 0fr actually reaches ~0. */
+        gridTemplateColumns: '100%',
         transition: `grid-template-rows ${reduce ? '10ms' : '250ms'} cubic-bezier(0.25,0.1,0.25,1)`,
       }}
     >
-      <div className="overflow-hidden" style={{ minHeight: 0 }} inert={!open}>
+      {/* Only clips while actually shrunk — a 0fr track doesn't hide its own
+          content by itself, so something has to while closed. Once open, the
+          track already fits the content exactly, and an overflow-hidden
+          ancestor with no work left to do is exactly the kind of clip
+          boundary that produces a hairline seam in rounded descendants on
+          Chrome (a real GPU-compositor bug, not a screenshot artifact) —
+          removing it once settled costs nothing and avoids that. */}
+      <div className={open ? '' : 'overflow-hidden'} style={{ minHeight: 0 }} inert={!open}>
         <div className={className}>{children}</div>
       </div>
     </div>

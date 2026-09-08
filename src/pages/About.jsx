@@ -1,5 +1,5 @@
 import { useId, useState } from 'react'
-import Collapsible, { CollapseToggle } from '../components/Collapsible'
+import Collapsible, { Chevron } from '../components/Collapsible'
 import PageTransition from '../components/PageTransition'
 import Reveal from '../components/Reveal'
 import portrait from '../assets/AndreaCutroni_11.jpg'
@@ -96,30 +96,31 @@ const languages = [
   { name: 'Spanish', level: 'Independent' },
 ]
 
-function TimelineItem({ period, role, org, details, isLast }) {
-  const [open, setOpen] = useState(true)
-  const panelId = useId()
+/* Details render unconditionally now — the show/hide lives one level up, on
+   the section itself, rather than on every entry inside it.
+
+   The marker and the rail line live in this static wrapper, never inside
+   Reveal — every earlier attempt at the ring (bordered, filled, SVG) showed
+   the same hairline gap on real GPU-accelerated Chrome, never reproducible
+   under this session's software-rendered testing browser, which points to a
+   compositor artifact tied to sitting under Reveal's per-item, staggered
+   scroll-in transform rather than to the shape itself. Only the text below
+   animates now; the line and marker are never touched by a transform. */
+function TimelineItem({ period, role, org, details, isLast, delay }) {
   const hasDetails = details?.length > 0
 
   return (
     <div className={`relative border-l border-line pl-8 ${isLast ? 'pb-0' : 'pb-12'}`}>
-      <span className="absolute -left-[5px] top-1.5 h-[9px] w-[9px] rounded-full border-2 border-ink bg-ground" />
-      <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted">{period}</p>
-      <h3 className="mt-2 text-lg font-medium sm:text-xl">{role}</h3>
-      <div className="mt-1 flex items-center gap-2">
-        <p className="text-base text-muted">{org}</p>
+      <svg viewBox="0 0 9 9" className="absolute -left-[5px] top-1.5 h-[9px] w-[9px]" aria-hidden="true">
+        <circle cx="4.5" cy="4.5" r="4.5" className="fill-ink" />
+        <circle cx="4.5" cy="4.5" r="2.5" className="fill-ground" />
+      </svg>
+      <Reveal delay={delay}>
+        <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted">{period}</p>
+        <h3 className="mt-2 text-lg font-medium sm:text-xl">{role}</h3>
+        <p className="mt-1 text-base text-muted">{org}</p>
         {hasDetails && (
-          <CollapseToggle
-            open={open}
-            onClick={() => setOpen((v) => !v)}
-            label={`details for ${role}`}
-            controls={panelId}
-          />
-        )}
-      </div>
-      {hasDetails && (
-        <Collapsible open={open} id={panelId}>
-          <ul className="max-w-2xl space-y-1.5 pt-3">
+          <ul className="mt-3 max-w-2xl space-y-1.5">
             {details.map((line) => (
               <li key={line} className="flex gap-2.5 text-sm leading-relaxed text-ink/85">
                 <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-muted" aria-hidden="true" />
@@ -127,17 +128,45 @@ function TimelineItem({ period, role, org, details, isLast }) {
               </li>
             ))}
           </ul>
-        </Collapsible>
-      )}
+        )}
+      </Reveal>
     </div>
   )
 }
 
-function SectionHeading({ index, children }) {
+/* A plain label — Technical Skills and Languages have nothing to collapse. */
+function SectionHeading({ children }) {
   return (
-    <h2 className="mb-10 font-mono text-xs uppercase tracking-[0.25em] text-muted">
-      <span className="text-accent">{index}</span> — {children}
-    </h2>
+    <h2 className="mb-8 font-mono text-xs uppercase tracking-[0.25em] text-muted">{children}</h2>
+  )
+}
+
+/* Experience and Education are long enough to want folding away; the heading
+   itself is the control, the same pattern as a project's own sections. */
+function CollapsibleSection({ title, children }) {
+  const [open, setOpen] = useState(true)
+  const panelId = useId()
+
+  return (
+    <>
+      <Reveal>
+        <h2 className="mb-8 font-mono text-xs uppercase tracking-[0.25em] text-muted">
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            aria-expanded={open}
+            aria-controls={panelId}
+            className="inline-flex cursor-pointer items-center gap-3 text-left uppercase transition-colors duration-200 hover:text-accent"
+          >
+            <span>{title}</span>
+            <Chevron open={open} />
+          </button>
+        </h2>
+      </Reveal>
+      <Collapsible open={open} id={panelId}>
+        {children}
+      </Collapsible>
+    </>
   )
 }
 
@@ -175,35 +204,39 @@ export default function About() {
           </div>
         </Reveal>
 
-        <section className="mt-24">
-          <Reveal>
-            <SectionHeading index="A">Experience</SectionHeading>
-          </Reveal>
-          <div>
-            {experience.map((item, i) => (
-              <Reveal key={item.role} delay={i * 0.04}>
-                <TimelineItem {...item} isLast={i === experience.length - 1} />
-              </Reveal>
-            ))}
-          </div>
+        <section className="mt-14">
+          <CollapsibleSection title="Experience">
+            <div>
+              {experience.map((item, i) => (
+                <TimelineItem
+                  key={item.role}
+                  {...item}
+                  isLast={i === experience.length - 1}
+                  delay={i * 0.04}
+                />
+              ))}
+            </div>
+          </CollapsibleSection>
         </section>
 
-        <section className="mt-24">
-          <Reveal>
-            <SectionHeading index="B">Education</SectionHeading>
-          </Reveal>
-          <div>
-            {education.map((item, i) => (
-              <Reveal key={item.role} delay={i * 0.04}>
-                <TimelineItem {...item} isLast={i === education.length - 1} />
-              </Reveal>
-            ))}
-          </div>
+        <section className="mt-14">
+          <CollapsibleSection title="Education">
+            <div>
+              {education.map((item, i) => (
+                <TimelineItem
+                  key={item.role}
+                  {...item}
+                  isLast={i === education.length - 1}
+                  delay={i * 0.04}
+                />
+              ))}
+            </div>
+          </CollapsibleSection>
         </section>
 
-        <section className="mt-24">
+        <section className="mt-14">
           <Reveal>
-            <SectionHeading index="C">Technical Skills</SectionHeading>
+            <SectionHeading>Technical Skills</SectionHeading>
           </Reveal>
           <div className="grid gap-x-12 gap-y-8 sm:grid-cols-2">
             {skills.map((s, i) => (
@@ -215,9 +248,9 @@ export default function About() {
           </div>
         </section>
 
-        <section className="mt-24">
+        <section className="mt-14">
           <Reveal>
-            <SectionHeading index="D">Languages</SectionHeading>
+            <SectionHeading>Languages</SectionHeading>
             <div className="flex flex-wrap gap-x-12 gap-y-4">
               {languages.map((l) => (
                 <div key={l.name}>
