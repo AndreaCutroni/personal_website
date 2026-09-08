@@ -79,6 +79,27 @@ const education = [
   },
 ]
 
+const lectures = [
+  {
+    period: '2025',
+    role: 'Integrated Analysis in Design: From Outdoor to Interior Building Analysis Through Case Studies',
+    org: 'Lombardini22 Academy',
+    details: [],
+  },
+  {
+    period: '2025',
+    role: 'Sustainability Design Approach & Parametric Analysis',
+    org: 'University of Rome Tor Vergata',
+    details: [],
+  },
+  {
+    period: '2024',
+    role: 'Topology Optimization for Structures and Thermal Design',
+    org: 'University of Rome Tor Vergata',
+    details: [],
+  },
+]
+
 const skills = [
   { label: '2D / 3D Modeling', items: 'Rhinoceros, Revit, AutoCAD, Rhino.Inside.Revit, Speckle' },
   {
@@ -227,6 +248,21 @@ export default function About() {
                   key={item.role}
                   {...item}
                   isLast={i === education.length - 1}
+                  delay={i * 0.04}
+                />
+              ))}
+            </div>
+          </CollapsibleSection>
+        </section>
+
+        <section className="mt-14">
+          <CollapsibleSection title="Lectures">
+            <div>
+              {lectures.map((item, i) => (
+                <TimelineItem
+                  key={item.role}
+                  {...item}
+                  isLast={i === lectures.length - 1}
                   delay={i * 0.04}
                 />
               ))}
