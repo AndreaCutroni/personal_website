@@ -387,7 +387,7 @@ export default function ProjectDetail() {
                   rel="noreferrer"
                   className="mt-4 inline-block font-mono text-[11px] uppercase tracking-[0.2em] text-muted transition-colors duration-200 hover:text-accent"
                 >
-                  Published on IAAC Blog ↗
+                  {project.linkLabel ?? 'Published on IAAC Blog'} ↗
                 </a>
               )}
             </div>

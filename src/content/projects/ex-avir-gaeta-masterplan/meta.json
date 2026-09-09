@@ -1,0 +1,24 @@
+{
+  "order": 11,
+  "palette": "computation",
+  "track": "Lombardini22 · Practice",
+  "title": "Ex Avir Gaeta Masterplan",
+  "tags": [
+    "Environmental",
+    "Urban"
+  ],
+  "stack": [
+    "Rhino",
+    "Autodesk Forma"
+  ],
+  "team": "Lombardini22 Sustainability Team",
+  "year": "2024–2025",
+  "location": "Gaeta, Italy",
+  "link": "https://www.lombardini22.com/en/project/ex-avir",
+  "linkLabel": "View on Lombardini22",
+  "description": "Outdoor comfort, daylight potential, sun hours and solar radiation analysis comparing massing options for a 50,000 sqm masterplan.",
+  "body": [
+    "Rhino models fed directly into Autodesk Forma, connecting geometry to analysis for the Ex Avir Gaeta masterplan: outdoor comfort and sun hours across the site's outdoor areas, daylight potential and solar radiation on the façades. Results were compared across massing options for the 50,000 sqm scheme, informing the design at an early stage.",
+    "Specific analysis outputs remain confidential to the client."
+  ]
+}

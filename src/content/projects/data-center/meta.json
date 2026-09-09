@@ -1,0 +1,24 @@
+{
+  "order": 12,
+  "palette": "computation",
+  "track": "Lombardini22 · Practice",
+  "title": "Data Center",
+  "tags": [
+    "Environmental"
+  ],
+  "stack": [
+    "Rhino",
+    "Grasshopper",
+    "Autodesk Forma"
+  ],
+  "team": "Lombardini22 Sustainability Team",
+  "year": "2024–2025",
+  "location": "",
+  "link": "https://www.lombardini22.com/en/project/data-center-operator-520",
+  "linkLabel": "View on Lombardini22",
+  "description": "Outdoor wind and façade solar radiation analysis exploring louver configurations by orientation, depth and location.",
+  "body": [
+    "Outdoor wind analysis guided building placement, while a parametric solar radiation script explored different façade louver configurations based on orientation, louver depth and geographic location — developed with Grasshopper and Autodesk Forma as part of Lombardini22's Sustainability team.",
+    "Specific analysis outputs remain confidential to the client."
+  ]
+}

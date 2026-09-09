@@ -1,0 +1,24 @@
+{
+  "order": 14,
+  "palette": "computation",
+  "track": "Lombardini22 · Practice",
+  "title": "Porta Nuova 19",
+  "tags": [
+    "Environmental"
+  ],
+  "stack": [
+    "Rhino",
+    "Grasshopper",
+    "Autodesk Forma"
+  ],
+  "team": "Lombardini22 Sustainability Team",
+  "year": "2024–2025",
+  "location": "Milan, Italy",
+  "link": "https://www.lombardini22.com/en/project/corso-di-porta-nuova-19",
+  "linkLabel": "View on Lombardini22",
+  "description": "Sun, UTCI, wind, façade and daylight analysis across outdoor, building and interior scales for a 35,000 sqm office.",
+  "body": [
+    "Sun hours, Universal Thermal Climate Index (UTCI) and wind analysis guided landscape design and assessed pedestrian comfort outdoors, while a vertical louver study shaped façade shading through solar radiation analysis. Indoor daylight analysis — Useful Daylight Illuminance (UDI), Spatial Daylight Autonomy (sDA) and Annual Solar Exposure (ASE) — ensured daylight autonomy and minimized glare across the 35,000 sqm office.",
+    "Specific analysis outputs remain confidential to the client."
+  ]
+}

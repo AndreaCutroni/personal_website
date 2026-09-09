@@ -1,0 +1,22 @@
+{
+  "order": 13,
+  "palette": "computation",
+  "track": "Lombardini22 · Practice",
+  "title": "Rho Sport Center",
+  "tags": [
+    "Environmental"
+  ],
+  "stack": [
+    "Rhino",
+    "Rhino.Inside.Revit",
+    "Grasshopper"
+  ],
+  "team": "Lombardini22 Sustainability Team",
+  "year": "2024–2025",
+  "location": "Rho, Italy",
+  "description": "Sun hours and façade solar radiation analysis guiding vegetation placement and massing strategy.",
+  "body": [
+    "Rhino.Inside.Revit ensured interoperability between Rhino and Revit throughout the design process. Outdoor sun hours analysis guided vegetation type and placement around the site, comparing the base scenario against different design scenarios, while a solar radiation study on the glass façade informed the massing strategy, ensuring a reduction in radiation.",
+    "Specific analysis outputs remain confidential to the client."
+  ]
+}
