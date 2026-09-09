@@ -1,7 +1,8 @@
 {
-  "order": 1,
+  "order": 7,
   "span": "large",
   "palette": "computation",
+  "track": "IAAC · Coursework",
   "title": "Never Ending Cairo Market",
   "tags": [
     "Architecture"

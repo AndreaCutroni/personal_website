@@ -131,18 +131,28 @@ export default function Projects() {
                       {project.year}
                     </span>
                   </div>
-                  {(project.tags ?? []).length > 0 && (
-                    <div className="mt-2 flex flex-wrap gap-1.5">
-                      {project.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          /* Labels, not controls — the three category pills
-                             above do the filtering, so these stay put on hover. */
-                          className="rounded-full bg-accent-mark/15 px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.15em] text-accent"
-                        >
-                          {tag}
+                  {((project.tags ?? []).length > 0 || project.track) && (
+                    <div className="mt-2 flex flex-wrap items-center justify-between gap-2">
+                      <div className="flex flex-wrap gap-1.5">
+                        {(project.tags ?? []).map((tag) => (
+                          <span
+                            key={tag}
+                            /* Labels, not controls — the three category pills
+                               above do the filtering, so these stay put on hover. */
+                            className="rounded-full bg-accent-mark/15 px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.15em] text-accent"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                      {/* Where the work happened, not what it's about — a
+                          quieter, outlined pill so it reads as context rather
+                          than competing with the tags for attention. */}
+                      {project.track && (
+                        <span className="shrink-0 rounded-full border border-line px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.15em] text-muted">
+                          {project.track}
                         </span>
-                      ))}
+                      )}
                     </div>
                   )}
                 </footer>

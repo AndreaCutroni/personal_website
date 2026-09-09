@@ -1,6 +1,7 @@
 {
-  "order": 5,
+  "order": 10,
   "palette": "computation",
+  "track": "IAAC · Coursework",
   "title": "Structural Optimization",
   "tags": [
     "Structural",
