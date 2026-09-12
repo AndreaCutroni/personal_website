@@ -149,40 +149,15 @@
     {
       "index": "03",
       "title": "What It Does",
-      "block": "story",
+      "block": "grid",
+      "columns": 1,
+      "captions": false,
       "body": [
         "A household describes its day in plain language. inHabit turns that into spatial criteria, searches 800+ synthetic plans for the closest fit, and then explains the match — room by room, hour by hour, and against daylight."
       ],
-      "scenes": [
+      "images": [
         {
-          "file": "Understand Brief.png",
-          "title": "01 — Understand Brief",
-          "caption": "The household describes itself in its own words; the copilot parses it into rooms, adjacencies and constraints."
-        },
-        {
-          "file": "Explore Layouts.png",
-          "title": "02 — Search the Layout Space",
-          "caption": "Every plan in the dataset embedded as a point. Best matches surface near the query, and any two can be interpolated between."
-        },
-        {
-          "file": "Layout Selected.png",
-          "title": "03 — Select the Best Option",
-          "caption": "The chosen layout with its area breakdown and a fit score across rooms, lifestyle, access, adjacency and size."
-        },
-        {
-          "file": "Daylight Analysis.png",
-          "title": "04 — Analyze Daylight",
-          "caption": "The same plan re-read as daylight autonomy, room by room, with day and night areas scored separately."
-        },
-        {
-          "file": "Daily Routine.png",
-          "title": "05 — Visualize Routine",
-          "caption": "The household placed in the plan hour by hour — at 21:00, who is where and doing what."
-        },
-        {
-          "file": "Room Explained.png",
-          "title": "06 — Evaluate & Explain",
-          "caption": "One room interrogated: its area, its character, and the adjacencies that earned or cost it points."
+          "file": "What It Does.png"
         }
       ]
     },
