@@ -143,19 +143,19 @@
       "block": "grid",
       "columns": 3,
       "body": [
-        "Everything visible from a single standpoint. A wide isovist in a circulation space means a resident is seen — and can see others — long before arriving."
+        "Everything visible from a single standpoint. A wide isovist in a circulation space means a resident is seen — and can see others — long before arriving. Ground and typical floors read differently: shared ground-floor rooms open onto wide isovists, while the repeated private corridors above collapse to a narrow sliver."
       ],
       "images": [
         {
-          "file": "Isovists Wohnprojekt.webp",
+          "file": "Isovists Wohnprojekt.gif",
           "caption": "Wohnprojekt Wien — double-loaded"
         },
         {
-          "file": "Isovists Gleis21.webp",
+          "file": "Isovists Gleis21.gif",
           "caption": "Gleis21 Wien — perimeter"
         },
         {
-          "file": "Isovists Spreefeld.webp",
+          "file": "Isovists Spreefeld.gif",
           "caption": "Spreefeld Berlin — point-block"
         }
       ]

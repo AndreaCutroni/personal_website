@@ -170,6 +170,15 @@ export default function ProjectDetail() {
   const resolve = (entries) =>
     (entries ?? [])
       .map((entry) => {
+        /* A `files` array stacks several drawings under one shared caption —
+           ground and typical floor as one comparison rather than two grid
+           cells each naming the same building. */
+        if (entry.files) {
+          const matches = entry.files.map((f) => byName.get(f))
+          return matches.every(Boolean)
+            ? { ...entry, urls: matches.map((m) => m.url), label: matches[0].label }
+            : null
+        }
         const match = byName.get(entry.file)
         return match ? { ...entry, url: match.url, svg: match.svg, label: match.label } : null
       })
