@@ -2,7 +2,15 @@
    on the same grid as the original sheet: nodes sit at explicit (col, row)
    positions and arrows occupy the gaps between them, so branches and the
    feedback loop read exactly as drawn. Below `sm` the grid cannot survive, so
-   the same nodes stack in reading order. */
+   the same nodes stack in reading order.
+
+   Straight arrows cover the common case — adjacent cells, same row or column.
+   A `curves` entry is for the rest: a connector between two arbitrary node
+   edges (a skip-ahead merge, a feedback loop back into an earlier stage).
+   Those are measured in actual pixels off the rendered nodes, so they stay
+   correct across reflows rather than being hand-plotted in grid units. */
+
+import { useLayoutEffect, useRef, useState } from 'react'
 
 function Head({ dir }) {
   const base = 'block h-0 w-0 border-solid'
@@ -98,6 +106,116 @@ function Node({ node }) {
    the n-1 gaps between them. */
 const track = (col, span = 1) => (span > 1 ? `${col * 2 - 1} / span ${span * 2 - 1}` : col * 2 - 1)
 
+// Direction of travel on arrival at each side, as a unit vector — so an
+// arrowhead built from it points the way the line is actually moving, and a
+// line shortened along it stops flush with the tip rather than past it.
+const SIDE_ENTRY = { top: [0, 1], bottom: [0, -1], left: [1, 0], right: [-1, 0] }
+
+function anchor(rect, containerRect, side) {
+  const x = rect.left - containerRect.left
+  const y = rect.top - containerRect.top
+  if (side === 'top') return { x: x + rect.width / 2, y }
+  if (side === 'bottom') return { x: x + rect.width / 2, y: y + rect.height }
+  if (side === 'left') return { x, y: y + rect.height / 2 }
+  return { x: x + rect.width, y: y + rect.height / 2 }
+}
+
+const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v))
+const isVertical = (side) => side === 'top' || side === 'bottom'
+
+/* Elbow connectors between two node edges — a branch that skips a stage, a
+   feedback loop — measured off the actual rendered boxes rather than plotted
+   in grid units, so they stay attached as the layout reflows. Drawn as a
+   single 90° bend with a chamfered corner, matching the straight-line
+   language the rest of the diagram already uses rather than a soft curve. */
+function Curves({ containerRef, nodeRefs, curves }) {
+  const [paths, setPaths] = useState([])
+
+  useLayoutEffect(() => {
+    if (!curves?.length) return undefined
+
+    const measure = () => {
+      const containerRect = containerRef.current?.getBoundingClientRect()
+      if (!containerRect) return
+      const next = curves.map((c) => {
+        const fromEl = nodeRefs.current.get(`${c.from.col}-${c.from.row}`)
+        const toEl = nodeRefs.current.get(`${c.to.col}-${c.to.row}`)
+        if (!fromEl || !toEl) return null
+
+        const start = anchor(fromEl.getBoundingClientRect(), containerRect, c.from.side)
+        const end = anchor(toEl.getBoundingClientRect(), containerRect, c.to.side)
+        const [tx, ty] = SIDE_ENTRY[c.to.side]
+
+        // The bend sits at the point that keeps the line straight off both
+        // node edges: level with the far point on the axis the line leaves
+        // on, in line with it on the axis it arrives on.
+        const corner = isVertical(c.from.side) ? { x: start.x, y: end.y } : { x: end.x, y: start.y }
+        const r = clamp(Math.min(Math.abs(corner.x - start.x) || Infinity, Math.abs(corner.y - start.y) || Infinity, Math.abs(end.x - corner.x) || Infinity, Math.abs(end.y - corner.y) || Infinity) * 0.6, 6, 16)
+
+        const preCorner = isVertical(c.from.side)
+          ? { x: corner.x, y: corner.y - Math.sign(corner.y - start.y || 1) * r }
+          : { x: corner.x - Math.sign(corner.x - start.x || 1) * r, y: corner.y }
+        const postCorner = isVertical(c.from.side)
+          ? { x: corner.x + Math.sign(end.x - corner.x || 1) * r, y: corner.y }
+          : { x: corner.x, y: corner.y + Math.sign(end.y - corner.y || 1) * r }
+
+        // Stop the line short of the tip, behind the arrowhead's base, so the
+        // head sits flush against the node from the outside rather than
+        // poking into it.
+        const headLen = 9
+        const lineEnd = { x: end.x - tx * headLen, y: end.y - ty * headLen }
+
+        const angle = (Math.atan2(-ty, -tx) * 180) / Math.PI + 180
+        return {
+          key: `${c.from.col}-${c.from.row}-${c.to.col}-${c.to.row}`,
+          d: `M ${start.x} ${start.y} L ${preCorner.x} ${preCorner.y} Q ${corner.x} ${corner.y} ${postCorner.x} ${postCorner.y} L ${lineEnd.x} ${lineEnd.y}`,
+          tip: end,
+          angle,
+        }
+      })
+      setPaths(next.filter(Boolean))
+    }
+
+    measure()
+    const observer = new ResizeObserver(measure)
+    if (containerRef.current) observer.observe(containerRef.current)
+    window.addEventListener('resize', measure)
+    /* A section starting collapsed measures at zero — the diagram's own box
+       doesn't resize when an ancestor Collapsible opens, only its clipping
+       does, so the ResizeObserver above never fires for it. Its
+       grid-template-rows transition ending is the signal that the real
+       layout is ready to read. */
+    window.addEventListener('transitionend', measure)
+    return () => {
+      observer.disconnect()
+      window.removeEventListener('resize', measure)
+      window.removeEventListener('transitionend', measure)
+    }
+  }, [containerRef, nodeRefs, curves])
+
+  if (!paths.length) return null
+
+  return (
+    <svg
+      aria-hidden="true"
+      className="pointer-events-none absolute inset-0 h-full w-full overflow-visible text-accent-mark"
+    >
+      {paths.map((p) => (
+        <g key={p.key}>
+          <path d={p.d} fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" />
+          {/* Tip at the local origin, base trailing behind it, so translating
+              to the node edge puts the point there — not the flat end. */}
+          <polygon
+            points="-9,-5 0,0 -9,5"
+            fill="currentColor"
+            transform={`translate(${p.tip.x} ${p.tip.y}) rotate(${p.angle})`}
+          />
+        </g>
+      ))}
+    </svg>
+  )
+}
+
 export default function FlowDiagram({
   columns = 3,
   rows = 4,
@@ -105,7 +223,11 @@ export default function FlowDiagram({
   arrows = [],
   groups = [],
   notes = [],
+  curves = [],
 }) {
+  const containerRef = useRef(null)
+  const nodeRefs = useRef(new Map())
+
   if (!nodes?.length) return null
 
   // logical col c -> grid column 2c-1; the gap after it -> 2c. Same for rows.
@@ -121,7 +243,8 @@ export default function FlowDiagram({
   return (
     <div>
       <div
-        className="hidden sm:grid"
+        ref={containerRef}
+        className="relative hidden sm:grid"
         style={{ gridTemplateColumns: gridCols, gridTemplateRows: gridRows }}
       >
         {/* Drawn first and inset negatively so the dotted outline sits behind
@@ -137,6 +260,10 @@ export default function FlowDiagram({
         {nodes.map((node) => (
           <div
             key={`${node.col}-${node.row}-${node.label}`}
+            ref={(el) => {
+              if (el) nodeRefs.current.set(`${node.col}-${node.row}`, el)
+              else nodeRefs.current.delete(`${node.col}-${node.row}`)
+            }}
             className="relative"
             style={{
               gridColumn: node.col * 2 - 1,
@@ -150,13 +277,19 @@ export default function FlowDiagram({
             <Node node={node} />
           </div>
         ))}
+        <Curves containerRef={containerRef} nodeRefs={nodeRefs} curves={curves} />
         {arrows.map((a) => (
           <div
             key={`${a.col}-${a.row}-${a.dir}-${a.rowSpan ?? 1}`}
             style={
               a.dir === 'right'
                 ? {
-                    gridColumn: a.col * 2,
+                    /* colSpan carries the line straight past an intervening
+                       stage — a branch that skips a step everyone else on its
+                       row goes through — rather than stopping at the next gap. */
+                    gridColumn: a.colSpan
+                      ? `${a.col * 2} / span ${a.colSpan * 2 - 1}`
+                      : a.col * 2,
                     /* Spanning the same rows as the stages it joins puts the
                        arrowhead on their shared midline, not on one input's. */
                     gridRow: a.rowSpan

@@ -81,19 +81,17 @@
         "row": 1,
         "dir": "up"
       }
+    ],
+    "curves": [
+      {
+        "from": { "col": 1, "row": 1, "side": "bottom" },
+        "to": { "col": 2, "row": 2, "side": "left" }
+      }
     ]
   },
   "sections": [
     {
       "index": "01",
-      "title": "Workflow",
-      "block": "flow",
-      "body": [
-        "View quality sets the program ranges, those ranges drive an initial allocation, and the allocation is then optimized against the adjacency matrix — each stage fed by the input beneath it."
-      ]
-    },
-    {
-      "index": "02",
       "title": "Massing Strategy",
       "block": "grid",
       "columns": 1,
@@ -108,7 +106,7 @@
       ]
     },
     {
-      "index": "03",
+      "index": "02",
       "title": "Massing Iterations",
       "block": "grid",
       "columns": 1,
@@ -120,6 +118,14 @@
         {
           "file": "Massing Iterations.png"
         }
+      ]
+    },
+    {
+      "index": "03",
+      "title": "Workflow",
+      "block": "flow",
+      "body": [
+        "View quality sets the program ranges, those ranges drive an initial allocation, and the allocation is then optimized against the adjacency matrix — each stage fed by the input beneath it."
       ]
     },
     {
