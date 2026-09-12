@@ -68,11 +68,6 @@
           "file": "Panel Data Sheet.png",
           "title": "Panel Data Sheet",
           "caption": "One panel type resolved in full: components, layer build-up, dimensions and its position on the south elevation."
-        },
-        {
-          "file": "Panel Schedule.png",
-          "title": "Schedule Extraction",
-          "caption": "The family parameters extracted as scheduled data, ready to leave the model for Excel."
         }
       ]
     },
